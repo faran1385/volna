@@ -102,3 +102,13 @@
     overflow: visible;
     cursor: pointer;
 }
+
+.MuiTooltip-tooltip{
+    font-family: "Inter", sans-serif!important;
+    letter-spacing: 1px;
+    background-color: #222227!important;
+}
+
+.MuiTooltip-tooltip span::before{
+    background-color: #222227!important;
+}

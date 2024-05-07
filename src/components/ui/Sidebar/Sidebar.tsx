@@ -1,11 +1,32 @@
-
 import "./Sidebar.css"
-
+import Tooltip from '@mui/material/Tooltip';
+import { useRef } from "react";
 export const Sidebar = () => {
 
     const oninputSlider = (e: React.FormEvent<HTMLInputElement>) => {
         (e.target as HTMLInputElement).style.background = `linear-gradient(90deg,#25a56a ${(e.target as HTMLInputElement).value}%,#999999 ${(e.target as HTMLInputElement).value}%)`;
     }
+
+    const tooltipPositionRef = useRef<{ x: number; y: number }>({
+        x: 0,
+        y: 0,
+    });
+
+    const popperRef = useRef(null);
+    const processInput = useRef<HTMLInputElement>(null);
+
+    const handleMouseMove = (event: React.MouseEvent) => {
+        tooltipPositionRef.current = { x: event.clientX, y: event.clientY };
+
+        if (popperRef.current != null) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (popperRef.current as any).update();
+            const rect = (event.target as HTMLInputElement).getBoundingClientRect();
+            const total = rect.width-3;
+            const mouse = event.clientX - rect.x;
+
+        }
+    };
 
     return <aside className="sidebar transform-gpu xl:translate-x-0 -translate-x-full">
         <header className="p-5 flex items-center ps-8 w-full sidebar__header">
@@ -103,7 +124,26 @@ export const Sidebar = () => {
             </div>
             <div className="pt-2 flex justify-center">
                 <div className="flex items-center w-4/5">
-                    <input className="sidebar__player__process flex flex-grow" defaultValue={0} onInput={(e) => oninputSlider(e)} type="range" min="0" max="100" step="0.01" />
+                    <Tooltip
+                        title="Add"
+                        placement="top"
+                        arrow
+                        PopperProps={{
+                            popperRef,
+                            anchorEl: {
+                                getBoundingClientRect: () => {
+                                    return new DOMRect(
+                                        tooltipPositionRef.current.x,
+                                        processInput.current!.getBoundingClientRect().y,
+                                        0,
+                                        0,
+                                    );
+                                },
+                            },
+                        }}
+                    >
+                        <input onMouseMove={handleMouseMove} ref={processInput} className="sidebar__player__process flex flex-grow" defaultValue={0} onInput={(e) => oninputSlider(e)} type="range" min="0" max="100" step="0.01" />
+                    </Tooltip>
                     <span className="ms-3 text-fade text-sm">-01:50</span>
                 </div>
             </div>
@@ -111,20 +151,26 @@ export const Sidebar = () => {
                 <div className="flex items-center justify-between w-4/5">
                     <div className="flex items-center">
                         <button className="me-2">
-                            <svg className="sidebar__player__control hidden" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M12.43,4.1a1,1,0,0,0-1,.12L6.65,8H3A1,1,0,0,0,2,9v6a1,1,0,0,0,1,1H6.65l4.73,3.78A1,1,0,0,0,12,20a.91.91,0,0,0,.43-.1A1,1,0,0,0,13,19V5A1,1,0,0,0,12.43,4.1ZM11,16.92l-3.38-2.7A1,1,0,0,0,7,14H4V10H7a1,1,0,0,0,.62-.22L11,7.08ZM19.91,12l1.8-1.79a1,1,0,0,0-1.42-1.42l-1.79,1.8-1.79-1.8a1,1,0,0,0-1.42,1.42L17.09,12l-1.8,1.79a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l1.79-1.8,1.79,1.8a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Z"></path>
-                            </svg>
-                            <svg className="sidebar__player__control" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M12.43,4.1a1,1,0,0,0-1,.12L6.65,8H3A1,1,0,0,0,2,9v6a1,1,0,0,0,1,1H6.65l4.73,3.78A1,1,0,0,0,12,20a.91.91,0,0,0,.43-.1A1,1,0,0,0,13,19V5A1,1,0,0,0,12.43,4.1ZM11,16.92l-3.38-2.7A1,1,0,0,0,7,14H4V10H7a1,1,0,0,0,.62-.22L11,7.08ZM19.66,6.34a1,1,0,0,0-1.42,1.42,6,6,0,0,1-.38,8.84,1,1,0,0,0,.64,1.76,1,1,0,0,0,.64-.23,8,8,0,0,0,.52-11.79ZM16.83,9.17a1,1,0,1,0-1.42,1.42A2,2,0,0,1,16,12a2,2,0,0,1-.71,1.53,1,1,0,0,0-.13,1.41,1,1,0,0,0,1.41.12A4,4,0,0,0,18,12,4.06,4.06,0,0,0,16.83,9.17Z"></path>
-                            </svg>
+                            <Tooltip title={"Unmute"} slotProps={{ popper: { modifiers: [{ name: "offset", options: { offset: [0, -4] } }] } }} arrow>
+                                <svg className="sidebar__player__control hidden" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M12.43,4.1a1,1,0,0,0-1,.12L6.65,8H3A1,1,0,0,0,2,9v6a1,1,0,0,0,1,1H6.65l4.73,3.78A1,1,0,0,0,12,20a.91.91,0,0,0,.43-.1A1,1,0,0,0,13,19V5A1,1,0,0,0,12.43,4.1ZM11,16.92l-3.38-2.7A1,1,0,0,0,7,14H4V10H7a1,1,0,0,0,.62-.22L11,7.08ZM19.91,12l1.8-1.79a1,1,0,0,0-1.42-1.42l-1.79,1.8-1.79-1.8a1,1,0,0,0-1.42,1.42L17.09,12l-1.8,1.79a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l1.79-1.8,1.79,1.8a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Z"></path>
+                                </svg>
+                            </Tooltip>
+                            <Tooltip title={"Mute"} slotProps={{ popper: { modifiers: [{ name: "offset", options: { offset: [0, -4] } }] } }} arrow>
+                                <svg className="sidebar__player__control" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M12.43,4.1a1,1,0,0,0-1,.12L6.65,8H3A1,1,0,0,0,2,9v6a1,1,0,0,0,1,1H6.65l4.73,3.78A1,1,0,0,0,12,20a.91.91,0,0,0,.43-.1A1,1,0,0,0,13,19V5A1,1,0,0,0,12.43,4.1ZM11,16.92l-3.38-2.7A1,1,0,0,0,7,14H4V10H7a1,1,0,0,0,.62-.22L11,7.08ZM19.66,6.34a1,1,0,0,0-1.42,1.42,6,6,0,0,1-.38,8.84,1,1,0,0,0,.64,1.76,1,1,0,0,0,.64-.23,8,8,0,0,0,.52-11.79ZM16.83,9.17a1,1,0,1,0-1.42,1.42A2,2,0,0,1,16,12a2,2,0,0,1-.71,1.53,1,1,0,0,0-.13,1.41,1,1,0,0,0,1.41.12A4,4,0,0,0,18,12,4.06,4.06,0,0,0,16.83,9.17Z"></path>
+                                </svg>
+                            </Tooltip>
                         </button>
                         <input className="w-20 sidebar__player__volume" defaultValue={80} onInput={(e) => oninputSlider(e)} type="range" min="0" max="100" step="0.01" />
                     </div>
-                    <a href="#">
-                        <svg className="sidebar__player__control" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M15,13H9a1,1,0,0,0,0,2h6a1,1,0,0,0,0-2Zm0-4H9a1,1,0,0,0,0,2h6a1,1,0,0,0,0-2ZM12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"></path>
-                        </svg>
-                    </a>
+                    <Tooltip title={"Playlist"} slotProps={{ popper: { modifiers: [{ name: "offset", options: { offset: [0, -4] } }] } }} arrow>
+                        <a href="#">
+                            <svg className="sidebar__player__control" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M15,13H9a1,1,0,0,0,0,2h6a1,1,0,0,0,0-2Zm0-4H9a1,1,0,0,0,0,2h6a1,1,0,0,0,0-2ZM12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"></path>
+                            </svg>
+                        </a>
+                    </Tooltip>
                 </div>
             </div>
         </div>
