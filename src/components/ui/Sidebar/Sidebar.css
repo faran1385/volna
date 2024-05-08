@@ -107,6 +107,8 @@
     font-family: "Inter", sans-serif!important;
     letter-spacing: 1px;
     background-color: #222227!important;
+    user-select: none;
+    pointer-events: none;
 }
 
 .MuiTooltip-tooltip span::before{

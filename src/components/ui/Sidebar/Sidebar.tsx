@@ -1,7 +1,9 @@
 import "./Sidebar.css"
 import Tooltip from '@mui/material/Tooltip';
-import { useRef } from "react";
+import { useRef, useState } from "react";
 export const Sidebar = () => {
+
+    const [processTooltipText, setProcessTooltipText] = useState('00:00')
 
     const oninputSlider = (e: React.FormEvent<HTMLInputElement>) => {
         (e.target as HTMLInputElement).style.background = `linear-gradient(90deg,#25a56a ${(e.target as HTMLInputElement).value}%,#999999 ${(e.target as HTMLInputElement).value}%)`;
@@ -17,14 +19,28 @@ export const Sidebar = () => {
 
     const handleMouseMove = (event: React.MouseEvent) => {
         tooltipPositionRef.current = { x: event.clientX, y: event.clientY };
-
         if (popperRef.current != null) {
+            //calculating the time
+            const totalDuration = 110;
+            const target = (event.target as HTMLInputElement);
+            const targetWidth = target.clientWidth;
+            const targetOffsetLeft = target.offsetLeft;
+            const mouseCurrentPosition = tooltipPositionRef.current.x;
+            if ((mouseCurrentPosition - targetOffsetLeft) / targetWidth >= 0 && (mouseCurrentPosition - targetOffsetLeft) / targetWidth <= 1) {
+                const percentage = (mouseCurrentPosition - targetOffsetLeft) / targetWidth;
+                const currentTime = totalDuration * percentage;
+                const minutes = Math.floor(currentTime / 60);
+                const seconds = (currentTime % 60).toFixed(0);
+                setProcessTooltipText(() => `${minutes}:${Number.parseInt(seconds) < 10 ? '0' : ''}${seconds}`);
+            } else {
+                if ((mouseCurrentPosition - targetOffsetLeft) / targetWidth < 0) {
+                    tooltipPositionRef.current.x = targetOffsetLeft;
+                } else {
+                    tooltipPositionRef.current.x = targetOffsetLeft + targetWidth;
+                }
+            }
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (popperRef.current as any).update();
-            const rect = (event.target as HTMLInputElement).getBoundingClientRect();
-            const total = rect.width-3;
-            const mouse = event.clientX - rect.x;
-
         }
     };
 
@@ -125,7 +141,7 @@ export const Sidebar = () => {
             <div className="pt-2 flex justify-center">
                 <div className="flex items-center w-4/5">
                     <Tooltip
-                        title="Add"
+                        title={processTooltipText}
                         placement="top"
                         arrow
                         PopperProps={{
