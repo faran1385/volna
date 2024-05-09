@@ -20,7 +20,7 @@ export const ProcessInput = () => {
     // to handle the tooltip in largscreens
     const handleMouseMove = (event: React.MouseEvent) => {
 
-        if (popperRef.current != null && !isMouseDown.current) {
+        if (popperRef.current != null) {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (popperRef.current as any).update();
             //calculating the time
@@ -29,26 +29,17 @@ export const ProcessInput = () => {
             const targetWidth = target.clientWidth;
             const targetOffsetLeft = target.offsetLeft;
             const mouseCurrentPosition = event.clientX;
-            if ((mouseCurrentPosition - targetOffsetLeft) / targetWidth >= 0 && (mouseCurrentPosition - targetOffsetLeft) / targetWidth <= 1) {
-                const percentage = (mouseCurrentPosition - targetOffsetLeft) / targetWidth;
-                tooltipPositionRef.current = { x: event.clientX - (14 * percentage) + 7, y: event.clientY }
-                const currentTime = totalDuration * percentage;
-                const minutes = Math.floor(currentTime / 60);
-                const seconds = (currentTime % 60).toFixed(0);
-                setProcessTooltipText(() => `${minutes}:${Number.parseInt(seconds) < 10 ? '0' : ''}${seconds}`);
-            } else {
-                if ((mouseCurrentPosition - targetOffsetLeft) / targetWidth < 0) {
-                    tooltipPositionRef.current.x = targetOffsetLeft;
-                } else {
-                    tooltipPositionRef.current.x = targetOffsetLeft + targetWidth;
-                }
-            }
-
+            const percentage = (mouseCurrentPosition - targetOffsetLeft) / targetWidth;
+            const mousePercentage = (mouseCurrentPosition - targetOffsetLeft - (14 * (1 - percentage)) + 7) / targetWidth;
+            tooltipPositionRef.current = { x: mousePercentage >= 1 ? targetOffsetLeft + targetWidth - 7 : mousePercentage <= 0 ? targetOffsetLeft + 7 : event.clientX, y: event.clientY }
+            const currentTime = Math.max(Math.min(totalDuration * percentage - (14 * (1 - percentage)) + 7, totalDuration), 0);
+            const minutes = Math.floor(currentTime / 60);
+            const seconds = (currentTime % 60).toFixed(0);
+            setProcessTooltipText(() => `${minutes}:${Number.parseInt(seconds) < 10 ? '0' : ''}${seconds}`);
         }
     };
     // to handle the tooltip in mobiles
     const handleOnInput = useCallback((e: React.FormEvent<HTMLInputElement>) => {
-        isMouseDown.current = true
 
         if (popperRef.current != null) {
 
@@ -65,9 +56,10 @@ export const ProcessInput = () => {
             const seconds = (currentTime % 60).toFixed(0);
             setProcessTooltipText(() => `${minutes}:${Number.parseInt(seconds) < 10 ? '0' : ''}${seconds}`);
             tooltipPositionRef.current = { x: mouseCurrentPosition, y: tooltipPositionRef.current.y };
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (popperRef.current as any).update();
         }
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (popperRef.current as any).update();
+
     }, [])
 
 
@@ -108,9 +100,14 @@ export const ProcessInput = () => {
                 },
             }}
         >
-            <input onMouseUp={() => isMouseDown.current = false} onMouseMove={handleMouseMove} onPointerMove={() => setOpen(true)} ref={processInput} className="player__process flex flex-grow" defaultValue={0} onInput={(e) => {
+            <input onMouseUp={(e) => {
+                isMouseDown.current = false
+                handleMouseMove(e);
+            }} onMouseMove={handleMouseMove} onDrag={() => handleOnInput(e)} onPointerMove={() => setOpen(true)} ref={processInput} className="player__process flex flex-grow" defaultValue={0} onInput={(e) => {
                 oninputSlider(e);
-                handleOnInput(e);
+                if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+                    handleOnInput(e);
+                }
             }} type="range" min="0" max="100" step="0.01" />
         </Tooltip>
     </>

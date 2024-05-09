@@ -4,7 +4,6 @@ export const Sidebar = () => {
     return <aside className="sidebar transform-gpu xl:translate-x-0 -translate-x-full">
         {/* sidebar header start*/}
         <header className="p-5 flex items-center ps-8 w-full sidebar__header">
-            <img className="h-full sidebar__header__image" src="https://volna.volkovdesign.com/img/logo.svg" />
         </header>
         {/* sidebar header end */}
         {/* sidebar navigation start */}
