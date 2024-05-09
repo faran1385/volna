@@ -6,12 +6,15 @@ export const Header: React.FC = () => {
     const StateMenu = useContext<StateMenuType | null>(ContextMenu)
     return (
         <div className='Header-nav flex justify-center xl:static fixed top-0 w-full  '>
-            <div className='xl:Header-nav__box--xl w-10/12 transition-all duration-150 flex xl:justify-end xl:gap-x-32 justify-end items-center '>
+            <div className='xl:Header-nav__box--xl w-10/12 transition-all duration-150 flex xl:justify-end xl:gap-x-32 justify-between items-center '>
                 <nav className='xl:block hidden Header-nav__links flex gap-x-4'>
                     <a href="#" className='capitalize'>profile</a>
                     <a href="#" className='capitalize'>about</a>
                     <a href="#" className='capitalize'>contacts</a>
                 </nav>
+                <header className="xl:hidden p-5 flex items-center  sidebar__header">
+                    <img className="h-full sidebar__header__image" src="https://volna.volkovdesign.com/img/logo.svg" />
+                </header>
                 <div style={{ backgroundColor: "var(--background)" }} className={`xl:w-96 xl:static  transition-all duration-500 flex gap-2 fixed z-40 w-10/12 ${toggleSearch ? "top-4 " : "-top-36"}`}>
                     <SearchInput />
                     <button className='xl:hidden block' title='cluse' onClick={() => setToggleSearch(false)}>
@@ -28,8 +31,10 @@ export const Header: React.FC = () => {
                             <span className='Header-nav__controler__links__count Header-nav__controler__links__count--message'>17</span>
                         </a>
                         <a href="#" className='flex items-center'>
-                            <svg className='Header-nav__controler__links__icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" /></svg>
-                            <span className='Header-nav__controler__links__count Header-nav__controler__links__count--shop'>3</span>
+                        <svg className="sidebar__nav__link__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M8.5,19A1.5,1.5,0,1,0,10,20.5,1.5,1.5,0,0,0,8.5,19ZM19,16H7a1,1,0,0,1,0-2h8.49121A3.0132,3.0132,0,0,0,18.376,11.82422L19.96143,6.2749A1.00009,1.00009,0,0,0,19,5H6.73907A3.00666,3.00666,0,0,0,3.92139,3H3A1,1,0,0,0,3,5h.92139a1.00459,1.00459,0,0,1,.96142.7251l.15552.54474.00024.00506L6.6792,12.01709A3.00006,3.00006,0,0,0,7,18H19a1,1,0,0,0,0-2ZM17.67432,7l-1.2212,4.27441A1.00458,1.00458,0,0,1,15.49121,12H8.75439l-.25494-.89221L7.32642,7ZM16.5,19A1.5,1.5,0,1,0,18,20.5,1.5,1.5,0,0,0,16.5,19Z"></path>
+                        </svg>
+                            <span className='Header-nav__controler__links__count Header-nav__controler__links__count--shop '>3</span>
                         </a>
                     </div>
                     <a href="#" className="flex ps-4 w-fit sidebar__nav__link">
