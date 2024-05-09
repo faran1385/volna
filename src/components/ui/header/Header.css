@@ -65,15 +65,15 @@
     background-color: blue;
 }
 .Header-nav__controler__links__icon{
-    height: 18px;
-    width: 18px;
-    fill: #fff;
+    height: 22px;
+    width: 22px;
+    fill: red !important;
 }
 
 .Header-nav__controler_btn{
     position: relative;
-    width: 35px;
-    height: 30px;
+    width: 24px;
+    height: 20px;
     overflow: hidden;
     /* background-color: aqua; */
 }
@@ -91,7 +91,7 @@
 
 
 .Header-nav__controler_btn--active span:nth-child(1){
-    transform: rotate(-45deg) translate(-5px,12px);
+    transform: rotate(-45deg) translate(-5px,9px);
     width: 125% !important;
     background-color: var(--green-color);
 }
@@ -100,7 +100,7 @@
     transform: translateX(10px) !important;
 }
 .Header-nav__controler_btn--active span:nth-child(3){
-    transform: rotate(45deg) translate(-9px,-12px) !important;
+    transform: rotate(45deg) translate(-2px,-9px) !important;
     width: 125% !important;
     background-color: var(--green-color);
 }
