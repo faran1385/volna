@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './Header.css'
+import { ContextMenu, StateMenuType } from '../../../App'
 export const Header: React.FC = () => {
-    const [toggleSearch, setToggleSearch] = useState(false)
-    const [toggleMenu, setToggleMenu] = useState(false)
+    const [toggleSearch, setToggleSearch] = useState<boolean>(false)
+    const StateMenu = useContext<StateMenuType | null>(ContextMenu)
     return (
         <div className='Header-nav flex justify-center xl:static fixed top-0 w-full  '>
             <div className='xl:Header-nav__box--xl w-10/12 transition-all duration-150 flex xl:justify-end xl:gap-x-32 justify-end items-center '>
@@ -37,7 +38,7 @@ export const Header: React.FC = () => {
                             <path d="M20,12a1,1,0,0,0-1-1H11.41l2.3-2.29a1,1,0,1,0-1.42-1.42l-4,4a1,1,0,0,0-.21.33,1,1,0,0,0,0,.76,1,1,0,0,0,.21.33l4,4a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L11.41,13H19A1,1,0,0,0,20,12ZM17,2H7A3,3,0,0,0,4,5V19a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V16a1,1,0,0,0-2,0v3a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V5A1,1,0,0,1,7,4H17a1,1,0,0,1,1,1V8a1,1,0,0,0,2,0V5A3,3,0,0,0,17,2Z"></path></svg>
                     </a>
 
-                    <button onClick={()=>setToggleMenu(!toggleMenu)} title='menu' className={`Header-nav__controler_btn xl:hidden block ${toggleMenu?"Header-nav__controler_btn--active":""} ms-3 `}>
+                    <button onClick={()=>StateMenu?.setToggleMenu(!StateMenu?.toggleMenu)} title='menu' className={`Header-nav__controler_btn xl:hidden block ${StateMenu?.toggleMenu?"Header-nav__controler_btn--active":""} ms-3 `}>
                         <span style={{width:"100%",top:"0px"}}></span>
                         <span style={{width:"70%",top:"50%",transform:'translateY(-50%)'}}></span>
                         <span style={{width:"40%",bottom:"0px"}}></span>
