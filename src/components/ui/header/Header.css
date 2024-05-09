@@ -1,0 +1,106 @@
+.Header-nav{
+    color: #fff;
+    height: 72px;
+    border-bottom: .1px solid var(--border-color);
+    background-color: var(--background);
+}
+
+
+.Header-nav__box--xl{
+    width: calc(100vw - 17.9rem);
+}
+
+.Header-nav__links a{
+    color: var(--gray-color);
+    padding: 5px 10px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.Header-nav__links a:hover{
+    color: green;
+    will-change: color;
+    transition: color 400ms ease-in-out;
+}
+
+
+.Header-nav__searech{
+    width: 100%;
+    background-color: #353535;
+}
+.Header-nav__searech input{
+    background-color: transparent;
+    outline: none;
+}
+.Header-nav__searech input::placeholder{
+    color: #f7f7f7;
+}
+.Header-nav__searech svg{
+    fill: #fff;
+    height: 18px;
+    width: 18px;
+}
+
+.Header-nav__controler__links{
+    border-color: #353535;
+}
+.Header-nav__controler__links a{
+    position: relative;
+}
+.Header-nav__controler__links__count{
+    position: absolute;
+    top: -5px;
+    right: -6px;
+    font-size: 11px;
+    width: 17px;
+    height: 14px;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Header-nav__controler__links__count--shop{
+    background-color: green;
+}
+.Header-nav__controler__links__count--message{
+    background-color: blue;
+}
+.Header-nav__controler__links__icon{
+    height: 22px;
+    width: 22px;
+    fill: red !important;
+}
+
+.Header-nav__controler_btn{
+    position: relative;
+    width: 24px;
+    height: 20px;
+    overflow: hidden;
+    /* background-color: aqua; */
+}
+.Header-nav__controler_btn span{
+    transition: all 300ms ease-in-out;
+    right: 0;
+    position: absolute;
+    height: 3px;
+    background-color: var(--gray-color);
+}
+
+.Header-nav__controler_btn:hover span{
+    background-color: var(--green-color) !important;
+}
+
+
+.Header-nav__controler_btn--active span:nth-child(1){
+    transform: rotate(-45deg) translate(-5px,9px);
+    width: 125% !important;
+    background-color: var(--green-color);
+}
+.Header-nav__controler_btn--active span:nth-child(2){
+    opacity: 0;
+    transform: translateX(10px) !important;
+}
+.Header-nav__controler_btn--active span:nth-child(3){
+    transform: rotate(45deg) translate(-2px,-9px) !important;
+    width: 125% !important;
+    background-color: var(--green-color);
+}

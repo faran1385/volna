@@ -1,18 +1,23 @@
+import { createContext, useState } from "react"
 import { Player } from "./components/ui/Player/Player"
 import { Sidebar } from "./components/ui/Sidebar/Sidebar"
-
+import { Header } from "./components/ui/header/Header"
+export interface StateMenuType {
+  toggleMenu: boolean | null,
+  setToggleMenu: (value: boolean) => void
+}
+export const ContextMenu = createContext<StateMenuType | null>(null)
 function App() {
-
+  const [toggleMenu, setToggleMenu] = useState<boolean>(false)
   return (
     <>
-<<<<<<< HEAD
-    test
-=======
-      <main>
-        <Sidebar />
-        <Player/>
-      </main>
->>>>>>> fa217c441f3a723ff86a4b3233af5349a0e62d1d
+      <ContextMenu.Provider value={{toggleMenu, setToggleMenu}}>
+        <main>
+          <Sidebar />
+          <Header/>
+          <Player/>
+        </main>
+      </ContextMenu.Provider>
     </>
   )
 }
