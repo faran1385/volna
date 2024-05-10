@@ -21,7 +21,46 @@
         left: 0px !important;
     }
 }
-
+@media (800px <= width <= 1280px ){
+    .Header-nav__left__inputbox--resize{
+        /* width: 90% !important; */
+        left: 40px;
+    }
+    .Header-nav__searech{
+        width: 86vw !important;
+    }
+}
+@media (550px <= width <= 800px ){
+    .Header-nav__left__inputbox--resize{
+        /* width: 90% !important; */
+        left: 10px;
+    }
+    .Header-nav__searech{
+        width: 86vw !important;
+    }
+}
+@media (250px <= width <= 550px ){
+    .Header-nav__controler__links{
+        border: none !important;
+        padding-right: 7px !important;
+    }
+    .Header-nav__controler{
+        margin: 0;
+    }
+    .Header-nav__controler__signin{
+        display: none !important;
+    }
+    .Header-nav__controler__links__drop{
+        display: none;
+    }
+    .Header-nav__left__inputbox--resize{
+        /* width: 90% !important; */
+        left: 10px;
+    }
+    .Header-nav__searech{
+        width: 76vw !important;
+    }
+}
 
 .Header-nav__links a{
     color: var(--gray-color);
@@ -40,6 +79,8 @@
     width: 320px;
     background-color: #222227;
     border-radius: 12px;
+    will-change: width;
+    transition: width 100ms ease-in-out ;
 }
 .Header-nav__searech input{
     background-color: transparent;
@@ -108,7 +149,7 @@
     position: absolute;
     transform: translateY(4px);
     transition: all 200ms ease-in-out;
-    right: -2px;
+    right: -20px;
     background-color: var(--border-color);
     width: 280px;
 }
