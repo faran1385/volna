@@ -17,10 +17,12 @@ export const ProcessInput = () => {
     const isMouseDown = useRef(false);
     const popperRef = useRef(null);
     const processInput = useRef<HTMLInputElement>(null);
+    const currentTime = useRef(0);
+    const hasMouse = useRef(false);
     // to handle the tooltip in largscreens
     const handleMouseMove = (event: React.MouseEvent) => {
 
-        if (popperRef.current != null && !isMouseDown.current) {
+        if (popperRef.current != null) {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (popperRef.current as any).update();
             //calculating the time
@@ -29,26 +31,27 @@ export const ProcessInput = () => {
             const targetWidth = target.clientWidth;
             const targetOffsetLeft = target.offsetLeft;
             const mouseCurrentPosition = event.clientX;
-            if ((mouseCurrentPosition - targetOffsetLeft) / targetWidth >= 0 && (mouseCurrentPosition - targetOffsetLeft) / targetWidth <= 1) {
-                const percentage = (mouseCurrentPosition - targetOffsetLeft) / targetWidth;
-                tooltipPositionRef.current = { x: event.clientX - (14 * percentage) + 7, y: event.clientY }
-                const currentTime = totalDuration * percentage;
-                const minutes = Math.floor(currentTime / 60);
-                const seconds = (currentTime % 60).toFixed(0);
-                setProcessTooltipText(() => `${minutes}:${Number.parseInt(seconds) < 10 ? '0' : ''}${seconds}`);
-            } else {
-                if ((mouseCurrentPosition - targetOffsetLeft) / targetWidth < 0) {
-                    tooltipPositionRef.current.x = targetOffsetLeft;
-                } else {
-                    tooltipPositionRef.current.x = targetOffsetLeft + targetWidth;
-                }
+            const percentage = (mouseCurrentPosition - targetOffsetLeft) / targetWidth;
+            tooltipPositionRef.current = { x: event.clientX, y: event.clientY }
+            if (tooltipPositionRef.current.x - (14 * (1 - percentage)) + 7 > targetWidth + targetOffsetLeft) {
+                tooltipPositionRef.current.x = targetWidth + targetOffsetLeft - 7
+            } else if (tooltipPositionRef.current.x - (14 * (1 - percentage)) + 7 < targetOffsetLeft) {
+                tooltipPositionRef.current.x = targetOffsetLeft + 7
             }
+            currentTime.current = Math.ceil(totalDuration * percentage - (14 * (1 - percentage)) + 7);
 
+            if (currentTime.current > totalDuration) {
+                currentTime.current = totalDuration;
+            } else if (currentTime.current < 0) {
+                currentTime.current = 0;
+            }
+            const minutes = Math.floor(currentTime.current / 60);
+            const seconds = (currentTime.current % 60).toFixed(0);
+            setProcessTooltipText(() => `${minutes}:${Number.parseInt(seconds) < 10 ? '0' : ''}${seconds}`);
         }
     };
     // to handle the tooltip in mobiles
     const handleOnInput = useCallback((e: React.FormEvent<HTMLInputElement>) => {
-        isMouseDown.current = true
 
         if (popperRef.current != null) {
 
@@ -60,14 +63,20 @@ export const ProcessInput = () => {
             const targetWidth = target.clientWidth;
             const targetOffsetLeft = target.offsetLeft;
             const mouseCurrentPosition = targetWidth * targetValue + targetOffsetLeft - (14 * targetValue) + 7;
-            const currentTime = totalDuration * targetValue;
-            const minutes = Math.floor(currentTime / 60);
-            const seconds = (currentTime % 60).toFixed(0);
+
+            console.log(currentTime.current);
+
+            if (!hasMouse.current) {
+                currentTime.current = Math.ceil(totalDuration * targetValue);
+            }
+
+            const minutes = Math.floor(currentTime.current / 60);
+            const seconds = (currentTime.current % 60).toFixed(0);
             setProcessTooltipText(() => `${minutes}:${Number.parseInt(seconds) < 10 ? '0' : ''}${seconds}`);
             tooltipPositionRef.current = { x: mouseCurrentPosition, y: tooltipPositionRef.current.y };
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (popperRef.current as any).update();
         }
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (popperRef.current as any).update();
     }, [])
 
 
@@ -108,9 +117,14 @@ export const ProcessInput = () => {
                 },
             }}
         >
-            <input onMouseUp={() => isMouseDown.current = false} onMouseMove={handleMouseMove} onPointerMove={() => setOpen(true)} ref={processInput} className="player__process flex flex-grow" defaultValue={0} onInput={(e) => {
+            <input onMouseUp={() => isMouseDown.current = false} onMouseMove={(e) => {
+                hasMouse.current = true;
+                handleMouseMove(e);
+            }} onPointerMove={() => setOpen(true)} ref={processInput} className="player__process flex flex-grow" defaultValue={0} onInput={(e) => {
                 oninputSlider(e);
-                handleOnInput(e);
+                if ('ontouchstart' in window) {
+                    handleOnInput(e)
+                }
             }} type="range" min="0" max="100" step="0.01" />
         </Tooltip>
     </>
