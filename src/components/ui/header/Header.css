@@ -10,12 +10,6 @@
 }
 
 
-
-@media (1280px <= width <= 1000000 ){
-    .Header-nav__controler{
-        transform: translateY(0px) !important;
-    }
-}
 @media (800px <= width <= 1280px ){
     .Header-nav__left__inputbox--resize{
         /* width: 90% !important; */
@@ -37,83 +31,21 @@
 
 
 
-@media (250px <= width <= 550px ){
+@media (0px <= width <= 650px ){
     .Header-nav__searech input::placeholder{
-        font-size: calc(1vw + 12px)  !important;
+        font-size: calc(1vw + 9px)  !important;
     }
     .sidebar__header{
         padding: 20px 10px !important ;
     }
     .sidebar__header img{
-        width: calc(10vw + 25px) !important;
+        width: calc(1vw + 70px) !important;
         height: auto !important;
     }
-    .Header-nav__controler__links{
+    .Header-nav__controler__links {
         border: none !important;
-        padding-right: 5px !important;
-        gap: calc(1vw - 1px) !important;
+        padding-right: 10px !important;
     }
-    .Header-nav__controler{
-        padding-right: 22px !important;
-        margin: 0 !important;
-    }
-    .Header-nav__controler__links svg{
-        width: calc(10px + 1.5vw);
-        height: auto;
-    }
-    .Header-nav__controler__links__count{
-        top: -7px !important;
-        right: -7px !important;
-        font-size: calc(1vw + 4px) !important;
-        min-width: 10px !important;
-        padding: calc(1vw + 3px) calc(1vw + 0px) !important;
-        height: 10px !important;
-    }
-
-
-    .Header-nav__controler__signin{
-        padding-left: 10px !important;
-        align-items: center;
-    }
-    .Header-nav__controler__signin .sidebar__nav__link__text{
-        font-size: calc(1vw + 6px) !important;
-    }
-    .Header-nav__controler__signin .sidebar__nav__link__icon{
-        width: calc(1vw + 9px);
-        height: auto;
-        margin-left: 7px !important;
-    }
-    .Header-nav__controler__links--dropdown{
-        right: -90px !important;
-        width: calc(1vw + 200px) !important;
-    }
-    .Header-nav__controler__links--dropdown__header{
-        /* font-size: calc(1vw + 5px) !important; */
-    } 
-    .Header-nav__controler__links--dropdown__body__text{
-        font-size: calc(1vw + 4px) !important;
-        margin-inline-start: calc(1vw + 5px) !important;
-    }
-    .Header-nav__controler__links--dropdown__body__icon{
-        width: calc(1vw + 7px) !important;
-        left: calc(-1vw - 7px) !important;
-    }
-    .Header-nav__controler__links--dropdown__body__time{
-        font-size: calc(1vw + 3px) !important;
-        margin-top: 5px;
-    }
-
-    .Header-nav__controler__links--dropdown__body__img{
-        width: calc(1vw + 36px) !important;
-        height: calc(1vw + 36px) !important;
-    }
-    .Header-nav__controler__links--dropdown__body__link--cart {
-        font-size: calc(1vw + 7px) !important;
-    }
-    .Header-nav__controler__links--dropdown__body__price{
-        font-size: calc(1vw + 5px) !important;
-    }
-
     .Header-nav__left__inputbox--resize{
         left: 10px;
     }
