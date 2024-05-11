@@ -85,7 +85,7 @@
         width: calc(1vw + 200px) !important;
     }
     .Header-nav__controler__links--dropdown__header{
-        font-size: calc(1vw + 5px) !important;
+        /* font-size: calc(1vw + 5px) !important; */
     } 
     .Header-nav__controler__links--dropdown__body__text{
         font-size: calc(1vw + 4px) !important;
