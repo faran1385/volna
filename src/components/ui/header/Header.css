@@ -19,7 +19,7 @@
         width: 86vw !important;
     }
 }
-@media (550px <= width <= 800px ){
+@media (650px <= width <= 800px ){
     .Header-nav__left__inputbox--resize{
         /* width: 90% !important; */
         left: 10px;
