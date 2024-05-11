@@ -34,6 +34,9 @@
         width: 86vw !important;
     }
 }
+
+
+
 @media (250px <= width <= 550px ){
     .Header-nav__searech input::placeholder{
         font-size: calc(1vw + 12px)  !important;
