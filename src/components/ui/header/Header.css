@@ -11,7 +11,11 @@
 
 
 
-
+@media (1280px <= width <= 1000000 ){
+    .Header-nav__controler{
+        transform: translateY(0px) !important;
+    }
+}
 @media (800px <= width <= 1280px ){
     .Header-nav__left__inputbox--resize{
         /* width: 90% !important; */
@@ -31,18 +35,55 @@
     }
 }
 @media (250px <= width <= 550px ){
+    .Header-nav__searech input::placeholder{
+        font-size: calc(100% - 30%)  !important;
+    }
+    .sidebar__header img{
+        width: calc(60px + 3vw) !important;
+        height: auto !important;
+    }
     .Header-nav__controler__links{
         border: none !important;
         padding-right: 7px !important;
+        gap: 10px !important;
     }
     .Header-nav__controler{
         margin: 0;
     }
+    .Header-nav__controler__links svg{
+        width: calc(10px + 1.5vw);
+        height: auto;
+    }
+    .Header-nav__controler__links__count{
+        top: -7px !important;
+        right: -7px !important;
+        font-size: 6px !important;
+        min-width: 10px !important;
+        padding: 6px 5px !important;
+        height: 10px !important;
+    }
+    .Header-nav__controler__links--dropdown{
+        right: -120px !important;
+    }
+
+
     .Header-nav__controler__signin{
-        display: none !important;
+        padding-left: 10px !important;
+        align-items: center;
+    }
+    .Header-nav__controler__signin .sidebar__nav__link__text{
+        font-size: calc(100% - 20%) !important;
+    }
+    .Header-nav__controler__signin .sidebar__nav__link__icon{
+        width: calc(100vw - 96vw);
+        height: auto;
+        margin-left: 7px !important;
+    }
+    .Header-nav__controler__signin{
+        /* display: none !important; */
     }
     .Header-nav__controler__links__drop{
-        display: none;
+        /* display: none; */
     }
     .Header-nav__left__inputbox--resize{
         /* width: 90% !important; */

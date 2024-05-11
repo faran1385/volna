@@ -1,12 +1,18 @@
-import React, { ClassAttributes, DetailedHTMLProps, HTMLAttributes, useContext, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Header.css'
-import { ContextMenu, StateMenuType } from '../../../App'
-import { TypeDropDown } from './Header'
 import {HeaderLeft} from './HaederLeft/HeaderLeft.tsx'
 import {HeaderControler} from './HeaderControler/HeaderControler.tsx'
 export const Header: React.FC = () => {
     const [toggleSearch, setToggleSearch] = useState<boolean>(false)
-    const StateMenu = useContext<StateMenuType | null>(ContextMenu)
+    useEffect(()=>{
+        window.addEventListener(
+            'resize',()=>{
+                if(window.innerWidth !== undefined && window.innerWidth >= 1280){
+                    setToggleSearch(false)
+                }
+            }
+        )
+    },[window.innerWidth])
     return (
         <div className='Header-nav flex justify-end xl:static fixed top-0 w-full  '>
             <div className='Header-nav__box--xl relative  transition-all duration-150 flex xl:justify-end justify-end items-center '>
