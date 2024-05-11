@@ -38,6 +38,9 @@
     .Header-nav__searech input::placeholder{
         font-size: calc(100% - 30%)  !important;
     }
+    .sidebar__header{
+        padding: 20px 10px !important ;
+    }
     .sidebar__header img{
         width: calc(60px + 3vw) !important;
         height: auto !important;
@@ -48,7 +51,8 @@
         gap: 10px !important;
     }
     .Header-nav__controler{
-        margin: 0;
+        padding-right: 22px !important;
+        margin: 0 !important;
     }
     .Header-nav__controler__links svg{
         width: calc(10px + 1.5vw);
