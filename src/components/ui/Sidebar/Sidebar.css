@@ -1,7 +1,7 @@
 .sidebar {
     border: 1px solid var(--border-color);
     position: fixed;
-    top:0;
+    top: 0;
     width: 18rem;
     height: 100vh;
     will-change: transform;
@@ -9,15 +9,29 @@
     transform: 0%;
 }
 
+.sidebar__nav::-webkit-scrollbar {
+    width: 10px;
+}
+
+.sidebar__nav::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.sidebar__nav::-webkit-scrollbar-thumb {
+    background: #bbb9b9;
+    border-radius: 9px;
+}
+
 .sidebar__header {
     border-bottom: 1px solid var(--border-color);
     height: 4.5rem;
 }
+
 .sidebar__header__image {
     max-width: 6rem;
 }
 
-.sidebar__nav{
+.sidebar__nav {
     height: calc(100vh - 334px);
 }
 
@@ -53,3 +67,8 @@
     color: white;
 }
 
+.sidebar__nav__link__badge {
+    background-color: #2f80ed;
+    font-size: 10px;
+    top: -5px;
+}
