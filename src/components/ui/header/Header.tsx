@@ -16,7 +16,7 @@ export const Header: React.FC = () => {
     return (
         <div className='Header-nav flex justify-end xl:static fixed top-0 w-full  '>
             <div className='Header-nav__box--xl relative  transition-all duration-150 flex xl:justify-end justify-end items-center '>
-                <header className={`xl:hidden ${toggleSearch?"absolute -translate-y-24":""} transition-all duration-300 absolute left-3 p-5 flex items-center  sidebar__header`}>
+                <header className={`xl:hidden  ${toggleSearch?"absolute -translate-y-24":""} transition-all duration-300 absolute left-3 p-5 flex items-center  sidebar__header`}>
                     <img className="h-full sidebar__header__image" src="https://volna.volkovdesign.com/img/logo.svg" title={'logo'} />
                 </header>
                 <HeaderLeft setToggleSearch={setToggleSearch} toggleSearch={toggleSearch}/>
