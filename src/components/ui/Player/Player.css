@@ -1,6 +1,7 @@
 .player {
     width: 17.9rem;
     border-top: 1px solid var(--border-color);
+    background-color: var(--background);
 }
 
 .player__title {

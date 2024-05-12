@@ -6,9 +6,9 @@
 }
 @media (0px <= width <= 650px){
     .title-card__text{
-        font-size: calc(1vw + 16px) !important;
+        font-size: calc(1vw + 13px) !important;
     }
     .title-card .main-link__text{
-        font-size: calc(1vw + 10px);
+        font-size: calc(1vw + 7px);
     }
 }
