@@ -1,0 +1,34 @@
+
+.main-link__icon {
+    fill: #c0c0c0;
+    width: 22px;
+    height: auto;
+    margin-bottom: 2px;
+    will-change: fill;
+    transition: fill ease-in .2s;
+}
+
+.main-link__text--active {
+    color: white !important;
+}
+
+.main-link__text {
+    color: #c0c0c0;
+    font-size: medium;
+    will-change: color;
+    transition: color ease-in .1s;
+}
+
+.main-link:hover .main-link__icon {
+    fill: #25a56a;
+}
+
+.main-link:hover .main-link__text {
+    color: white;
+}
+
+.main-link__badge {
+    background-color: #2f80ed;
+    font-size: 10px;
+    top: -5px;
+}
