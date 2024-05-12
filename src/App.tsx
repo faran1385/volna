@@ -2,7 +2,7 @@ import { createContext, useState } from "react"
 import { Player } from "./components/ui/Player/Player"
 import { Sidebar } from "./components/ui/Sidebar/Sidebar"
 import { Header } from "./components/ui/header/Header"
-import { Home } from "./components/ui/Home/Home"
+import { Home } from "./Pages/Home/Home"
 export interface StateMenuType {
   toggleMenu: boolean | null,
   setToggleMenu: (value: boolean) => void
