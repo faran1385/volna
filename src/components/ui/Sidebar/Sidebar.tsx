@@ -3,7 +3,7 @@ import { ContextMenu, StateMenuType } from "../../../App"
 import "./Sidebar.css"
 export const Sidebar = () => {
     const StateMenu = useContext<StateMenuType | null>(ContextMenu)
-    return <aside className={`sidebar transform-gpu xl:translate-x-0 ${StateMenu?.toggleMenu?"translate-x-0":"-translate-x-full"}  `}>
+    return <aside className={`sidebar transform-gpu xl:translate-x-0 ${StateMenu?.toggleMenu ? "translate-x-0" : "-translate-x-full"}  `}>
         {/* sidebar header start*/}
         <header className="p-5 flex items-center ps-8 w-full sidebar__header">
             <img className="h-full sidebar__header__image" src="https://volna.volkovdesign.com/img/logo.svg" />
@@ -67,6 +67,33 @@ export const Sidebar = () => {
                             <path d="M16,14H8a1,1,0,0,0,0,2h8a1,1,0,0,0,0-2Zm0-4H10a1,1,0,0,0,0,2h6a1,1,0,0,0,0-2Zm4-6H17V3a1,1,0,0,0-2,0V4H13V3a1,1,0,0,0-2,0V4H9V3A1,1,0,0,0,7,3V4H4A1,1,0,0,0,3,5V19a3,3,0,0,0,3,3H18a3,3,0,0,0,3-3V5A1,1,0,0,0,20,4ZM19,19a1,1,0,0,1-1,1H6a1,1,0,0,1-1-1V6H7V7A1,1,0,0,0,9,7V6h2V7a1,1,0,0,0,2,0V6h2V7a1,1,0,0,0,2,0V6h2Z"></path>
                         </svg>
                         <span className=" sidebar__nav__link__text">News</span>
+                    </a>
+                </li>
+                <li className="my-5 block sm:hidden">
+                    <a href="#" className="flex w-fit sidebar__nav__link">
+                        <svg className="sidebar__nav__link__icon me-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M8.5,19A1.5,1.5,0,1,0,10,20.5,1.5,1.5,0,0,0,8.5,19ZM19,16H7a1,1,0,0,1,0-2h8.49121A3.0132,3.0132,0,0,0,18.376,11.82422L19.96143,6.2749A1.00009,1.00009,0,0,0,19,5H6.73907A3.00666,3.00666,0,0,0,3.92139,3H3A1,1,0,0,0,3,5h.92139a1.00459,1.00459,0,0,1,.96142.7251l.15552.54474.00024.00506L6.6792,12.01709A3.00006,3.00006,0,0,0,7,18H19a1,1,0,0,0,0-2ZM17.67432,7l-1.2212,4.27441A1.00458,1.00458,0,0,1,15.49121,12H8.75439l-.25494-.89221L7.32642,7ZM16.5,19A1.5,1.5,0,1,0,18,20.5,1.5,1.5,0,0,0,16.5,19Z"></path>
+                        </svg>
+                        <span className=" sidebar__nav__link__text">Cart</span>
+                    </a>
+                </li>
+                <li className="my-5 block sm:hidden">
+                    <a href="#" className="flex w-fit sidebar__nav__link">
+                        <svg className="sidebar__nav__link__icon me-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M20,12a1,1,0,0,0-1-1H11.41l2.3-2.29a1,1,0,1,0-1.42-1.42l-4,4a1,1,0,0,0-.21.33,1,1,0,0,0,0,.76,1,1,0,0,0,.21.33l4,4a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L11.41,13H19A1,1,0,0,0,20,12ZM17,2H7A3,3,0,0,0,4,5V19a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V16a1,1,0,0,0-2,0v3a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V5A1,1,0,0,1,7,4H17a1,1,0,0,1,1,1V8a1,1,0,0,0,2,0V5A3,3,0,0,0,17,2Z"></path>
+                        </svg>
+                        <span className=" sidebar__nav__link__text">Log in</span>
+                    </a>
+                </li>
+                <li className="my-5 block sm:hidden">
+                    <a href="#" className="flex w-fit sidebar__nav__link">
+                        <div className="relative">
+                            <span className="sidebar__nav__link__badge rounded-sm px-1 w-4 h-4 flex justify-center items-center absolute right-1.5">17</span>
+                            <svg className="sidebar__nav__link__icon me-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19.05566,2h-14a3.00328,3.00328,0,0,0-3,3V19a3.00328,3.00328,0,0,0,3,3h14a3.00328,3.00328,0,0,0,3-3V5A3.00328,3.00328,0,0,0,19.05566,2Zm-14,2h14a1.001,1.001,0,0,1,1,1v8H17.59082a1.99687,1.99687,0,0,0-1.66406.89062L14.52051,16H9.59082L8.18457,13.89062A1.99687,1.99687,0,0,0,6.52051,13H4.05566V5A1.001,1.001,0,0,1,5.05566,4Zm14,16h-14a1.001,1.001,0,0,1-1-1V15H6.52051l1.40625,2.10938A1.99687,1.99687,0,0,0,9.59082,18h4.92969a1.99687,1.99687,0,0,0,1.66406-.89062L17.59082,15h2.46484v4A1.001,1.001,0,0,1,19.05566,20Z"></path>
+                            </svg>
+                        </div>
+                        <span className="sidebar__nav__link__text">Inboxes</span>
                     </a>
                 </li>
             </ul>
