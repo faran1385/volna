@@ -81,7 +81,6 @@
 }
 .releases__cards__card__body__artist{
     display: block !important;
-    /* height: 20px; */
     white-space: nowrap;
     color: var(--gray-color) ;
     text-overflow: ellipsis !important;
@@ -93,8 +92,23 @@
     will-change: color;
     transition: color 300ms ease-in-out;
     font-size: 14px ;
-
+    
 }
 .releases__cards__card__body__artist a:hover{
     color: var(--green-color);
+}
+
+
+@media (0px <= width <= 650px){
+    .releases__cards__card__body__artist{
+        font-size: calc(1vw + 8px);
+    }
+    .releases__cards__card__body__name{
+        display: block !important;
+        white-space: nowrap;
+        color: var(--gray-color) ;
+        text-overflow: ellipsis !important;
+        overflow: hidden !important;
+        width: 100% !important;
+    }
 }
