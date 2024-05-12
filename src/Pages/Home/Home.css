@@ -1,3 +1,10 @@
 .home {
-    padding-left: 18rem;
+    padding-left: 18rem !important;
+    padding-top: 0 !important;
+}
+@media (max-width: 1280px) {
+    .home--mobile {
+        padding-left: 0 !important;
+        padding-top: 70px !important;
+    }
 }
