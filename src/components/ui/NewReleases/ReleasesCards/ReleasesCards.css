@@ -14,12 +14,20 @@
     top: 50%;
 }
 .releases__cards__card__header:hover .releases__cards__card__header__img{
+    left: -10% !important;
+    top: -10% !important;
     opacity: .6;
+    height: 115% !important;
+    min-width: 115% !important;
 }
 .releases__cards__card__header__img{
-    will-change: opacity;
-    transition: opacity 300ms ease-in-out;
-    transform-origin: ;
+    position: absolute !important;
+    min-width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    transition: all 300ms ease-in-out;
 }
 .releases__cards__card__header__text{
     transition: all 200ms ease-in-out;
@@ -60,6 +68,7 @@
 }
 
 .releases__cards__card__body{
+    padding-bottom: 10px;
 }
 .releases__cards__card__body__name{
     font-size: 16px;
