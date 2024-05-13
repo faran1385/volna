@@ -1,9 +1,8 @@
-import React from 'react'
 import {TypeTitle} from './Title.ts'
 import'./Title.css'
 export const Title = ({title,textLink,href}:TypeTitle) => {
     return (
-        <div className='title-card px-4 flex justify-between items-end h-24'>
+        <div className='title-card flex justify-between items-end h-24'>
             <h1 className='title-card__text capitalize'>
                 {title}
             </h1>

@@ -2,7 +2,7 @@ import React from 'react'
 import './ReleasesCards.css'
 export const ReleasesCards: React.FC = () => {
     return (
-        <div className='releases__cards my-5 mx-5 grid gap-4 lg:grid-cols-6 sm:grid-cols-3 grid-cols-2'>
+        <div className='releases__cards my-5 grid gap-4 lg:grid-cols-6 sm:grid-cols-3 grid-cols-2'>
 
             <div className='releases__cards__card'>
                 <div className='releases__cards__card__header relative'>
