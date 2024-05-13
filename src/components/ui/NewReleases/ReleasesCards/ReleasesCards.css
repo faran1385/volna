@@ -1,6 +1,8 @@
 .releases__cards__card__header{
     overflow: hidden;
     border-radius: 12px;
+    min-width: 100%;
+    min-height: 50%;
 }
 .releases__cards__card__header:hover .releases__cards__card__header__text{
     opacity: 1;
@@ -21,9 +23,13 @@
     min-width: 115% !important;
     transform-origin: center !important;
 }
+.releases__cards__card__header__img--hidden{
+    min-width: 100% !important;
+    height: auto !important;
+}
+
 .releases__cards__card__header__img{
     transform-origin: center !important;
-    position: absolute !important;
     min-width: 100% !important;
     height: 100% !important;
     object-fit: cover;

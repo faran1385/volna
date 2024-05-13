@@ -1,6 +1,7 @@
 .Header-nav__left{
     position: absolute;
     left: 316px !important;
+    background-color: var(--background);
 }
 
 .Header-nav__links a{

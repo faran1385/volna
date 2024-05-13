@@ -5,7 +5,7 @@ import { StateSearchType } from './HeaderLeft'
 export const HeaderLeft = ({ setToggleSearch, toggleSearch }: StateSearchType) => {
     return (
         <div className='Header-nav__left w-auto Header-nav__left--action   absolute  flex items-centerw'>
-            <nav className='xl:block hidden Header-nav__links flex me-16'>
+            <nav className='xl:flex hidden Header-nav__links flex items-center me-16'>
                 <a href="#" className='capitalize me-7'>profile</a>
                 <a href="#" className='capitalize me-7'>about</a>
                 <a href="#" className='capitalize'>contacts</a>

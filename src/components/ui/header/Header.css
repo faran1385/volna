@@ -14,7 +14,7 @@
 @media (800px <= width <= 1280px ){
     .Header-nav__left__inputbox--resize{
         /* width: 90% !important; */
-        left: 40px;
+        left: 32px;
     }
     .Header-nav__searech{
         width: 86vw !important;
