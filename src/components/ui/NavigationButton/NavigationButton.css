@@ -1,25 +1,23 @@
-.slider {
-    height: 28.75rem;
-}
-
-.slider__nav__item {
+.button {
     background-color: rgba(255, 255, 255, 0.6);
     will-change: auto;
     transition: all ease .5s;
 }
 
-.slider__nav__item--active {
+.button--active {
     background-color: white;
     width: 1.2rem !important;
 }
 
 @media (max-width:768px) {
-    .slider__nav__item--active {
+    .button--active {
         background-color: var(--green-color) !important;
     }
 }
 
-.slider__trigger__svg {
+
+
+.button__svg {
     width: 28px;
     height: 28px;
     fill: white;
@@ -27,6 +25,6 @@
     transition: fill ease .3s;
 }
 
-.slider__trigger__svg:hover {
+.button__svg:hover {
     fill: var(--green-color)
 }
