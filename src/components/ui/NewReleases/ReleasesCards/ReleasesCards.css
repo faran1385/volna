@@ -1,8 +1,6 @@
 .releases__cards__card__header{
     overflow: hidden;
     border-radius: 12px;
-    width: 140px !important;
-    min-height: 140px !important;
 }
 .releases__cards__card__header:hover .releases__cards__card__header__text{
     opacity: 1;
@@ -46,6 +44,7 @@
     fill: var(--color);
 }
 .releases__cards__card__header__link{
+    z-index: 2 !important;
     transition: all 300ms ease-in-out;
     opacity: 0;
     scale: .8;
@@ -101,18 +100,7 @@
     color: var(--green-color);
 }
 
-
-@media (640px <= width <= 1024px){
-    .releases__cards__card__header{
-        width: calc(1vw + 160px) !important;
-        min-height: calc(1vw + 160px) !important;
-    }
-}
 @media (0px <= width <= 640px){
-    .releases__cards__card__header{
-        width: 100px !important;
-        min-height: 100px !important;
-    }
     .releases__cards__card__body__artist{
         font-size: calc(1vw + 7px);
     }
