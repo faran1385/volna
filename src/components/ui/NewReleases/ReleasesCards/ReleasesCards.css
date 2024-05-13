@@ -1,0 +1,114 @@
+.releases__cards__card__header{
+    overflow: hidden;
+    border-radius: 12px;
+}
+.releases__cards__card__header:hover .releases__cards__card__header__text{
+    opacity: 1;
+    scale: 1;
+    left: 50%;
+}
+.releases__cards__card__header:hover .releases__cards__card__header__link{
+    opacity: 1;
+    scale: 1;
+    left: 50%;
+    top: 50%;
+}
+.releases__cards__card__header:hover .releases__cards__card__header__img{
+    left: -10% !important;
+    top: -10% !important;
+    opacity: .6;
+    height: 115% !important;
+    min-width: 115% !important;
+}
+.releases__cards__card__header__img{
+    position: absolute !important;
+    min-width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    transition: all 300ms ease-in-out;
+}
+.releases__cards__card__header__text{
+    transition: all 200ms ease-in-out;
+    opacity: 0;
+    scale: .8;
+    left: 46%;
+    transform: translateX(-50%);
+    color: var(--color);
+    font-size: 13px !important;
+}
+.releases__cards__card__header__text__icon{
+    width: 13px;
+    fill: var(--color);
+}
+.releases__cards__card__header__link{
+    transition: all 200ms ease-in-out;
+    opacity: 0;
+    scale: .8;
+    cursor: pointer;
+    width: 56px;
+    height: 56px;
+
+    background-color: var(--background);
+    top: 48%;
+    left: 48%;
+    transform: translate(-50%,-50%);
+    border-radius: 12px;
+}
+.releases__cards__card__header__link:hover .releases__cards__card__header__link__icon{
+    fill: var(--green-color);
+}
+.releases__cards__card__header__link__icon{
+    will-change: fill;
+    transition: fill 300ms ease-in-out;
+    fill: var(--color);
+    min-width: 24px;
+    height: 24px;
+}
+
+.releases__cards__card__body{
+    padding-bottom: 10px;
+}
+.releases__cards__card__body__name{
+    font-size: 16px;
+    color: var(--color);
+    will-change: color;
+    transition: color 300ms ease-in-out;
+}
+.releases__cards__card__body__name:hover{
+    color: var(--green-color);
+}
+.releases__cards__card__body__artist{
+    display: block !important;
+    white-space: nowrap;
+    color: var(--gray-color) ;
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+    width: 100% !important;
+}
+.releases__cards__card__body__artist a{
+    margin: 0  3px;
+    will-change: color;
+    transition: color 300ms ease-in-out;
+    font-size: 14px ;
+    
+}
+.releases__cards__card__body__artist a:hover{
+    color: var(--green-color);
+}
+
+
+@media (0px <= width <= 650px){
+    .releases__cards__card__body__artist{
+        font-size: calc(1vw + 8px);
+    }
+    .releases__cards__card__body__name{
+        display: block !important;
+        white-space: nowrap;
+        color: var(--gray-color) ;
+        text-overflow: ellipsis !important;
+        overflow: hidden !important;
+        width: 100% !important;
+    }
+}

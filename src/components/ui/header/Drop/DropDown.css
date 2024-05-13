@@ -8,6 +8,7 @@
     transform: translateY(4px);
     transition: all 200ms ease-in-out;
     right: -20px;
+    top: 36px;
     background-color: var(--border-color);
     width: 280px;
 }
