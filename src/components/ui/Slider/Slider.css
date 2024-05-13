@@ -1,0 +1,9 @@
+.slider {
+    height: 28.75rem;
+}
+
+@media (max-width:640px) {
+    .slider--mobile {
+        height: 25rem !important;
+    }
+}
