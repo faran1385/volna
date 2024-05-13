@@ -6,12 +6,16 @@ import { StateSearchType } from '../HaederLeft/HeaderLeft'
 import { ContextMenu, StateMenuType } from '../../../../App'
 import './HeaderControler.css'
 import './../../LinkMain/LinkMain.css'
-export const HeaderControler = ({setToggleSearch,toggleSearch } : StateSearchType ) => {
+export const HeaderControler = ({BoxSearch} : any ) => {
     const StateMenu = useContext<StateMenuType | null>(ContextMenu)
+    const UpSearch = ()=>{
+        BoxSearch.current?.classList.add("top-0")
+        BoxSearch.current?.classList.remove("-top-36")
+    }
     return (
         <div className={`Header-nav__controler  transition-all duration-300 pe-7 flex items-center`}>
             <div className='Header-nav__controler__links flex main-link  gap-7 pe-8 '>
-                <button onClick={() => setToggleSearch(true)} className='xl:hidden block' title='search'>
+                <button onClick={UpSearch} className='xl:hidden block' title='search'>
                     <svg className='Header-nav__controler__links__icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.71,20.29,18,16.61A9,9,0,1,0,16.61,18l3.68,3.68a1,1,0,0,0,1.42,0A1,1,0,0,0,21.71,20.29ZM11,18a7,7,0,1,1,7-7A7,7,0,0,1,11,18Z"></path></svg>
                 </button>
                 <div className='Header-nav__controler__links__drop sm:flex hidden relative py-4 ps-2'>
