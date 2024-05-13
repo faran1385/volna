@@ -3,6 +3,11 @@
     left: 316px !important;
     background-color: var(--background);
 }
+.Header-nav__left__inputbox--resize{
+    min-height: 71px;
+    background-color: var(--background);
+    width: 96%;
+}
 
 .Header-nav__links a{
     color: var(--gray-color);
