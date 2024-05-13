@@ -2,8 +2,31 @@
     height: 28.75rem;
 }
 
-@media (max-width:640px) {
-    .slider--mobile {
-        height: 25rem !important;
+.slider__nav__item {
+    background-color: rgba(255, 255, 255, 0.6);
+    will-change: auto;
+    transition: all ease .5s;
+}
+
+.slider__nav__item--active {
+    background-color: white;
+    width: 1.2rem !important;
+}
+
+@media (max-width:768px) {
+    .slider__nav__item--active {
+        background-color: var(--green-color) !important;
     }
+}
+
+.slider__trigger__svg {
+    width: 28px;
+    height: 28px;
+    fill: white;
+    will-change: fill;
+    transition: fill ease .3s;
+}
+
+.slider__trigger__svg:hover {
+    fill: var(--green-color)
 }
