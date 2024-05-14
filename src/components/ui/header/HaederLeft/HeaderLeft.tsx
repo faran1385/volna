@@ -1,10 +1,10 @@
-import { forwardRef } from 'react'
+import { RefObject, forwardRef } from 'react'
 import './HeaderLeft.css'
 import { SearchInput } from './../Search/SearchInput'
-const HeaderLeftForward = ({ BoxSearch }: any) => {
+const HeaderLeftForward = ({ BoxSearch }: {BoxSearch : RefObject<HTMLDivElement> | null}) => {
     const DownSearch = () => {
-        BoxSearch.current?.classList.add("-top-36")
-        BoxSearch.current?.classList.remove("top-0")
+        BoxSearch?.current?.classList.add("-top-36")
+        BoxSearch?.current?.classList.remove("top-0")
     }
     return (
         <div className='Header-nav__left w-auto Header-nav__left--action   absolute  flex items-centerw'>

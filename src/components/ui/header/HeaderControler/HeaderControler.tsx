@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { FC, RefObject, useContext, useState } from 'react'
 import { DropDown } from '../Drop/DropDown'
 import { DropDownNotifation } from '../Drop/DropDownNotifaion'
 import { DropDownCart } from '../Drop/DropDownCart'
@@ -6,12 +6,16 @@ import { StateSearchType } from '../HaederLeft/HeaderLeft'
 import { ContextMenu, StateMenuType } from '../../../../App'
 import './HeaderControler.css'
 import './../../LinkMain/LinkMain.css'
-export const HeaderControler = ({BoxSearch} : any ) => {
+import { divRefType } from '../Header.tsx'
+import { divRefType as divMenuRef } from '../../../../App.tsx'
+
+export const HeaderControler = ({BoxSearch , DivMenuRef } : divRefType & divMenuRef  ) => {
     const StateMenu = useContext<StateMenuType | null>(ContextMenu)
     const UpSearch = ()=>{
-        BoxSearch.current?.classList.add("top-0")
-        BoxSearch.current?.classList.remove("-top-36")
+        BoxSearch?.current?.classList.add("top-0")
+        BoxSearch?.current?.classList.remove("-top-36")
     }
+
     return (
         <div className={`Header-nav__controler  transition-all duration-300 pe-7 flex items-center`}>
             <div className='Header-nav__controler__links flex main-link  gap-7 pe-8 '>
@@ -42,12 +46,29 @@ export const HeaderControler = ({BoxSearch} : any ) => {
                 <svg className="main-link__icon ms-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M20,12a1,1,0,0,0-1-1H11.41l2.3-2.29a1,1,0,1,0-1.42-1.42l-4,4a1,1,0,0,0-.21.33,1,1,0,0,0,0,.76,1,1,0,0,0,.21.33l4,4a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L11.41,13H19A1,1,0,0,0,20,12ZM17,2H7A3,3,0,0,0,4,5V19a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V16a1,1,0,0,0-2,0v3a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V5A1,1,0,0,1,7,4H17a1,1,0,0,1,1,1V8a1,1,0,0,0,2,0V5A3,3,0,0,0,17,2Z"></path></svg>
             </a>
-
-            <button onClick={() => StateMenu?.setToggleMenu(!StateMenu?.toggleMenu)} title='menu' className={` Header-nav__controler_btn xl:hidden block ${StateMenu?.toggleMenu ? "Header-nav__controler_btn--active" : ""} ms-3 `}>
-                <span style={{ width: "100%", top: "0px" }}></span>
-                <span style={{ width: "70%", top: "50%", transform: 'translateY(-50%)' }}></span>
-                <span style={{ width: "40%", bottom: "0px" }}></span>
-            </button>
+            <BtnMenu DivMenuRef={DivMenuRef}/>
         </div>
+    )
+}
+
+const BtnMenu : FC<divMenuRef> = ({DivMenuRef})=>{
+    
+    const [toggle, setToggle] = useState<boolean>(false)
+    const handlerToggle = ()=>{
+        setToggle(!toggle)
+        if(DivMenuRef?.current?.classList.contains("-translate-x-full")){
+            DivMenuRef?.current?.classList.remove("-translate-x-full")
+            DivMenuRef?.current?.classList.add("translate-x-0")
+        }else{
+            DivMenuRef?.current?.classList.remove("translate-x-0")
+            DivMenuRef?.current?.classList.add("-translate-x-full")
+        }
+    } 
+    return (
+        <button onClick={handlerToggle} title='menu' className={` Header-nav__controler_btn xl:hidden block ${toggle ? "Header-nav__controler_btn--active" : ""} ms-3 `}>
+            <span style={{ width: "100%", top: "0px" }}></span>
+            <span style={{ width: "70%", top: "50%", transform: 'translateY(-50%)' }}></span>
+            <span style={{ width: "40%", bottom: "0px" }}></span>
+        </button>
     )
 }
