@@ -3,7 +3,7 @@ import { Title } from '../Title/Title.tsx'
 import { ArtistsItems } from './ArtistsItems/ArtistsItems.tsx'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { useHandleOnSlideChange } from '../../logic/NavigationButton/useHandleOnSlideChange.ts'
-import { EventNavigationButtons } from '../Events/EventNavigations.tsx'
+import { NavigationButtons } from '../NavigationButton/Navigations.tsx' 
 
 export const Artists = () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -37,9 +37,30 @@ export const Artists = () => {
                 <SwiperSlide>
                     <ArtistsItems nameArtists='BENEE Featuring' href='#' srcImg='https://volna.volkovdesign.com/img/artists/artist1.jpg'/>
                 </SwiperSlide>
+                <SwiperSlide>
+                    <ArtistsItems nameArtists='Jason Aldean' href='#' srcImg='https://volna.volkovdesign.com/img/artists/artist2.jpg'/>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <ArtistsItems nameArtists='John Doe' href='#' srcImg='https://volna.volkovdesign.com/img/artists/artist3.jpg'/>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <ArtistsItems nameArtists='Megan Thee' href='#' srcImg='https://volna.volkovdesign.com/img/artists/artist4.jpg'/>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <ArtistsItems nameArtists='Stefflon Don' href='#' srcImg='https://volna.volkovdesign.com/img/artists/artist5.jpg'/>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <ArtistsItems nameArtists='Juice WRLD' href='#' srcImg='https://volna.volkovdesign.com/img/artists/artist6.jpg'/>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <ArtistsItems nameArtists='LOCASH' href='#' srcImg='https://volna.volkovdesign.com/img/artists/artist7.jpg'/>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <ArtistsItems nameArtists='NLE Choppa' href='#' srcImg='https://volna.volkovdesign.com/img/artists/artist8.jpg'/>
+                </SwiperSlide>
             </Swiper>
             <div className="w-full flex items-center py-4 justify-end mb-20">
-                <EventNavigationButtons count={slidesPerView} swiperRef={swiperRef} />
+                <NavigationButtons totalSlides={8} preViewCount={slidesPerView} swiperRef={swiperRef} />
             </div>
         </div>
     )
