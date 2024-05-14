@@ -1,8 +1,8 @@
-import { ElementType, forwardRef} from 'react'
+import { forwardRef } from 'react'
 import './HeaderLeft.css'
 import { SearchInput } from './../Search/SearchInput'
 const HeaderLeftForward = ({ BoxSearch }: any) => {
-    const DownSearch = ()=>{
+    const DownSearch = () => {
         BoxSearch.current?.classList.add("-top-36")
         BoxSearch.current?.classList.remove("top-0")
     }
