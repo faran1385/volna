@@ -16,6 +16,7 @@ export const Header: React.FC = () => {
             window.removeEventListener("resize",resizeHandler)
         }
     }, [])
+    
     return (
         <div className='Header-nav flex justify-end xl:static fixed top-0 w-full '>
             <div className='Header-nav__box--xl relative  transition-all duration-150 flex xl:justify-end justify-end items-center '>

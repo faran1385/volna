@@ -1,14 +1,14 @@
-import "./Slider.css"
 import 'swiper/css';
 import { Swiper, SwiperSlide } from "swiper/react"
 import { SliderItem } from "./SliderItem/SliderItem";
 import { useRef } from "react";
+import { NavigationButton } from "../NavigationButton/NavigationButton";
 
 
 export const Slider = () => {
 
     const onSlideChangeHandler = () => {
-        const sliderNavItems = document.querySelectorAll(".slider__nav__item")
+        const sliderNavItems = document.querySelectorAll(".button")
         const sliderItems = document.querySelectorAll(".swiper-slide")
         let activeIndex = 0;
         sliderItems.forEach((slide) => {
@@ -16,28 +16,17 @@ export const Slider = () => {
                 activeIndex = +(slide.getAttribute("data-swiper-slide-index") as string);
             }
         })
-        console.log(activeIndex);
 
         sliderNavItems.forEach((button, i) => {
-
             if (activeIndex === i) {
-                button.classList.add("slider__nav__item--active")
-            } else if (button.classList.contains("slider__nav__item--active")) {
-                button.classList.remove("slider__nav__item--active")
+                button.classList.add("button--active")
+            } else if (button.classList.contains("button--active")) {
+                button.classList.remove("button--active")
             }
         })
     }
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const swiperRef = useRef<any>()
-    const navigationHandler = (whereTo: "next" | "prev" | number) => {
-        if (whereTo == "next") {
-            swiperRef.current.swiper.slideNext();
-        } else if (whereTo === "prev") {
-            swiperRef.current.swiper.slidePrev();
-        } else {
-            swiperRef.current.swiper.slideTo(whereTo);
-        }
-    }
 
     return <div className="w-full py-6 px-8">
         <div className="relative">
@@ -47,7 +36,8 @@ export const Slider = () => {
                 loop={true}
                 spaceBetween={30}
                 onTransitionStart={onSlideChangeHandler}
-                className="slider relative overflow-y-visible slider--mobile"
+                className="slider relative overflow-y-visible"
+                style={{ height: "28.75rem" }}
             >
                 <SwiperSlide>
                     <SliderItem buttons={[{ background: "black", animation: "text", text: "learn more" }]} title="New Artist of Our Label" imageSrc="https://volna.volkovdesign.com/img/home/slide3.jpg" />
@@ -64,20 +54,12 @@ export const Slider = () => {
                 </SwiperSlide>
             </Swiper>
             <div className="w-full z-10 absolute top-100 md:bottom-0 md:pe-12 h-12 items-center flex justify-center md:justify-end">
-                <button onClick={() => navigationHandler(0)} className="slider__nav__item h-1 me-2 rounded-xl w-3 slider__nav__item--active"></button>
-                <button onClick={() => navigationHandler(1)} className="slider__nav__item h-1 me-2 rounded-xl w-3"></button>
-                <button onClick={() => navigationHandler(2)} className="slider__nav__item h-1 me-2 rounded-xl w-3"></button>
+                <NavigationButton isActive={true} whereTo={0} swiperRef={swiperRef} />
+                <NavigationButton isActive={false} whereTo={1} swiperRef={swiperRef} />
+                <NavigationButton isActive={false} whereTo={2} swiperRef={swiperRef} />
                 <div className="md:block hidden">
-                    <button onClick={() => navigationHandler("prev")} className="mx-2 slider__trigger--prev">
-                        <svg className="slider__trigger__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M17,11H9.41l3.3-3.29a1,1,0,1,0-1.42-1.42l-5,5a1,1,0,0,0-.21.33,1,1,0,0,0,0,.76,1,1,0,0,0,.21.33l5,5a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L9.41,13H17a1,1,0,0,0,0-2Z"></path>
-                        </svg>
-                    </button>
-                    <button onClick={() => navigationHandler("next")} className="slider__trigger--next">
-                        <svg className="slider__trigger__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M17.92,11.62a1,1,0,0,0-.21-.33l-5-5a1,1,0,0,0-1.42,1.42L14.59,11H7a1,1,0,0,0,0,2h7.59l-3.3,3.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l5-5a1,1,0,0,0,.21-.33A1,1,0,0,0,17.92,11.62Z"></path>
-                        </svg>
-                    </button>
+                    <NavigationButton isActive={false} whereTo={"prev"} swiperRef={swiperRef} />
+                    <NavigationButton isActive={false} whereTo={"next"} swiperRef={swiperRef} />
                 </div>
             </div>
         </div>
