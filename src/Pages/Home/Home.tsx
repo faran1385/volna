@@ -4,6 +4,7 @@ import "./Home.css"
 import { Events } from "../../components/ui/Events/Events"
 import { Artists } from "../../components/ui/Artists/Artists.tsx"
 import { Podcasts } from "../../components/ui/Podcasts/Podcasts.tsx"
+import { Products } from "../../components/ui/Products/Products.tsx"
 export const Home = () => {
     return <main className="home home--mobile w-full">
         <Slider />
@@ -12,5 +13,6 @@ export const Home = () => {
         <Artists/>
 
         <Podcasts/>
+        <Products/>
     </main>
 }

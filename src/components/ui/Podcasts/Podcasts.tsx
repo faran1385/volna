@@ -13,7 +13,7 @@ export const Podcasts = () => {
     const [slidesPerView, setSlides] = useState(window.innerWidth < 650 ? 10 : 5)
     const { onSlideChangeHandler } = useHandleOnSlideChange()
     return (
-        <div className={`${nameSlider} mb-11 px-8`}>
+        <div className={`${nameSlider} px-8`}>
             <Title title={`${nameSlider}`} href='#' textLink='see all' />
             <Swiper
                 speed={1000}
