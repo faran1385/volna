@@ -9,11 +9,13 @@ export const useHandleOnSlideChange = () => {
 
     const onSlideChangeHandler = (sliderSelector: string, buttonsSelector: string, preView: undefined | preView) => {
         const sliderNavItems = document.querySelectorAll(buttonsSelector)
+        
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const swiper = document.querySelector(sliderSelector) as any
-
+        console.log(sliderNavItems,buttonsSelector);
+        
         let activeIndex = (swiper.swiper.realIndex as number);
-
+        
         if (preView) {
             activeIndex = Math.max(Math.floor(activeIndex / (preView.total / preView.count)), 0);
         }

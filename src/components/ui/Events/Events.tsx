@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Title } from "../Title/Title.tsx"
-import { Event } from "./Event.tsx/Event.tsx"
+import { Event } from "./Event/Event.tsx"
 import { useRef, useState } from "react"
 import { useHandleOnSlideChange } from "../../logic/NavigationButton/useHandleOnSlideChange.ts"
 import { NavigationButtons } from "../NavigationButton/Navigations.tsx"
@@ -100,7 +100,7 @@ export const Events = () => {
                     </SwiperSlide>
                 </Swiper>
                 <div className="w-full flex items-center py-4 justify-center md:justify-end">
-                    <NavigationButtons totalSlides={6} preViewCount={slidesPerView} swiperRef={swiperRef} />
+                    <NavigationButtons aditionalClass="event" totalSlides={6} preViewCount={slidesPerView} swiperRef={swiperRef} />
                 </div>
             </div>
         </div>

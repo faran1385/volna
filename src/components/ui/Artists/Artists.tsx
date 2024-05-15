@@ -8,16 +8,16 @@ import { NavigationButtons } from '../NavigationButton/Navigations.tsx'
 export const Artists = () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const swiperRef = useRef<any>(null)
-    const [slidesPerView, setSlides] = useState(window.innerWidth < 768 ? 8 : window.innerWidth >= 768 && window.innerWidth < 1024 ? 4 : 2)
+    const [slidesPerView, setSlides] = useState(window.innerWidth < 768 ? 4 : 2)
     const { onSlideChangeHandler } = useHandleOnSlideChange()
     return (
-        <div className='artists px-8'>
+        <div className='artists my-5 px-8'>
             <Title title='Artists' textLink='see all' href='#' />
             <Swiper
                 speed={1000}
                 slidesPerView={6}
                 loop={true}
-                onBreakpoint={() => setSlides(window.innerWidth < 768 ? 8 : window.innerWidth >= 768 && window.innerWidth < 1024 ? 4 : 2)}
+                onBreakpoint={() => setSlides(window.innerWidth < 768 ? 4 : 2)}
                 spaceBetween={30}
                 ref={swiperRef}
                 breakpoints={{
@@ -25,14 +25,11 @@ export const Artists = () => {
                         slidesPerView: 2
                     },
                     768: {
-                        slidesPerView: 3
-                    },
-                    1024: {
-                        slidesPerView: 6
+                        slidesPerView: 4
                     },
                 }}
-                className="artists-slider my-5"
-                onTransitionStart={() => onSlideChangeHandler(".event-slider", ".button-event", { total: 8, count: slidesPerView })}
+                className="my-4 artists-slider"
+                onTransitionStart={() => onSlideChangeHandler(".artists-slider", ".button-artists", { total: 8, count: slidesPerView })}
             >
                 <SwiperSlide>
                     <ArtistsItems nameArtists='BENEE Featuring' href='#' srcImg='https://volna.volkovdesign.com/img/artists/artist1.jpg'/>
@@ -59,8 +56,8 @@ export const Artists = () => {
                     <ArtistsItems nameArtists='NLE Choppa' href='#' srcImg='https://volna.volkovdesign.com/img/artists/artist8.jpg'/>
                 </SwiperSlide>
             </Swiper>
-            <div className="w-full flex items-center py-4 justify-end mb-20">
-                <NavigationButtons totalSlides={8} preViewCount={slidesPerView} swiperRef={swiperRef} />
+            <div className="w-full flex items-center justify-center md:justify-end">
+                <NavigationButtons aditionalClass='artists' totalSlides={8} preViewCount={slidesPerView} swiperRef={swiperRef} />
             </div>
         </div>
     )
