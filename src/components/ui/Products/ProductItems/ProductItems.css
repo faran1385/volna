@@ -62,6 +62,9 @@
     font-weight: 500;
 }
 @media (0 <= width <= 650px){
+    .products__items__header{
+        border-radius: 0;
+    }
     .products__items__footer__name{
         font-size: calc(1vw + 9px);
     }

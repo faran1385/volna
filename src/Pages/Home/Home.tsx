@@ -6,6 +6,7 @@ import { Artists } from "../../components/ui/Artists/Artists.tsx"
 import { Podcasts } from "../../components/ui/Podcasts/Podcasts.tsx"
 import { Songs } from "../../components/ui/Songs/Songs.tsx"
 import { Products } from "../../components/ui/Products/Products.tsx"
+import { Supporters } from "../../components/ui/Supporters/Supporters.tsx"
 export const Home = () => {
     return <main className="home home--mobile w-full">
         <Slider />
@@ -15,5 +16,6 @@ export const Home = () => {
         <Songs/>
         <Podcasts/>
         <Products/>
+        <Supporters/>
     </main>
 }
