@@ -2,6 +2,7 @@ import React from 'react'
 import './HeaderLeft.css'
 import { SearchInput } from './../Search/SearchInput'
 import { StateSearchType } from './HeaderLeft'
+
 export const HeaderLeft = ({ setToggleSearch, toggleSearch }: StateSearchType) => {
     return (
         <div className='Header-nav__left w-auto Header-nav__left--action   absolute  flex items-centerw'>
