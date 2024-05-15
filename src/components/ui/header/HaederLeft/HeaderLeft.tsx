@@ -1,17 +1,11 @@
-import { ElementType, forwardRef} from 'react'
+import { forwardRef } from 'react'
 import './HeaderLeft.css'
 import { SearchInput } from './../Search/SearchInput'
-<<<<<<< HEAD
 const HeaderLeftForward = ({ BoxSearch }: any) => {
-    const DownSearch = ()=>{
+    const DownSearch = () => {
         BoxSearch.current?.classList.add("-top-36")
         BoxSearch.current?.classList.remove("top-0")
     }
-=======
-import { StateSearchType } from './HeaderLeft'
-
-export const HeaderLeft = ({ setToggleSearch, toggleSearch }: StateSearchType) => {
->>>>>>> events
     return (
         <div className='Header-nav__left w-auto Header-nav__left--action   absolute  flex items-centerw'>
             <nav className='xl:flex hidden Header-nav__links flex items-center me-16'>

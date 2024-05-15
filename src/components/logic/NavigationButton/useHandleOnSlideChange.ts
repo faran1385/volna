@@ -13,7 +13,7 @@ export const useHandleOnSlideChange = () => {
         const swiper = document.querySelector(sliderSelector) as any
 
         let activeIndex = (swiper.swiper.realIndex as number);
-        console.log(activeIndex);
+
         if (preView) {
             activeIndex = Math.max(Math.floor(activeIndex / (preView.total / preView.count)), 0);
         }

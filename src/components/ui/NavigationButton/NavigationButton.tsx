@@ -32,6 +32,6 @@ export const NavigationButton: React.FC<NavigationButtonProps> = (T) => {
         </>
     }
     return <>
-        <button onClick={() => navigationHandler(whereTo, swiperRef)} className={`button h-1 me-2 rounded-xl w-3 button-${aditionalClass} ${isActive ?  `button--active` : ""}`}></button>
+        <button onClick={() => navigationHandler(whereTo, swiperRef)} className={`button h-1 me-2 rounded-xl w-3 button-${aditionalClass}--active ${isActive ?  `button--active` : ""}`}></button>
     </>
 }
