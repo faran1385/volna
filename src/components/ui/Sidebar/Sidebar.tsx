@@ -1,9 +1,8 @@
-import { FC, useContext } from "react"
-import { ContextMenu, StateMenuType, divRefType } from "../../../App"
+import { FC } from "react"
+import { divRefType } from "../../../App"
 import "./Sidebar.css"
 import './../LinkMain/LinkMain.css'
 export const Sidebar : FC<divRefType> = ({DivMenuRef}) => {
-    // const StateMenu = useContext<StateMenuType | null>(ContextMenu)
     return <>
         <aside ref={DivMenuRef} className={`sidebar transform-gpu xl:translate-x-0 -translate-x-full  `}>
             {/* sidebar header start*/}

@@ -1,16 +1,13 @@
-import React, { FC, RefObject, useContext, useState } from 'react'
+import { FC , useState } from 'react'
 import { DropDown } from '../Drop/DropDown'
 import { DropDownNotifation } from '../Drop/DropDownNotifaion'
 import { DropDownCart } from '../Drop/DropDownCart'
-import { StateSearchType } from '../HaederLeft/HeaderLeft'
-import { ContextMenu, StateMenuType } from '../../../../App'
 import './HeaderControler.css'
 import './../../LinkMain/LinkMain.css'
 import { divRefType } from '../Header.tsx'
 import { divRefType as divMenuRef } from '../../../../App.tsx'
 
 export const HeaderControler = ({BoxSearch , DivMenuRef } : divRefType & divMenuRef  ) => {
-    const StateMenu = useContext<StateMenuType | null>(ContextMenu)
     const UpSearch = ()=>{
         BoxSearch?.current?.classList.add("top-0")
         BoxSearch?.current?.classList.remove("-top-36")
