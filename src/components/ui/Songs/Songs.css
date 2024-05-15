@@ -1,0 +1,9 @@
+.song__header__title {
+    font-size: 30px;
+    will-change: color;
+    transition: color ease-in .3s;
+}
+
+.song__header__title:hover{
+    color: var(--green-color);
+}
