@@ -3,28 +3,13 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { SliderItem } from "./SliderItem/SliderItem";
 import { useRef } from "react";
 import { NavigationButton } from "../NavigationButton/NavigationButton";
+import { useHandleOnSlideChange } from '../../logic/NavigationButton/useHandleOnSlideChange';
 
 
 export const Slider = () => {
 
-    const onSlideChangeHandler = () => {
-        const sliderNavItems = document.querySelectorAll(".button")
-        const sliderItems = document.querySelectorAll(".swiper-slide")
-        let activeIndex = 0;
-        sliderItems.forEach((slide) => {
-            if (slide.classList.contains("swiper-slide-active")) {
-                activeIndex = +(slide.getAttribute("data-swiper-slide-index") as string);
-            }
-        })
+    const { onSlideChangeHandler } = useHandleOnSlideChange()
 
-        sliderNavItems.forEach((button, i) => {
-            if (activeIndex === i) {
-                button.classList.add("button--active")
-            } else if (button.classList.contains("button--active")) {
-                button.classList.remove("button--active")
-            }
-        })
-    }
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const swiperRef = useRef<any>()
 
@@ -35,7 +20,7 @@ export const Slider = () => {
                 speed={1000}
                 loop={true}
                 spaceBetween={30}
-                onTransitionStart={onSlideChangeHandler}
+                onTransitionStart={() => onSlideChangeHandler(".slider", ".button-slider", undefined)}
                 className="slider relative overflow-y-visible"
                 style={{ height: "28.75rem" }}
             >
@@ -54,12 +39,12 @@ export const Slider = () => {
                 </SwiperSlide>
             </Swiper>
             <div className="w-full z-10 absolute top-100 md:bottom-0 md:pe-12 h-12 items-center flex justify-center md:justify-end">
-                <NavigationButton isActive={true} whereTo={0} swiperRef={swiperRef} />
-                <NavigationButton isActive={false} whereTo={1} swiperRef={swiperRef} />
-                <NavigationButton isActive={false} whereTo={2} swiperRef={swiperRef} />
+                <NavigationButton aditionalClass='slider' isActive={true} whereTo={0} swiperRef={swiperRef} />
+                <NavigationButton aditionalClass='slider' isActive={false} whereTo={1} swiperRef={swiperRef} />
+                <NavigationButton aditionalClass='slider' isActive={false} whereTo={2} swiperRef={swiperRef} />
                 <div className="md:block hidden">
-                    <NavigationButton isActive={false} whereTo={"prev"} swiperRef={swiperRef} />
-                    <NavigationButton isActive={false} whereTo={"next"} swiperRef={swiperRef} />
+                    <NavigationButton aditionalClass='slider' isActive={false} whereTo={"prev"} swiperRef={swiperRef} />
+                    <NavigationButton aditionalClass='slider' isActive={false} whereTo={"next"} swiperRef={swiperRef} />
                 </div>
             </div>
         </div>

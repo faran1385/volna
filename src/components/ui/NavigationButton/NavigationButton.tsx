@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigationHandler } from "./useNavigationHandler";
+import { useNavigationHandler } from "../../logic/NavigationButton/useNavigationHandler";
 import "./NavigationButton.css"
 
 interface NavigationButtonProps {
@@ -7,10 +7,11 @@ interface NavigationButtonProps {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     swiperRef: React.MutableRefObject<any>,
     isActive: boolean,
+    aditionalClass: string
 }
 
 export const NavigationButton: React.FC<NavigationButtonProps> = (T) => {
-    const { whereTo, swiperRef, isActive } = T
+    const { whereTo, swiperRef, isActive, aditionalClass } = T
     const { navigationHandler } = useNavigationHandler()
 
     if (whereTo === "next") {
@@ -30,8 +31,7 @@ export const NavigationButton: React.FC<NavigationButtonProps> = (T) => {
             </button>
         </>
     }
-
     return <>
-        <button onClick={() => navigationHandler(whereTo, swiperRef)} className={`button h-1 me-2 rounded-xl w-3 ${isActive ? "button--active" : ""}`}></button>
+        <button onClick={() => navigationHandler(whereTo, swiperRef)} className={`button h-1 me-2 rounded-xl w-3 button-${aditionalClass} ${isActive ?  `button--active` : ""}`}></button>
     </>
 }

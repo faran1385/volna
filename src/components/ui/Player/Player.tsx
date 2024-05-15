@@ -19,7 +19,7 @@ export const Player = () => {
 
     return <>
         <div ref={player}
-            className={`player ease-in transition-all duration-500 xl:translate-y-0 left-0 translate-y-full  transform-gpu ps-4 xl:ps-6 fixed bottom-0 p-4 flex flex-col justify-center`}>
+            className={`player xl:translate-y-0 left-0 translate-y-full  transform-gpu ps-4 xl:ps-6 fixed bottom-0 p-4 flex flex-col justify-center`}>
             <div className="w-full flex justify-center" style={{ height: "100px" }}>
                 <img src="https://volna.volkovdesign.com/img/covers/cover.svg" className="rounded-xl" />
             </div>

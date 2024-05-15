@@ -4,6 +4,7 @@
     border-top: 1px solid var(--border-color);
     background-color: var(--background);
     border-right: 1px solid var(--border-color);
+    transition: transform ease-in .5s;
 }
 
 @media (max-width:1280px) {
@@ -65,7 +66,7 @@
     background-color: #222227 !important;
 }
 
-.player__trigger {
+.player__trigger{
     will-change: transform;
     transition: transform ease-in .5s;
     background-color: #16151a;
