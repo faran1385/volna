@@ -11,7 +11,7 @@ export const Artists = () => {
     const [slidesPerView, setSlides] = useState(window.innerWidth < 768 ? 4 : 2)
     const { onSlideChangeHandler } = useHandleOnSlideChange()
     return (
-        <div className='artists my-5 px-8'>
+        <div className='artists px-8'>
             <Title title='Artists' textLink='see all' href='#' />
             <Swiper
                 speed={1000}
