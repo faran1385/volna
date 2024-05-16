@@ -11,7 +11,7 @@ export const PodcastsVideo: FC<PodcastsVideoType> = ({ link, disabled , setDisab
             <div className='podcasts-video__box relative'>
                 <button onClick={()=>setDisabald(false)} className='podcasts-video__box__close text-4xl absolute -top-10 right-0 '>×</button>
                 <div dir='rtl' className='podcasts-video__box__video overflow-hidden rounded-lg pt' >
-                    <iframe src={link} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                    <iframe  src={disabled ? link : ''} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                 </div>
             </div>
         </div>

@@ -1,6 +1,8 @@
 .releases__cards__card__header{
     overflow: hidden;
     border-radius: 12px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
 }
 .releases__cards__card__header:hover .releases__cards__card__header__text{
     opacity: 1;
