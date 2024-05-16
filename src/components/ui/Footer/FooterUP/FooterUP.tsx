@@ -14,7 +14,7 @@ export const FooterUP : React.FC = () => {
                 hrefEamli='#'
                 hrefPhone='#'
             />
-            <div className='xl:w-8/12 sm:w-full sm:gap-y-10 sm:my-8 my-9 gap-y-8 flex flex-wrap '>
+            <div className='xl:w-8/12 sm:w-full sm:gap-y-10 sm:my-8 my-9 xl:my-0 gap-y-8 flex flex-wrap '>
                 <FooterLinks
                     title='The Volna'
                     links={
