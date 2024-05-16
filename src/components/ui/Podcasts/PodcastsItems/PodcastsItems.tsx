@@ -6,10 +6,16 @@ interface PodcastsItemsType {
     , href: string
     , view: number
     , imgSrc: string
+    ,setLinkVideo: (event: string)=>void 
+    ,setDisablad : (e : boolean)=>void
 }
-export const PodcastsItems: FC<PodcastsItemsType> = ({ hasLive, name, href, view, imgSrc }) => {
+export const PodcastsItems: FC<PodcastsItemsType> = ({ hasLive, name, href, view, imgSrc , setLinkVideo , setDisablad }) => {
+    const clickHanler = ()=>{
+        setLinkVideo(href)
+        setDisablad(true)
+    }
     return (
-        <a href={href} className='podcasts__Items'>
+        <a onClick={clickHanler} className='podcasts__Items cursor-pointer w-full'>
             <div className={`podcasts__Items__header ${hasLive ? "podcasts__Items__header--active" : ""} relative overflow-hidden`}>
                 <img className='podcasts__Items__header__img w-full' loading='lazy' fetchPriority='high' src={imgSrc} title={`podcast ${name}`}/>
                 <span className='podcasts__Items__header__view absolute z-10 sm:bottom-7 sm:left-7 bottom-4 left-4'>{view} {hasLive ? "viewres" : "view"}</span>
