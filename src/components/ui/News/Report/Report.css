@@ -1,0 +1,75 @@
+.report__info__title {
+    font-size: 20px;
+    white-space: break-spaces;
+    will-change: color;
+    transition: color ease-in .3s;
+}
+
+.report__info__title:hover {
+    color: var(--green-color);
+}
+
+.report__info {
+    background-color: var(--black-color);
+    min-height: 50%;
+    height: fit-content;
+}
+
+.report__info__detail {
+    color: var(--gray-color);
+    font-size: 13px;
+}
+
+.report__watch__icon {
+    width: 24px;
+    height: 24px;
+    fill: inherit;
+
+}
+
+@media (max-width:640px) {
+    .report__watch {
+        font-size: 13px !important;
+        padding: 0 10px !important;
+    }
+}
+
+.report__watch {
+    background: var(--black-color);
+    will-change: auto;
+    transition: all ease-in .3s;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    fill: var(--green-color);
+    z-index: 2;
+    padding: 0 15px;
+    top: unset;
+}
+
+.report__watch:hover {
+    fill: white;
+    background-color: var(--green-color);
+}
+
+.report__category {
+    background-color: #2f80ed;
+    font-size: 13px;
+    padding: 0 15px;
+    height: 28px;
+    will-change: background;
+    transition: background ease-in .3s;
+}
+
+.report__category:hover {
+    background-color: var(--green-color);
+}
+
+.report__img::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+}
