@@ -7,7 +7,7 @@ export const Supporters: React.FC = () => {
     const nameSlider = 'supporters';
     const swiperRef = useRef<any>(null)
     return (
-        <section className='supporters px-8' style={{ marginTop: "3vw" }}>
+        <section className='supporters px-8' style={{ margin: "3vw 0" }}>
             <Swiper
                 modules={[Autoplay]}
                 autoplay={{ pauseOnMouseEnter: true, delay: 5000 }}
