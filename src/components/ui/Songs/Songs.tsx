@@ -3,7 +3,7 @@ import "./Songs.css"
 
 export const Songs = () => {
     return <>
-        <div className="my-5 px-8">
+        <section className="my-5 px-8">
             <div className="grid gap-6 md:grid-cols-2 gird-cols-1 xl:grid-cols-3">
                 <div>
                     <div className="flex items-center">
@@ -51,6 +51,6 @@ export const Songs = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </>
 }

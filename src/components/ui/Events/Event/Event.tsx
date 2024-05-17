@@ -14,7 +14,7 @@ export const Event: React.FC<EventProps> = (T) => {
     return <>
 
         <div className="relative event rounded-xl">
-            <img className="rounded-xl w-full h-full event__image" src={img} />
+            <img loading="lazy" className="rounded-xl w-full h-full event__image" src={img} />
             <div className="h-1/2 px-4 pt-4 sm:px-8 sm:pt-8 top-0 absolute w-full">
                 {isAvailable ? (<button className="md:px-6 px-4 event__button event__button--available flex items-center rounded-xl justify-center">
                     <svg className="event__button__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

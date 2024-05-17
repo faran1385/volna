@@ -17,7 +17,7 @@ type button = {
 export const SliderItem: React.FC<SliderItemProps> = (T) => {
     const { imageSrc, title, buttons, children } = T
     return <div className="h-full w-full relative item user-select-none flex items-center cursor-default">
-        <img className="item__img w-full h-full absolute rounded-2xl" src={imageSrc} />
+        <img className="item__img w-full h-full absolute rounded-2xl" loading="lazy" src={imageSrc} />
         <div className="item__content-container">
             <h1 className="item__title">{title}</h1>
             <p className="item__subtitle pt-2">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form,

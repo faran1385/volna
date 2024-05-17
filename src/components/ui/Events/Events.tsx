@@ -14,7 +14,7 @@ export const Events = () => {
     const [slidesPerView, setSlides] = useState(window.innerWidth < 768 ? 6 : window.innerWidth >= 768 && window.innerWidth < 1024 ? 3 : 2)
     const { onSlideChangeHandler } = useHandleOnSlideChange()
     return <>
-        <div className="px-8">
+        <section className="px-8">
             <Title href="#" textLink="See all" title={"Upcoming Events"} />
             <div className="my-5">
                 <Swiper
@@ -103,6 +103,6 @@ export const Events = () => {
                     <NavigationButtons aditionalClass="event" totalSlides={6} preViewCount={slidesPerView} swiperRef={swiperRef} />
                 </div>
             </div>
-        </div>
+        </section>
     </>
 }

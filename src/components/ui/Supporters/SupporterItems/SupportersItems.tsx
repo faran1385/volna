@@ -7,7 +7,7 @@ interface SupportersItemsType {
 export const SupportersItems : React.FC<SupportersItemsType> = ({srcImg,href}) => {
     return (
         <a href={href}>
-            <img className='supporter__img' src={srcImg} alt='img supporter' />
+            <img loading='lazy' className='supporter__img' src={srcImg} alt='img supporter' />
         </a>
     )
 }

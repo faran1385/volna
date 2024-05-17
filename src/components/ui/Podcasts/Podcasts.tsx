@@ -13,7 +13,7 @@ export const Podcasts = () => {
     const [slidesPerView, setSlides] = useState(window.innerWidth < 650 ? 10 : 5)
     const { onSlideChangeHandler } = useHandleOnSlideChange()
     return (
-        <div className={`${nameSlider} px-8`}>
+        <section className={`${nameSlider} px-8`}>
             <Title title={`${nameSlider}`} href='#' textLink='see all' />
             <Swiper
                 speed={1000}
@@ -121,6 +121,6 @@ export const Podcasts = () => {
             <div className="w-full flex items-center justify-center md:justify-end">
                 <NavigationButtons aditionalClass={`${nameSlider}`} totalSlides={total} preViewCount={slidesPerView} swiperRef={swiperRef} />
             </div>
-        </div>
+        </section>
     )
 }

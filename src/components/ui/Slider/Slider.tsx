@@ -13,7 +13,7 @@ export const Slider = () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const swiperRef = useRef<any>()
 
-    return <div className="w-full py-6 px-8">
+    return <section className="w-full py-6 px-8">
         <div className="relative">
             <Swiper
                 ref={swiperRef}
@@ -48,5 +48,5 @@ export const Slider = () => {
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 }
