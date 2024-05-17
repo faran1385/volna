@@ -6,6 +6,9 @@
 .podcasts-video__box__close:hover {
     color: var(--green-color);
 }
+.podcasts-video__box__video{
+    border-radius: 15px;
+}
 .podcasts-video__box__video iframe {
     width: 900px;
     aspect-ratio: 16 / 9;
@@ -14,8 +17,14 @@
     .podcasts-video__box__video iframe {
         width: 95vw;
     }
+    .podcasts-video__box__video{
+        border-radius: calc(1vw + 3px);
+    }
 }
 @media (650px <= width <= 1000px) {
+    .podcasts-video__box__video{
+        border-radius: calc(1vw + 4px);
+    }
     .podcasts-video__box__video iframe {
         width: 85vw;
     }

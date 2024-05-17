@@ -1,18 +1,21 @@
 import { FC } from 'react'
 import './PodcastsItems.css'
+import { VideoType } from '../Podcasts'
 interface PodcastsItemsType {
     hasLive?: boolean
     , name: string
     , href: string
     , view: number
     , imgSrc: string
-    ,setLinkVideo: (event: string)=>void 
-    ,setDisablad : (e : boolean)=>void
 }
-export const PodcastsItems: FC<PodcastsItemsType> = ({ hasLive, name, href, view, imgSrc , setLinkVideo , setDisablad }) => {
+export const PodcastsItems: FC<PodcastsItemsType & VideoType> = ({ hasLive, name, href, view, imgSrc ,  Videobox , VideoIframe}) => {
     const clickHanler = ()=>{
-        setLinkVideo(href)
-        setDisablad(true)
+        if(VideoIframe && VideoIframe.current && Videobox && Videobox.current){
+            Videobox.current.classList.remove("opacity-0")
+            Videobox.current.classList.remove("pointer-events-none")
+            VideoIframe.current.src = href
+            document.body.style.overflow = "hidden"
+        }
     }
     return (
         <a onClick={clickHanler} className='podcasts__Items cursor-pointer w-full'>
