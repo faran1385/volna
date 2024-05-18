@@ -1,7 +1,7 @@
 import { RefObject, forwardRef } from 'react'
 import './HeaderLeft.css'
 import { SearchInput } from './../Search/SearchInput'
-const HeaderLeftForward = ({ BoxSearch }: {BoxSearch : RefObject<HTMLDivElement> | null}) => {
+export const HeaderLeft = ({ BoxSearch }: {BoxSearch : RefObject<HTMLDivElement> | null}) => {
     const DownSearch = () => {
         BoxSearch?.current?.classList.add("-top-36")
         BoxSearch?.current?.classList.remove("top-0")
@@ -24,5 +24,5 @@ const HeaderLeftForward = ({ BoxSearch }: {BoxSearch : RefObject<HTMLDivElement>
         </div>
     );
 }
-export const HeaderLeft = forwardRef(HeaderLeftForward)
+
 

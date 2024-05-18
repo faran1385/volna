@@ -11,7 +11,7 @@ export const ProductItems: React.FC<ProductItemsType> = ({ name, price, srcImg, 
     return (
         <div className={`products__items ${hasNew ? "products__items--active" : ''} overflow-hidden`}>
             <div className='products__items__header relative overflow-hidden'>
-                <img src={srcImg} className='products__items__header__img' loading='lazy' fetchPriority='high' title={`product ${name}`} />
+                <img src={srcImg} className='products__items__header__img' loading='lazy' title={`product ${name}`} />
                 <a href={href} className='products__items__header__play flex justify-center items-center absolute z-10'>
                     <svg className='products__items__header__play__icon' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z"></path></svg>
                 </a>

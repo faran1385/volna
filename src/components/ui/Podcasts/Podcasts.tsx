@@ -6,8 +6,8 @@ import { NavigationButtons } from '../NavigationButton/Navigations.tsx'
 import { useHandleOnSlideChange } from '../../logic/NavigationButton/useHandleOnSlideChange.ts'
 import { PodcastsVideo } from './PodcastsItems/PodcastsVideo/PodcastsVideo.tsx'
 export interface VideoType {
-    VideoIframe: RefObject<HTMLIFrameElement>
-    , Videobox: RefObject<HTMLDivElement>
+    VideoIframe?: RefObject<HTMLIFrameElement>
+    , Videobox?: RefObject<HTMLDivElement>
 }
 export const Podcasts = () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -18,15 +18,12 @@ export const Podcasts = () => {
     const { onSlideChangeHandler } = useHandleOnSlideChange()
     const VideoIframe = useRef<HTMLIFrameElement>(null!)
     const Videobox = useRef<HTMLDivElement | null>(null)
-    const [disabald, setDisabald] = useState(false)
-    const [linkVideo, setLinkVideo] = useState('https://www.youtube-nocookie.com/embed/')
     return (
         <section className={`${nameSlider} px-8`}>
             <Title title={`${nameSlider}`} href='#' textLink='see all' />
             <PodcastsVideo
                 Videobox={Videobox}
                 VideoIframe={VideoIframe}
-                link={linkVideo}
             />
             <Swiper
                 speed={1000}
@@ -49,7 +46,7 @@ export const Podcasts = () => {
                 <SwiperSlide>
                     <PodcastsItems
                         name='Beautiful Stories From Anonymous People'
-                        view={700}
+                        view={1700}
                         hasLive
                         href='https://www.youtube-nocookie.com/embed/KvJyOQ3u-q8'
                         imgSrc='https://volna.volkovdesign.com/img/live/1.jpg'
