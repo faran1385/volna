@@ -4,6 +4,7 @@ import { SliderItem } from "./SliderItem/SliderItem";
 import { useRef } from "react";
 import { NavigationButton } from "../NavigationButton/NavigationButton";
 import { useHandleOnSlideChange } from '../../logic/NavigationButton/useHandleOnSlideChange';
+import { PodcastsVideo } from '../Podcasts/PodcastsItems/PodcastsVideo/PodcastsVideo';
 
 
 export const Slider = () => {
@@ -12,9 +13,14 @@ export const Slider = () => {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const swiperRef = useRef<any>()
-
+    const VideoIframe = useRef<HTMLIFrameElement>(null!)
+    const Videobox = useRef<HTMLDivElement | null>(null)
     return <section className="w-full py-6 px-8">
         <div className="relative">
+            <PodcastsVideo
+                Videobox={Videobox}
+                VideoIframe={VideoIframe}
+            />
             <Swiper
                 ref={swiperRef}
                 speed={1000}
@@ -31,7 +37,7 @@ export const Slider = () => {
                     <SliderItem buttons={[{ text: "buy now", background: "green", animation: "toBlack" }, { background: "black", animation: "text", text: "learn more" }]} title="Record Label & Music streaming" imageSrc="https://volna.volkovdesign.com/img/home/slide1.jpg" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <SliderItem buttons={[{ background: "green", animation: "toBlack", text: "learn more" }, { background: "black", animation: "toGreen", text: "watch video", hasIcon: true }]} title="New Artist of Our Label" imageSrc="https://volna.volkovdesign.com/img/home/slide2.jpg">
+                    <SliderItem buttons={[{ background: "green", animation: "toBlack", text: "learn more" }, { background: "black", animation: "toGreen", text: "watch video", hasIcon: true }]}  href="https://www.youtube.com/embed/S33kwqVmC3w" VideoIframe={VideoIframe} Videobox={Videobox} title="New Artist of Our Label" imageSrc="https://volna.volkovdesign.com/img/home/slide2.jpg">
                         <svg className={"item__button__icon me-2"} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M16,10.27,11,7.38A2,2,0,0,0,8,9.11v5.78a2,2,0,0,0,1,1.73,2,2,0,0,0,2,0l5-2.89a2,2,0,0,0,0-3.46ZM15,12l-5,2.89V9.11L15,12ZM12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"></path>
                         </svg>
