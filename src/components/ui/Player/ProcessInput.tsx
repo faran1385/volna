@@ -123,7 +123,6 @@ export const ProcessInput = ({ audio, href }: ProcessInputType) => {
                 const minutes = Math.floor(audio.current.currentTime / 60) - Math.floor(audio.current.duration / 60);
                 const seconds = Math.floor((audio.current.currentTime % 60) - (audio.current.duration % 60));
                 setTimer(() => `${Math.abs(minutes)}:${Number(Math.abs(seconds)) < 10 ? "0" + Math.abs(seconds) : Math.abs(seconds)}`);
-                console.log(timer)
                 currentTime.current = audio.current.currentTime
                 processInput.current.value = currentTime.current / audio.current.duration * 100
                 processInput.current.style.background = `linear-gradient(90deg,#25a56a ${currentTime.current / audio.current.duration * 100}%,#999999 ${currentTime.current / audio.current.duration * 100}%)`;
