@@ -13,11 +13,11 @@ export const Songs = () => {
                         <a href="#" className="song__header__title">Top Singles</a>
                     </div>
                     <div>
-                        <Song isLive={155} img="https://volna.volkovdesign.com/img/covers/cover1.jpg" singer="AudioPizza" name="Cinematic" rank={{ number: 1, icon: "success", iconNumber: 1 }} />
-                        <Song isLive={155} img="https://volna.volkovdesign.com/img/covers/cover2.jpg" singer="AudioPizza" name="Adventure" rank={{ number: 2, icon: "fail", iconNumber: 1 }} />
-                        <Song isLive={155} img="https://volna.volkovdesign.com/img/covers/cover3.jpg" singer="AudioPizza" name="Epic Motivational" rank={{ number: 3, icon: "success", iconNumber: 15 }} />
-                        <Song isLive={155} img="https://volna.volkovdesign.com/img/covers/cover4.jpg" singer="AudioPizza" name="Upbeat Rock" rank={{ number: 4, icon: "success", iconNumber: 11 }} />
-                        <Song isLive={155} img="https://volna.volkovdesign.com/img/covers/cover5.jpg" singer="AudioPizza" name="Ambient Pop" rank={{ number: 5, icon: "success", iconNumber: 2 }} />
+                        <Song isLive={155} href="https://dl.tiarin.ir/FRE/2022/1/Persian%20Pop%202%20(Tiarin%20Playlist)//01%20Rose%20Wine.mp3" img="https://volna.volkovdesign.com/img/covers/cover1.jpg" singer="AudioPizza" name="Cinematic" rank={{ number: 1, icon: "success", iconNumber: 1 }} />
+                        <Song isLive={155} href="https://dl.tiarin.ir/FRE/2022/1/Persian%20Pop%202%20(Tiarin%20Playlist)//02%20Behtar%20Az%20Mane.mp3" img="https://volna.volkovdesign.com/img/covers/cover2.jpg" singer="AudioPizza" name="Adventure" rank={{ number: 2, icon: "fail", iconNumber: 1 }} />
+                        <Song isLive={155} href="" img="https://volna.volkovdesign.com/img/covers/cover3.jpg" singer="AudioPizza" name="Epic Motivational" rank={{ number: 3, icon: "success", iconNumber: 15 }} />
+                        <Song isLive={155} href="" img="https://volna.volkovdesign.com/img/covers/cover4.jpg" singer="AudioPizza" name="Upbeat Rock" rank={{ number: 4, icon: "success", iconNumber: 11 }} />
+                        <Song isLive={155} href="" img="https://volna.volkovdesign.com/img/covers/cover5.jpg" singer="AudioPizza" name="Ambient Pop" rank={{ number: 5, icon: "success", iconNumber: 2 }} />
                     </div>
                 </div>
                 <div>
@@ -28,11 +28,11 @@ export const Songs = () => {
                         <a href="#" className="song__header__title">New Singles</a>
                     </div>
                     <div>
-                        <Song isLive={155} img="https://volna.volkovdesign.com/img/covers/cover.svg" singer="AudioPizza" name="Cinematic" />
-                        <Song isLive={155} img="https://volna.volkovdesign.com/img/covers/cover7.jpg" singer="AudioPizza" name="Adventure" />
-                        <Song isLive={155} img="https://volna.volkovdesign.com/img/covers/cover8.jpg" singer="AudioPizza" name="Epic Motivational" />
-                        <Song isLive={155} img="https://volna.volkovdesign.com/img/covers/cover9.jpg" singer="AudioPizza" name="Upbeat Rock" />
-                        <Song isLive={155} img="https://volna.volkovdesign.com/img/covers/cover10.jpg" singer="AudioPizza" name="Ambient Pop" />
+                        <Song isLive={155} href="" img="https://volna.volkovdesign.com/img/covers/cover.svg" singer="AudioPizza" name="Cinematic" />
+                        <Song isLive={155} href="" img="https://volna.volkovdesign.com/img/covers/cover7.jpg" singer="AudioPizza" name="Adventure" />
+                        <Song isLive={155} href="" img="https://volna.volkovdesign.com/img/covers/cover8.jpg" singer="AudioPizza" name="Epic Motivational" />
+                        <Song isLive={155} href="" img="https://volna.volkovdesign.com/img/covers/cover9.jpg" singer="AudioPizza" name="Upbeat Rock" />
+                        <Song isLive={155} href="" img="https://volna.volkovdesign.com/img/covers/cover10.jpg" singer="AudioPizza" name="Ambient Pop" />
                     </div>
                 </div>
                 <div>
@@ -43,11 +43,11 @@ export const Songs = () => {
                         <a href="#" className="song__header__title">Podcasts</a>
                     </div>
                     <div>
-                        <Song isLive={155} img="https://volna.volkovdesign.com/img/covers/cover6.jpg" singer="AudioPizza" name="Cinematic" />
-                        <Song isLive={155} img="https://volna.volkovdesign.com/img/covers/cover9.jpg" singer="AudioPizza" name="Adventure" />
-                        <Song isLive={155} img="https://volna.volkovdesign.com/img/covers/cover.svg" singer="AudioPizza" name="Epic Motivational" />
-                        <Song isLive={155} img="https://volna.volkovdesign.com/img/covers/cover11.jpg" singer="AudioPizza" name="Upbeat Rock" />
-                        <Song isLive={155} img="https://volna.volkovdesign.com/img/covers/cover12.jpg" singer="AudioPizza" name="Ambient Pop" />
+                        <Song isLive={155} href="" img="https://volna.volkovdesign.com/img/covers/cover6.jpg" singer="AudioPizza" name="Cinematic" />
+                        <Song isLive={155} href="" img="https://volna.volkovdesign.com/img/covers/cover9.jpg" singer="AudioPizza" name="Adventure" />
+                        <Song isLive={155} href="" img="https://volna.volkovdesign.com/img/covers/cover.svg" singer="AudioPizza" name="Epic Motivational" />
+                        <Song isLive={155} href="" img="https://volna.volkovdesign.com/img/covers/cover11.jpg" singer="AudioPizza" name="Upbeat Rock" />
+                        <Song isLive={155} href="" img="https://volna.volkovdesign.com/img/covers/cover12.jpg" singer="AudioPizza" name="Ambient Pop" />
                     </div>
                 </div>
             </div>

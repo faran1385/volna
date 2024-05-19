@@ -73,7 +73,10 @@
     border: 1px solid #222227;
     position: relative;
 }
-
+.player__img{
+    width: 100px !important;
+    height: 100px !important;
+}
 .player__tigger-translate {
     transform: translateY(-261px);
 }

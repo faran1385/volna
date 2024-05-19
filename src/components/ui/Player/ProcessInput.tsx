@@ -1,13 +1,24 @@
+import { duration } from "@mui/material";
 import "./Player.css"
 import Tooltip from '@mui/material/Tooltip';
-import { useCallback, useEffect, useRef, useState } from "react";
-export const ProcessInput = () => {
-
+import { RefObject, useCallback, useEffect, useRef, useState } from "react";
+interface ProcessInputType {
+    audio: RefObject<HTMLAudioElement> | null,
+    href: string | undefined
+}
+export const ProcessInput = ({ audio, href }: ProcessInputType) => {
     const [processTooltipText, setProcessTooltipText] = useState('00:00');
+    const [timer, setTimer] = useState('');
+    const [direction, setDirection] = useState('');
     const [isOpen, setOpen] = useState(false);
-
     const oninputSlider = (e: React.FormEvent<HTMLInputElement>) => {
         (e.target as HTMLInputElement).style.background = `linear-gradient(90deg,#25a56a ${(e.target as HTMLInputElement).value}%,#999999 ${(e.target as HTMLInputElement).value}%)`;
+        if (
+            audio && audio.current
+        ) {
+            let changing = Number((e.target as HTMLInputElement).value) * audio.current?.duration / 100;
+            audio.current.currentTime = changing
+        }
     }
 
     const tooltipPositionRef = useRef<{ x: number; y: number }>({
@@ -16,17 +27,18 @@ export const ProcessInput = () => {
     });
     const isMouseDown = useRef(false);
     const popperRef = useRef(null);
-    const processInput = useRef<HTMLInputElement>(null);
+    const processInput = useRef<any>(null);
+
     const currentTime = useRef(0);
     const hasMouse = useRef(false);
     // to handle the tooltip in largscreens
     const handleMouseMove = (event: React.MouseEvent) => {
 
-        if (popperRef.current != null) {
+        if (popperRef.current != null && audio && audio.current) {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (popperRef.current as any).update();
             //calculating the time
-            const totalDuration = 110;
+            const totalDuration = audio.current.duration;
             const target = (event.target as HTMLInputElement);
             const targetWidth = target.clientWidth;
             const targetOffsetLeft = target.offsetLeft;
@@ -56,7 +68,7 @@ export const ProcessInput = () => {
         if (popperRef.current != null) {
 
             //calculating the time
-            const totalDuration = 110;
+            const totalDuration = 100;
             const target = (e.target as HTMLInputElement);
             const targetValue = Number(target.value) / 100;
 
@@ -79,30 +91,50 @@ export const ProcessInput = () => {
         }
     }, [])
 
-
     useEffect(() => {
-        const handleEvent = (e) => {
+        const handleEvent = (e: any) => {
             if (e.srcElement && !e.srcElement.classList.contains("player__process")) {
                 setOpen(false)
                 isMouseDown.current = false
             }
-
         }
         window.addEventListener("pointerdown", handleEvent)
-
+        if(audio && audio.current  && audio.current.duration){
+            // const minutes = Math.floor(audio.current.currentTime / 60) - ;
+            const seconds = Math.floor((audio.current.currentTime % 60) - (audio.current.duration % 60));
+            console.log(audio.current.duration)
+            setTimer(() => `${Math.floor(audio.current.duration / 60)}:${Number(Math.abs(seconds)) < 10 ? "0" + Math.abs(seconds) : Math.abs(seconds)}`);
+        }
         return () => {
             window.removeEventListener("pointerdown", handleEvent)
         }
     }, [])
 
-
     return <>
+        <audio ref={audio} onLoadedData={()=>{
+            if (audio && audio.current) {
+                const minutes = Math.floor(audio.current.currentTime / 60) - Math.floor(audio.current.duration / 60);
+                const seconds = Math.floor((audio.current.currentTime % 60) - (audio.current.duration % 60));
+                setDirection(() => `${Math.abs(minutes)}:${Number(Math.abs(seconds)) < 10 ? "0" + Math.abs(seconds) : Math.abs(seconds)}`);
+            }
+        }} 
+        onTimeUpdate={() => {
+            if (audio && audio.current && processInput && processInput.current) {
+                const minutes = Math.floor(audio.current.currentTime / 60) - Math.floor(audio.current.duration / 60);
+                const seconds = Math.floor((audio.current.currentTime % 60) - (audio.current.duration % 60));
+                setTimer(() => `${Math.abs(minutes)}:${Number(Math.abs(seconds)) < 10 ? "0" + Math.abs(seconds) : Math.abs(seconds)}`);
+                console.log(timer)
+                currentTime.current = audio.current.currentTime
+                processInput.current.value = currentTime.current / audio.current.duration * 100
+                processInput.current.style.background = `linear-gradient(90deg,#25a56a ${currentTime.current / audio.current.duration * 100}%,#999999 ${currentTime.current / audio.current.duration * 100}%)`;
+            }
+        }} src={href}></audio>
         <Tooltip
             title={processTooltipText}
             placement="top"
             arrow
             open={isOpen}
-            style={{zIndex:100000000}}
+            style={{ zIndex: 100000000 }}
             onClose={() => setOpen(false)}
             PopperProps={{
                 popperRef,
@@ -118,15 +150,16 @@ export const ProcessInput = () => {
                 },
             }}
         >
-            <input onMouseUp={() => isMouseDown.current = false} onMouseMove={(e) => {
+            <input ref={processInput} onMouseUp={() => isMouseDown.current = false} onMouseMove={(e) => {
                 hasMouse.current = true;
                 handleMouseMove(e);
-            }} onPointerMove={() => setOpen(true)} ref={processInput} className="player__process flex flex-grow" defaultValue={0} onInput={(e) => {
+            }} onPointerMove={() => setOpen(true)} className="player__process flex flex-grow" defaultValue={0} onInput={(e) => {
                 oninputSlider(e);
                 if ('ontouchstart' in window) {
                     handleOnInput(e)
                 }
             }} type="range" min="0" max="100" step="0.01" />
         </Tooltip>
+        <span className="ms-3 text-fade text-sm">-{timer ? timer : direction}</span>
     </>
 }
