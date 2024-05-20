@@ -18,9 +18,11 @@
 }
 
 .tiket__card__body__balance{
+    color: var(--gray-color) !important;
     font-size: 14px;
 }
 .tiket__card__body__balance b{
+    color: var(--color);
     font-size: 23px;
     font-weight: 500;
 }
@@ -44,7 +46,9 @@
 .tiket__card__body__more{
     font-size: 13px;
 }
-
+.tiket__card__body__type__labal{
+    color: var(--gray-color) !important;
+}
 .tiket__card__footer__submit{
     background-color: var(--green-color);
     border-radius: 12px;

@@ -2,11 +2,16 @@ import { duration } from "@mui/material";
 import "./Player.css"
 import Tooltip from '@mui/material/Tooltip';
 import { RefObject, useCallback, useEffect, useRef, useState } from "react";
+import { AppState } from "../../../app/store";
+import { useDispatch, useSelector } from "react-redux";
+import { setPlaying } from "../../../app/Player/Player";
 interface ProcessInputType {
     audio: RefObject<HTMLAudioElement> | null,
     href: string | undefined
 }
 export const ProcessInput = ({ audio, href }: ProcessInputType) => {
+    const dispatch = useDispatch()
+    const PlayerItems = useSelector((state: AppState) => state.player)
     const [processTooltipText, setProcessTooltipText] = useState('00:00');
     const [timer, setTimer] = useState('');
     const [direction, setDirection] = useState('');
@@ -20,7 +25,15 @@ export const ProcessInput = ({ audio, href }: ProcessInputType) => {
             audio.current.currentTime = changing
         }
     }
-
+    useEffect(() => {
+        if(audio && audio.current){
+            if (PlayerItems.paused) {
+                audio.current.play()
+            } else {
+                audio.current.pause()
+            }
+        }
+    }, [PlayerItems.paused]);
     const tooltipPositionRef = useRef<{ x: number; y: number }>({
         x: 0,
         y: 0,
@@ -76,8 +89,6 @@ export const ProcessInput = ({ audio, href }: ProcessInputType) => {
             const targetOffsetLeft = target.offsetLeft;
             const mouseCurrentPosition = targetWidth * targetValue + targetOffsetLeft - (14 * targetValue) + 7;
 
-            console.log(currentTime.current);
-
             if (!hasMouse.current) {
                 currentTime.current = Math.ceil(totalDuration * targetValue);
             }
@@ -90,7 +101,7 @@ export const ProcessInput = ({ audio, href }: ProcessInputType) => {
             (popperRef.current as any).update();
         }
     }, [])
-
+    useEffect(()=>{},[PlayerItems.paused])
     useEffect(() => {
         const handleEvent = (e: any) => {
             if (e.srcElement && !e.srcElement.classList.contains("player__process")) {
@@ -99,11 +110,10 @@ export const ProcessInput = ({ audio, href }: ProcessInputType) => {
             }
         }
         window.addEventListener("pointerdown", handleEvent)
-        if(audio && audio.current  && audio.current.duration){
-            // const minutes = Math.floor(audio.current.currentTime / 60) - ;
+        if(audio && audio.current  ){
+            const minutes = Math.floor(audio.current.duration / 60)  ;
             const seconds = Math.floor((audio.current.currentTime % 60) - (audio.current.duration % 60));
-            console.log(audio.current.duration)
-            setTimer(() => `${Math.floor(audio.current.duration / 60)}:${Number(Math.abs(seconds)) < 10 ? "0" + Math.abs(seconds) : Math.abs(seconds)}`);
+            setTimer(() => `${minutes}:${Number(Math.abs(seconds)) < 10 ? "0" + Math.abs(seconds) : Math.abs(seconds)}`);
         }
         return () => {
             window.removeEventListener("pointerdown", handleEvent)
@@ -118,6 +128,23 @@ export const ProcessInput = ({ audio, href }: ProcessInputType) => {
                 setDirection(() => `${Math.abs(minutes)}:${Number(Math.abs(seconds)) < 10 ? "0" + Math.abs(seconds) : Math.abs(seconds)}`);
             }
         }} 
+        onLoad={()=>{
+            if (audio && audio.current) {
+                const minutes = Math.floor(audio.current.currentTime / 60) - Math.floor(audio.current.duration / 60);
+                const seconds = Math.floor((audio.current.currentTime % 60) - (audio.current.duration % 60));
+                setDirection(() => `${Math.abs(minutes)}:${Number(Math.abs(seconds)) < 10 ? "0" + Math.abs(seconds) : Math.abs(seconds)}`);
+            }
+        }}
+        onEnded={()=>{
+            dispatch(
+                setPlaying({
+                    paused: !PlayerItems.paused
+                })
+            )
+            if(audio && audio.current){
+                audio.current.currentTime = 0
+            }
+        }}
         onTimeUpdate={() => {
             if (audio && audio.current && processInput && processInput.current) {
                 const minutes = Math.floor(audio.current.currentTime / 60) - Math.floor(audio.current.duration / 60);
