@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-    img:"",
-    href:"",
-    name:"",
-    singer:"",
+    img:"https://volna.volkovdesign.com/img/covers/cover.svg",
+    href:"http://blast.volkovdesign.com/audio/12071151_epic-cinematic-trailer_by_audiopizza_preview.mp3",
+    name:"Epic Cinematic",
+    singer:"AudioPizza",
     paused:false
 }
 const PlayerSlice = createSlice({

@@ -2,6 +2,7 @@ import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { AppState } from "../../../../app/store"
 import { setPlayer, setPlaying } from "../../../../app/Player/Player"
+import { circularProgressClasses } from "@mui/material"
 
 interface BtnPlayingType {
     img: string,
@@ -19,12 +20,14 @@ export const BtnPlaying: React.FC<BtnPlayingType> = ({ img, name, href, musicaia
                 paused: !PlayerItems.paused
             })
         )
-        dispatch(setPlayer({
-            href: href
-            , img: img
-            , name: name
-            , singer: musicaian
-        }))
+        if(PlayerItems.paused === false){
+            dispatch(setPlayer({
+                href: href
+                , img: img
+                , name: name
+                , singer: musicaian
+            }))
+        }
     }
     return (
         <button onClick={hadlerPlay} className="song__button rounded-xl relative flex items-center justify-center">

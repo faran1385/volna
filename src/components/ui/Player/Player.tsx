@@ -19,18 +19,7 @@ export const Player = () => {
         (player.current as HTMLDivElement).classList.toggle("translate-y-full");
         (playerTrgger.current as HTMLButtonElement).classList.toggle("player__tigger-translate")
     }
-    useEffect(()=>{
-        dispatch(
-            setPlayer(
-                {
-                    img:"https://volna.volkovdesign.com/img/covers/cover.svg",
-                    href:"http://blast.volkovdesign.com/audio/12071151_epic-cinematic-trailer_by_audiopizza_preview.mp3",
-                    name:"Epic Cinematic",
-                    singer:"AudioPizza",
-                }
-            )
-        )
-    },[])
+
     return <>
         <div ref={player}
             className={`player xl:translate-y-0 left-0 translate-y-full  transform-gpu ps-4 xl:ps-6 fixed bottom-0 p-4 flex flex-col justify-center`}>
