@@ -30,7 +30,7 @@ export const FooterUP : React.FC = () => {
                     title='Browse'
                     links={
                         [
-                            {text:'Artists',href:'#'},
+                            {text:'Artists',href:'./artists'},
                             {text:'Releases',href:'#'},
                             {text:'Events',href:'#'},
                             {text:'Podcasts',href:'#'},
