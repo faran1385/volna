@@ -13,8 +13,8 @@ export const ProcessInput = ({ audio, href }: ProcessInputType) => {
     const dispatch = useDispatch()
     const PlayerItems = useSelector((state: AppState) => state.player)
     const [processTooltipText, setProcessTooltipText] = useState('00:00');
-    const [timer, setTimer] = useState<{sec : string | number , min :string | number}>({sec:0,min:0});
-    const [direction, setDirection] = useState<{sec : string | number , min :string | number}>({sec:0,min:0});
+    const [timer, setTimer] = useState<{ sec: string | number, min: string | number }>({ sec: 0, min: 0 });
+    const [direction, setDirection] = useState<{ sec: string | number, min: string | number }>({ sec: 0, min: 0 });
     const [isOpen, setOpen] = useState(false);
     const oninputSlider = (e: React.FormEvent<HTMLInputElement>) => {
         (e.target as HTMLInputElement).style.background = `linear-gradient(90deg,#25a56a ${(e.target as HTMLInputElement).value}%,#999999 ${(e.target as HTMLInputElement).value}%)`;
@@ -101,11 +101,11 @@ export const ProcessInput = ({ audio, href }: ProcessInputType) => {
             }
         }
         window.addEventListener("pointerdown", handleEvent)
-        if(audio && audio.current  ){
-            const minutes = Math.abs(Math.floor(audio.current.duration / 60))  ;
+        if (audio && audio.current) {
+            const minutes = Math.abs(Math.floor(audio.current.duration / 60));
             const seconds = Math.floor((audio.current.currentTime % 60) - (audio.current.duration % 60));
             const secToNumber = Math.abs(seconds) < 10 ? "0" + Math.abs(seconds) : Math.abs(seconds)
-            setTimer({sec : secToNumber , min : minutes});
+            setTimer({ sec: secToNumber, min: minutes });
         }
         // dispatch(
         //     setPlayer(
@@ -122,7 +122,7 @@ export const ProcessInput = ({ audio, href }: ProcessInputType) => {
         }
     }, [])
     useEffect(() => {
-        if(audio && audio.current){
+        if (audio && audio.current) {
             if (PlayerItems.paused) {
                 audio.current.play()
             } else {
@@ -131,36 +131,41 @@ export const ProcessInput = ({ audio, href }: ProcessInputType) => {
         }
     }, [PlayerItems.paused]);
     return <>
-        <audio ref={audio} onLoadedData={()=>{
+        <audio ref={audio} onLoadedData={() => {
             if (audio && audio.current) {
-                const minutes = Math.floor(audio.current.currentTime / 60) - Math.floor(audio.current.duration / 60); 
-                const seconds = Math.floor((audio.current.currentTime % 60) - (audio.current.duration % 60));
-                // const secondsToNumber  = Number(Math.abs(seconds) < 10 ? "0" + Math.abs(seconds) : Math.abs(seconds))
-                setDirection({sec:Math.abs(seconds),min:Math.abs(minutes)})
-            }
-        }}
-        onEnded={()=>{
-            dispatch(
-                setPlaying({
-                    paused: !PlayerItems.paused
-                })
-            )
-            if(audio && audio.current){
-                audio.current.currentTime = 0
-            }
-        }}
-        onTimeUpdate={() => {
-            if (audio && audio.current && processInput && processInput.current) {
                 const minutes = Math.floor(audio.current.currentTime / 60) - Math.floor(audio.current.duration / 60);
                 const seconds = Math.floor((audio.current.currentTime % 60) - (audio.current.duration % 60));
-                // const secondsToNumber  Math.abs(seconds) : Math.abs(seconds)
-                setTimer({sec:Math.abs(seconds),min:Math.abs(minutes)})
-                setDirection({sec:0,min:0})
-                currentTime.current = audio.current.currentTime
-                processInput.current.value = currentTime.current / audio.current.duration * 100
-                processInput.current.style.background = `linear-gradient(90deg,#25a56a ${currentTime.current / audio.current.duration * 100}%,#999999 ${currentTime.current / audio.current.duration * 100}%)`;
+                // const secondsToNumber  = Number(Math.abs(seconds) < 10 ? "0" + Math.abs(seconds) : Math.abs(seconds))
+                setDirection({ sec: Math.abs(seconds), min: Math.abs(minutes) })
             }
-        }} src={href}></audio>
+        }}
+            onEnded={() => {
+                dispatch(
+                    setPlaying({
+                        paused: !PlayerItems.paused
+                    })
+                )
+                if (audio && audio.current) {
+                    audio.current.currentTime = 0
+                }
+            }}
+            onTimeUpdate={() => {
+                if (audio && audio.current && processInput && processInput.current) {
+                    console.log(audio.current.currentTime % 3600 / 60)
+                    const minutes = Math.ceil(audio.current.currentTime / 60 - audio.current.duration / 60);
+                    const seconds =
+                        audio.current.duration % 60 - audio.current.currentTime % 60 > 0 ?
+                            Math.floor((audio.current.currentTime % 60) - (audio.current.duration % 60))
+                            :
+                            Math.floor((audio.current.currentTime % 60) - audio.current.duration % 60 - 60);
+                    // const secondsToNumber  Math.abs(seconds) : Math.abs(seconds)
+                    setTimer({ sec: Math.abs(seconds), min: Math.abs(minutes) })
+                    setDirection({ sec: 0, min: 0 })
+                    currentTime.current = audio.current.currentTime
+                    processInput.current.value = currentTime.current / audio.current.duration * 100
+                    processInput.current.style.background = `linear-gradient(90deg,#25a56a ${currentTime.current / audio.current.duration * 100}%,#999999 ${currentTime.current / audio.current.duration * 100}%)`;
+                }
+            }} src={href}></audio>
         <Tooltip
             title={processTooltipText}
             placement="top"
@@ -192,6 +197,6 @@ export const ProcessInput = ({ audio, href }: ProcessInputType) => {
                 }
             }} type="range" min="0" max="100" step="0.01" />
         </Tooltip>
-        <span className="ms-3 text-fade text-sm">-{direction.sec === 0 ? `${timer.min < "10" ? "0"+timer.min : timer.min}:${timer.sec < "10" ? "0"+timer.sec : timer.sec}` : `${direction.min < "10" ? "0"+direction.min : timer.min}:${direction.sec < "10" ? "0"+direction.sec : direction.sec}`}</span>
+        <span className="ms-3 text-fade text-sm">-{direction.sec === 0 ? `${timer.min < "10" ? "0" + timer.min : timer.min}:${timer.sec < "10" ? "0" + timer.sec : timer.sec}` : `${direction.min < "10" ? "0" + direction.min : timer.min}:${direction.sec < "10" ? "0" + direction.sec : direction.sec}`}</span>
     </>
 }
