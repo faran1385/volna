@@ -151,13 +151,12 @@ export const ProcessInput = ({ audio, href }: ProcessInputType) => {
             }}
             onTimeUpdate={() => {
                 if (audio && audio.current && processInput && processInput.current) {
-                    console.log(audio.current.currentTime % 3600 / 60)
                     const minutes = Math.ceil(audio.current.currentTime / 60 - audio.current.duration / 60);
                     const seconds =
-                        audio.current.duration % 60 - audio.current.currentTime % 60 > 0 ?
-                            Math.floor((audio.current.currentTime % 60) - (audio.current.duration % 60))
+                        audio.current.duration % 60 - audio.current.currentTime % 60 >= 0 ?
+                            Math.floor((audio.current.currentTime % 60) - (audio.current.duration % 60) + 1)
                             :
-                            Math.floor((audio.current.currentTime % 60) - audio.current.duration % 60 - 60);
+                            Math.floor((audio.current.currentTime % 60) - audio.current.duration % 60 - 59);
                     // const secondsToNumber  Math.abs(seconds) : Math.abs(seconds)
                     setTimer({ sec: Math.abs(seconds), min: Math.abs(minutes) })
                     setDirection({ sec: 0, min: 0 })
