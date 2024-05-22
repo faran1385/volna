@@ -8,6 +8,7 @@ import { Provider } from 'react-redux'
 import { store } from './app/store'
 import { Artists } from "./Pages/Artists/Artists.tsx";
 import { Footer } from "./components/ui/Footer/Footer.tsx";
+import { Releases } from "./Pages/Releases/Releases.tsx";
 export interface divRefType { DivMenuRef: RefObject<HTMLDivElement> | null }
 function App() {
   const DivMenuRef = useRef<HTMLDivElement | null>(null)
@@ -34,6 +35,7 @@ function App() {
           <Routes>
             <Route index element={<Home />} />
             <Route path="artists" element={<Artists />} />
+            <Route path="releases" element={<Releases />} />
           </Routes>
         </BrowserRouter>
         <Player />
