@@ -12,9 +12,15 @@
 }
 .Header-nav__searech input::placeholder{
     color: var(--gray-color);
+    text-transform: capitalize;
 }
 .Header-nav__searech svg{
     fill: var(--color);
+    will-change: fill;
+    transition: fill 400ms ease-in-out;
     height: 20px !important;
     width: 20px !important;
+}
+.Header-nav__searech button:hover svg{
+    fill: var(--green-color) !important;
 }

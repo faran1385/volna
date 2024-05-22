@@ -1,0 +1,29 @@
+.radio{
+    background-color: var(--border-color);
+    border-radius: 12px;
+    height: 50px !important;
+    
+}
+.radio__text{
+    text-align: center;
+    height: 30px !important;
+    cursor: pointer;
+}
+.radio__background{
+    transition: all 300ms ease-in-out;
+    top: 8px;
+    bottom: 12px;
+    height: 34px;
+    border-radius: 6px;
+    background-color: var(--green-color);
+    
+}
+@media (width <= 650px) {
+    
+    .radio{
+        width: 100% !important;
+    }
+    .radio__text{
+        font-size: calc(1vw + 7px);
+    }
+}

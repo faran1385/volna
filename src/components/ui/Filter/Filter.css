@@ -1,0 +1,9 @@
+.filter{
+    border-block: 1px solid var(--border-color);
+}
+.filter__search.filter__search--width{
+    width: 250px !important;
+}
+.filter__search .Header-nav__searech{
+    width: 100% !important;
+}

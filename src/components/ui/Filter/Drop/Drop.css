@@ -1,0 +1,73 @@
+.filter-drop{
+    /* height: 30px; */
+}
+.filter-drop__select__icon{
+    width: 20px;
+    height: 20px;
+    transform: rotate(90deg);
+    top: 3px;
+    right: 0;
+}
+.filter-drop__select{
+    background-color: transparent;
+    color: var(--color);
+}
+.filter-drop__box::-webkit-scrollbar {
+    width: 10px;
+}
+
+.filter-drop__box::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 0  9px  9px 0;
+}
+
+.filter-drop__box::-webkit-scrollbar-thumb {
+    background: #bbb9b9;
+    border-radius: 0  9px  9px 0;
+}
+.filter-drop__box{
+    z-index: 11;
+    transition: all 300ms ease-in-out;
+    width: 160px;
+    background-color: var(--border-color);
+    opacity: 0;
+    pointer-events: none;
+    top: 29px;
+    left: -9px;
+    max-height: 180px;
+    overflow-y: auto;
+    border-radius: 12px;
+}
+.filter-drop:hover .filter-drop__box{
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    top: 32px;
+    
+}
+.filter-drop__items{
+    font-size: 14px;
+    color: var(--color);
+    will-change: color;
+    transition: color 400ms ease-in-out;
+}
+.filter-drop__items:hover{
+    color: var(--green-color);
+}
+.filter-drop__items--active{
+    color: var(--green-color);
+}
+.filter-drop__items--active:hover{
+    color: var(--color);
+}
+@media (width <= 650px) {
+    .filter-drop__select{
+        font-size: 12px;
+        padding-block: 10px;
+    }
+    .filter-drop__select__icon{
+        top: 10px !important;
+    }
+    .filter-drop:hover .filter-drop__box{
+        top: 38px !important;
+    }
+}
