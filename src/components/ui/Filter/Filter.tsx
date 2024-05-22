@@ -8,7 +8,7 @@ interface FilterType {
 }
 export const Filter: React.FC<FilterType> = ({ placeholder }) => {
     return (
-        <div className='filter flex flex-col lg:flex-row px-8 py-4  lg:items-center lg:justify-between'>
+        <div className='filter xl:sticky top-0 flex flex-col lg:flex-row px-8 py-4  lg:items-center lg:justify-between'>
             <div className='flex flex-col lg:flex-row'>
                 <form className='filter__search lg:filter__search--width'>
                     <SearchInput placeholder={placeholder} />
