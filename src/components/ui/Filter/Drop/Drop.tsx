@@ -1,13 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './Drop.css'
-interface DropItemsType {
-    text: string,
-    hasActive?: boolean
-}
-interface DropType {
-    items: DropItemsType[],
-    boxId: string
-}
+import { DropType } from '../Filter'
+
 export const Drop: React.FC<DropType> = ({ items, boxId }) => {
 
     const [Item, setItem] = useState('')

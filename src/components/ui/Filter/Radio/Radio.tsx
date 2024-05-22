@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from 'react'
 import './Radio.css'
-interface RadioType {
-    items: string[],
-    boxId: string
-}
+import { RadioType } from '../Filter'
+// interface RadioType {
+//     items: string[],
+//     boxId: string
+// }
 export const Radio: React.FC<RadioType> = ({ items, boxId }) => {
     const CardRadio = useRef<HTMLDivElement>(null)
     const BoxRadio = useRef<HTMLUListElement>(null)
