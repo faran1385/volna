@@ -26,7 +26,7 @@ interface FilterType {
 }
 export const Filter: React.FC<FilterType> = ({ placeholder, DropItems , RadioItems }) => {
     return (
-        <div style={{height:"72px"}} className='filter xl:sticky top-0 flex flex-col lg:flex-row px-8  lg:items-center lg:justify-between'>
+        <div  className='filter lg:py-0 py-6 xl:sticky top-0 flex flex-col lg:flex-row px-8  lg:items-center lg:justify-between'>
             <div className='flex flex-col lg:flex-row'>
                 <form className='filter__search lg:filter__search--width'>
                     <SearchInput placeholder={placeholder} />

@@ -38,7 +38,7 @@ export const Events: React.FC = () => {
                         ]
                     }
                 />
-                <div className='grid gap-6 grid-cols-3 px-8 py-4'>
+                <div className='grid gap-6 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 px-8 py-4'>
                     <Event
                         img="https://volna.volkovdesign.com/img/events/event1.jpg"
                         isAvailable={true}
