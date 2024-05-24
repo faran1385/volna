@@ -10,6 +10,7 @@ import { Artists } from "./Pages/Artists/Artists.tsx";
 import { Footer } from "./components/ui/Footer/Footer.tsx";
 import { Releases } from "./Pages/Releases/Releases.tsx";
 import { Events } from "./Pages/Events/Events.tsx";
+import { Podcasts } from "./Pages/Podcasts/Podcasts.tsx";
 export interface divRefType { DivMenuRef: RefObject<HTMLDivElement> | null }
 function App() {
   const DivMenuRef = useRef<HTMLDivElement | null>(null)
@@ -31,17 +32,22 @@ function App() {
     <>
       <Header DivMenuRef={DivMenuRef} />
       <Sidebar DivMenuRef={DivMenuRef} />
+
       <Provider store={store}>
+
         <BrowserRouter>
           <Routes>
             <Route index element={<Home />} />
             <Route path="artists" element={<Artists />} />
             <Route path="releases" element={<Releases />} />
             <Route path="events" element={<Events />} />
+            <Route path="podcasts" element={<Podcasts />} />
           </Routes>
         </BrowserRouter>
+
         <Player />
       </Provider>
+
       <Footer />
     </>
   )

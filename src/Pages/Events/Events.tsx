@@ -10,7 +10,7 @@ export const Events: React.FC = () => {
 
     const TiketRef = useRef<HTMLDivElement>(null!)
     return (
-        <div className='pages pages--mobile'>
+        <main className='pages pages--mobile'>
             <Tiket
                 TiketRef={TiketRef}
             />
@@ -99,6 +99,6 @@ export const Events: React.FC = () => {
                 </BtnGreen>
             </div>
             <Supporters/>
-        </div>
+        </main>
     )
 }

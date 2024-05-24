@@ -31,9 +31,9 @@ export const FooterUP : React.FC = () => {
                     links={
                         [
                             {text:'Artists',href:'./artists'},
-                            {text:'Releases',href:'#'},
-                            {text:'Events',href:'#'},
-                            {text:'Podcasts',href:'#'},
+                            {text:'Releases',href:'./releases'},
+                            {text:'Events',href:'./events'},
+                            {text:'Podcasts',href:'./podcasts'},
                         ]
                     }
                 />
