@@ -40,7 +40,7 @@ export const FooterUP : React.FC = () => {
                 <FooterLinks
                     links={
                         [
-                            {text:'News',href:'#'},
+                            {text:'News',href:'./news'},
                             {text:'Store',href:'./store'},
                             {text:'Music',href:'#'},
                             {text:'Video',href:'#'},
