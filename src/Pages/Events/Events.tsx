@@ -5,7 +5,7 @@ import { Event } from '../../components/ui/Events/Event/Event'
 import { Tiket } from '../../components/ui/Events/Tiket/Tiket'
 import { BtnGreen } from '../../components/ui/BtnGreen/BtnGreen'
 import { Supporters } from '../../components/ui/Supporters/Supporters'
-
+import './../ResponsivePages.css'
 export const Events: React.FC = () => {
 
     const TiketRef = useRef<HTMLDivElement>(null!)

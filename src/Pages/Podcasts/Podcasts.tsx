@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import './Podcasts.css'
+import './../ResponsivePages.css'
 import { HeadPages } from '../../components/ui/HeadPages/HeadPages'
 import { Filter } from '../../components/ui/Filter/Filter'
 import { PodcastsItems } from '../../components/ui/Podcasts/PodcastsItems/PodcastsItems'

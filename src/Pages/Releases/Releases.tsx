@@ -3,7 +3,7 @@ import { HeadPages } from '../../components/ui/HeadPages/HeadPages'
 import { Filter } from '../../components/ui/Filter/Filter'
 import { BtnGreen } from '../../components/ui/BtnGreen/BtnGreen'
 import { ReleasesCards } from '../../components/ui/NewReleases/ReleasesCards/ReleasesCards'
-
+import './../ResponsivePages.css'
 import './Releases.css'
 import { SongAndEvent } from '../../components/ui/SongAndEvent/SongAndEvent'
 export const Releases: React.FC = () => {

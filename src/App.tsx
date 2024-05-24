@@ -11,6 +11,7 @@ import { Footer } from "./components/ui/Footer/Footer.tsx";
 import { Releases } from "./Pages/Releases/Releases.tsx";
 import { Events } from "./Pages/Events/Events.tsx";
 import { Podcasts } from "./Pages/Podcasts/Podcasts.tsx";
+import { Products } from "./Pages/Products/Products.tsx";
 export interface divRefType { DivMenuRef: RefObject<HTMLDivElement> | null }
 function App() {
   const DivMenuRef = useRef<HTMLDivElement | null>(null)
@@ -42,6 +43,7 @@ function App() {
             <Route path="releases" element={<Releases />} />
             <Route path="events" element={<Events />} />
             <Route path="podcasts" element={<Podcasts />} />
+            <Route path="store" element={<Products />} />
           </Routes>
         </BrowserRouter>
 

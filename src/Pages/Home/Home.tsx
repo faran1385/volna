@@ -8,7 +8,7 @@ import { Songs } from "../../components/ui/Songs/Songs.tsx"
 import { Products } from "../../components/ui/Products/Products.tsx"
 import { Supporters } from "../../components/ui/Supporters/Supporters.tsx"
 import { NewsList } from "../../components/ui/News/NewsList.tsx"
-
+import './../ResponsivePages.css'
 export const Home = () => {
     return <main className="pages pages--mobile">
         <Slider />
