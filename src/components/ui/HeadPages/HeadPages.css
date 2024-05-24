@@ -1,20 +1,6 @@
 .head-pages{
     background-color: var(--background);
 }
-.head-pages__status__item__text{
-    font-size: 14px;
-    font-weight: 400;
-    color: var(--gray-color);
-    will-change: color;
-    transition: color 400ms ease-in-out;
-}
-.head-pages__status__item__text--link:hover{
-    color: var(--green-color);
-}
-.head-pages__status__item__icon{
-    width: 20px;
-    height: auto;
-}
 
 
 .head-pages__title{

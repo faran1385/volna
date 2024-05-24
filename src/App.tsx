@@ -12,13 +12,13 @@ import { Releases } from "./Pages/Releases/Releases.tsx";
 import { Events } from "./Pages/Events/Events.tsx";
 import { Podcasts } from "./Pages/Podcasts/Podcasts.tsx";
 import { Products } from "./Pages/Products/Products.tsx";
+import { NoPage } from "./Pages/404/NoPage.tsx";
 export interface divRefType { DivMenuRef: RefObject<HTMLDivElement> | null }
 function App() {
   const DivMenuRef = useRef<HTMLDivElement | null>(null)
   useEffect(() => {
     // console.log(location.pathname)
     if (DivMenuRef && DivMenuRef.current) {
-      console.log(DivMenuRef.current.querySelectorAll("nav > ul"))
       DivMenuRef.current.querySelectorAll("li").forEach(e => {
         e.querySelector(".main-link__text")?.classList.remove("main-link__text--active")
         e.querySelector(".main-link__icon")?.classList.remove("main-link__icon--active")
@@ -39,6 +39,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route index element={<Home />} />
+            <Route path="*" element={<NoPage />} />
             <Route path="artists" element={<Artists />} />
             <Route path="releases" element={<Releases />} />
             <Route path="events" element={<Events />} />
