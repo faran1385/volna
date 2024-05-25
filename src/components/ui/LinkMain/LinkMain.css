@@ -5,7 +5,7 @@
     height: auto;
     margin-bottom: 2px;
     will-change: fill;
-    transition: fill ease-in .2s;
+    transition: fill ease-in .3s,color ease-in .3s;
 }
 
 .main-link__text--active {
@@ -16,9 +16,11 @@
     color: #c0c0c0;
     font-size: medium;
     will-change: color;
-    transition: color ease-in .1s;
+    transition: color ease-in .3s;
 }
-
+.main-link__icon--active{
+    color: #25a56a;
+}
 .main-link:hover .main-link__icon {
     fill: #25a56a;
 }

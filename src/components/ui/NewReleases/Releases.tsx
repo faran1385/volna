@@ -4,7 +4,7 @@ import { ReleasesCards } from './ReleasesCards/ReleasesCards.tsx'
 export const Releases : React.FC = () => {
     return (
         <section className='releases px-8'>
-            <Title title='new releases' href='#' textLink='see all'/>
+            <Title title='new releases' href='./releases' textLink='see all'/>
             <ReleasesCards/>
         </section>
     )

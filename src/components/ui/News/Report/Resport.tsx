@@ -21,7 +21,7 @@ export const Report: React.FC<ReportProps & VideoType> = (T) => {
         }
     }
     return <>
-        <div className="relative flex flex-col">
+        <div className="relative flex flex-col h-full">
             {
                 href ? 
                 (<button onClick={clickHanler} className="absolute top-5 left-5 flex justify-center items-center report__watch rounded-lg">
@@ -36,7 +36,12 @@ export const Report: React.FC<ReportProps & VideoType> = (T) => {
                 <a href="#" >
                     <img className="h-full w-full rounded-t-xl relative report__img" src={img} title={category}/>
                 </a>
-                <div className="report__category rounded-lg absolute bottom-5 left-5 flex justify-center items-center">{category}</div>
+                {
+                    category ? 
+                    <div className="report__category rounded-lg absolute bottom-5 left-5 flex justify-center items-center capitalize">{category}</div>
+                    :
+                    null
+                }
             </div>
             <div className="report__info p-4 rounded-b-xl  flex flex-col justify-between">
                 <div className="pb-4">

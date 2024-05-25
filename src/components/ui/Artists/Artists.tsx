@@ -12,7 +12,7 @@ export const Artists = () => {
     const { onSlideChangeHandler } = useHandleOnSlideChange()
     return (
         <section className='artists px-8'>
-            <Title title='Artists' textLink='see all' href='#' />
+            <Title title='Artists' textLink='see all' href='./artists' />
             <Swiper
                 speed={1000}
                 slidesPerView={6}

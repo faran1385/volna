@@ -17,7 +17,7 @@ export const Events = () => {
     const TiketRef = useRef<HTMLDivElement>(null!)
     return <>
         <section className="px-8">
-            <Title href="#" textLink="See all" title={"Upcoming Events"} />
+            <Title href="./events" textLink="See all" title={"Upcoming Events"} />
             <Tiket
                 TiketRef={TiketRef}
             />

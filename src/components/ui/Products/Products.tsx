@@ -14,7 +14,7 @@ export const Products = () => {
     const { onSlideChangeHandler } = useHandleOnSlideChange()
     return (
         <section className='products px-8 '>
-            <Title href='#' textLink='see all' title='Products' />
+            <Title href='./store' textLink='see all' title='Products' />
             <Swiper
                 speed={1000}
                 slidesPerView={2}

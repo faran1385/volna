@@ -20,7 +20,7 @@ export const Podcasts = () => {
     const Videobox = useRef<HTMLDivElement | null>(null)
     return (
         <section className={`${nameSlider} px-8`}>
-            <Title title={`${nameSlider}`} href='#' textLink='see all' />
+            <Title title={`${nameSlider}`} href='./podcasts' textLink='see all' />
             <PodcastsVideo
                 Videobox={Videobox}
                 VideoIframe={VideoIframe}
