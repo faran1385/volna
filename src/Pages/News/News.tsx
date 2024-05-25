@@ -91,17 +91,20 @@ export const News: React.FC = () => {
             BtnsBox.current.querySelectorAll("li").forEach((e) => {
                 e.querySelector(".main-link__icon")?.classList.remove("main-link__icon--active")
                 e.querySelector(".main-link__text")?.classList.remove("main-link__text--active")
+                if(listUlRef && listUlRef.current){
+                    listUlRef.current.querySelectorAll('li').forEach((e)=>{
+                        e.classList.remove('opacity-1')
+                        e.classList.add('opacity-0')
+                    })
+                }
                 if (e.id === `btn_news_${id}`) {
                     e.querySelector(".main-link__icon")?.classList.add("main-link__icon--active")
                     e.querySelector(".main-link__text")?.classList.add("main-link__text--active")
-                    setTimeout(()=>{
+                    let timer = setTimeout(()=>{
                         setId(id)
-                    },500)
-                    if(listUlRef && listUlRef.current){
-                        listUlRef.current.querySelectorAll('li').forEach((e)=>{
-                            e.classList.remove('opacity-1')
-                            e.classList.add('opacity-0')
-                        })
+                    },700)
+                    return ()=>{
+                        clearInterval(timer)
                     }
                 }
             })
@@ -138,7 +141,7 @@ export const News: React.FC = () => {
                     Data.map((e, index) => {
                         if(e.id === Id){
                             return (
-                                <li key={`list_news_${index + 1}`} id={`list_news_${e.id}`} className='opacity-0 block transition-opacity duration-500'>
+                                <li key={`list_news_${index + 1}`} id={`list_news_${e.id}`} className='opacity-0 block transition-opacity duration-700'>
                                     <Report title={e.title} VideoIframe={VideoIframe} Videobox={Videobox} href={e.href} category={e.category} timePassed={e.timePassed} comments={e.comments} img={e.img} />
                                 </li>
                             )
