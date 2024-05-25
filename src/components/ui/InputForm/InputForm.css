@@ -1,0 +1,38 @@
+.input-form{
+    color: var(--color);
+    border: 1px solid transparent;
+    background-color: var(--border-color);
+    height: 46px;
+    border-radius: 12px;
+    transition: border 400ms ease-in-out;
+}
+.input-form::placeholder{
+    text-transform: capitalize;
+    color: var(--gray-color);
+}
+.input-form:focus {
+    border: 1px solid var(--green-color);
+}
+textarea.input-form{
+    overflow-y: auto;
+    resize: none;
+    height: 144px !important;
+}
+textarea.input-form::-webkit-scrollbar {
+    width: 12px;
+}
+
+textarea.input-form::-webkit-scrollbar-track {
+    background: var(--background);
+    border-radius: 0 30px 30px 0;
+}
+
+textarea.input-form::-webkit-scrollbar-thumb {
+    border-radius: 0 13px 13px 0;
+    background: var(--green-color);
+}
+@media (width <= 650px) {
+    .input-form{
+        font-size: calc(1vw + 9px);
+    }
+}

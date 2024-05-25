@@ -11,10 +11,10 @@ export const Events: React.FC = () => {
     const TiketRef = useRef<HTMLDivElement>(null!)
     return (
         <main className='pages pages--mobile'>
+            <HeadPages title='events' Items={[{ text: "home", href: "/" }, { text: "events" }]} />
             <Tiket
                 TiketRef={TiketRef}
             />
-            <HeadPages title='events' Items={[{ text: "home", href: "/" }, { text: "events" }]} />
             <div className='xl:sticky pb-6'>
                 <Filter
                     placeholder='data, place, etc.'
