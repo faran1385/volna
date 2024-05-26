@@ -19,7 +19,7 @@ export const FooterUP : React.FC = () => {
                     title='The Volna'
                     links={
                         [
-                            {text:'About',href:'#'},
+                            {text:'About',href:'./about'},
                             {text:'My profile',href:'#'},
                             {text:'Pricing plans',href:'#'},
                             {text:'Contacts',href:'#'},

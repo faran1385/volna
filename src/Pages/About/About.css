@@ -1,0 +1,16 @@
+.text-gary{
+    color: var(--gray-color);
+    fill: var(--gray-color);
+}
+.about-link{
+    color: var(--green-color);
+    text-decoration: underline;
+}
+.about-link:hover{
+    text-decoration: none;
+}
+.about-title{
+    font-size: 30px;
+    font-weight: 400;
+    text-transform: capitalize;
+}

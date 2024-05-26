@@ -1,0 +1,25 @@
+.about-card-header--border {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+}
+.about-card-header__header__index {
+    font-size: 20px;
+    background-color: rgba(37, 165, 106, 0.15);
+    color: var(--green-color);
+    fill: var(--green-color);
+    width: 46px;
+    border-radius: 12px;
+    aspect-ratio: 1 /1;
+}
+.about-card-header__header__index svg{
+    width: 25px;
+}
+@media (width <= 650px) {
+    .about-card-header__header__title {
+        font-size: calc(1vw + 10px);
+    }
+    .about-card-header__body {
+        font-size: calc(1vw + 9px);
+    }
+    
+}

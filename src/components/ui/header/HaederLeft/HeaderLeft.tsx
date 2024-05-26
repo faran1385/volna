@@ -10,7 +10,7 @@ export const HeaderLeft = ({ BoxSearch }: {BoxSearch : RefObject<HTMLDivElement>
         <div className='Header-nav__left w-auto Header-nav__left--action   absolute  flex items-centerw'>
             <nav className='xl:flex hidden Header-nav__links flex items-center me-16'>
                 <a href="#" className='capitalize me-7'>profile</a>
-                <a href="#" className='capitalize me-7'>about</a>
+                <a href="./about" className='capitalize me-7'>about</a>
                 <a href="./contacts" className='capitalize'>contacts</a>
             </nav>
             <div ref={BoxSearch} className={`xl:w-auto xl:static Header-nav__left__inputbox--resize    transition-all duration-500 flex justify-between items-center xl:gap-2 fixed z-40 -top-36 `}>
