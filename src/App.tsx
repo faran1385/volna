@@ -16,6 +16,7 @@ import { NoPage } from "./Pages/404/NoPage.tsx";
 import { News } from "./Pages/News/News.tsx";
 import { Contacts } from "./Pages/Contacts/Contacts.tsx";
 import { About } from "./Pages/About/About.tsx";
+import { PricingPlans } from "./Pages/PricingPlans/PricingPlans.tsx";
 export interface divRefType { DivMenuRef: RefObject<HTMLDivElement> | null }
 function App() {
   const DivMenuRef = useRef<HTMLDivElement | null>(null)
@@ -51,6 +52,7 @@ function App() {
             <Route path="news" element={<News />} />
             <Route path="contacts" element={<Contacts />} />
             <Route path="about" element={<About />} />
+            <Route path="pricing-plans" element={<PricingPlans />} />
           </Routes>
         </BrowserRouter>
 
