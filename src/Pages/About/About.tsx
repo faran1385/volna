@@ -124,7 +124,7 @@ export const About: React.FC = () => {
         },
     ])
     return (
-        <main className='contacts pages pages--mobile'>
+        <main className='about pages pages--mobile'>
             <HeadPages title='Online music HTML Template' Items={[{ text: "home", href: "/" }, { text: "about" }]} />
             <p className='text-gary px-8 mb-8'>
                 Many desktop publishing packages and <a href="#" className='about-link'>web page</a> editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
