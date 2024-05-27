@@ -1,0 +1,38 @@
+.chechout-cart__radiobox__radioitems{
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.chechout-cart__radio{
+    width: 20px !important;
+    height: 20px !important;
+    background-color: var(--border-color) ;
+    will-change: background-color;
+    transition: background-color 500ms ease-in-out;
+}
+.chechout-cart__radio::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: var(--background);
+    transform: translate(-50%, -50%);
+    width: 8px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+.chechout-cart__text{
+    color: var(--gray-color);
+    will-change: color;
+    transition: color 400ms ease-in-out;
+}
+.chechout-cart__radiobox__radioitems:hover .chechout-cart__text{
+    color: var(--color);
+}
+input[type=radio]:checked ~ .chechout-cart__radio{
+    background-color: var(--green-color);
+}
+input[type=radio]:checked ~ .chechout-cart__text{
+    color: var(--color);
+}
