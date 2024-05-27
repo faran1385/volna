@@ -1,0 +1,30 @@
+.amount{
+    width: 98px;
+    height: 36px;
+    padding-inline: 10px;
+    background-color: var(--border-color);
+    border-radius: 12px;
+}
+.amount__input{
+    padding: 12px;
+    width: 30px;
+    outline: none;
+    color: var(--color);
+    background-color: transparent;
+}
+.amount__btn__icon{
+    width: 18px;
+    aspect-ratio: 1/1;
+    fill: var(--gray-color);
+    will-change: fill;
+    transition: fill 400ms ease-in-out;
+}
+.amount__btn{
+    width: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.amount__btn:hover .amount__btn__icon{
+    fill: var(--green-color);
+}
