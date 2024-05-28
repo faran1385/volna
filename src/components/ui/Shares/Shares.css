@@ -1,0 +1,23 @@
+.shares__btn{
+    padding: 0 15px;
+    height: 30px;
+    border-radius: 8px;
+    will-change:background-color ;
+    transition: background-color 400ms ease-in-out;
+}
+.shares__btn:hover{
+    background-color: var(--green-color);
+}
+.shares__btn--fb{
+    background-color: #3b5998;
+}
+.shares__btn--tw{
+    background-color: #55acee;
+}
+.shares__btn--vk{
+    background-color: #4c6c91;
+}
+.shares__btn__icon{
+    fill: var(--color);
+    height: 17px;
+}

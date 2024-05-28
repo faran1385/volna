@@ -1,11 +1,19 @@
 import React from 'react'
 import { Title } from '../Title/Title.tsx'
 import { ReleasesCards } from './ReleasesCards/ReleasesCards.tsx'
-export const Releases : React.FC = () => {
+interface PodcastsType{
+    TitleText?:string
+}
+export const Releases: React.FC<PodcastsType> = ({TitleText}) => {
     return (
         <section className='releases px-8'>
-            <Title title='new releases' href='./releases' textLink='see all'/>
-            <ReleasesCards/>
+            {
+                TitleText == undefined ?
+                <Title title='new releases' href='./releases' textLink='see all' />
+                    :
+                    <Title title={`${TitleText}`} href='' textLink='' />
+            }
+            <ReleasesCards />
         </section>
     )
 }

@@ -1,14 +1,16 @@
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Title } from "../Title/Title.tsx"
 import { Event } from "./Event/Event.tsx"
-import { useRef, useState } from "react"
+import React, { useRef, useState } from "react"
 import { useHandleOnSlideChange } from "../../logic/NavigationButton/useHandleOnSlideChange.ts"
 import { NavigationButtons } from "../NavigationButton/Navigations.tsx"
 import { Tiket } from "./Tiket/Tiket.tsx"
 
 
-
-export const Events = () => {
+interface PodcastsType {
+    TitleText?: string
+}
+export const Events: React.FC<PodcastsType> = ({TitleText }) => {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const swiperRef = useRef<any>(null)
@@ -17,7 +19,12 @@ export const Events = () => {
     const TiketRef = useRef<HTMLDivElement>(null!)
     return <>
         <section className="px-8">
-            <Title href="./events" textLink="See all" title={"Upcoming Events"} />
+            {
+                TitleText == undefined ?
+                    <Title href="./events" textLink="See all" title={"Upcoming Events"} />
+                    :
+                    <Title title={`${TitleText}`} href='' textLink='' />
+            }
             <Tiket
                 TiketRef={TiketRef}
             />

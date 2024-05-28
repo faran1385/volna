@@ -9,7 +9,10 @@ export interface VideoType {
     VideoIframe?: RefObject<HTMLIFrameElement>
     , Videobox?: RefObject<HTMLDivElement>
 }
-export const Podcasts = () => {
+interface PodcastsType {
+    TitleText?: string
+}
+export const Podcasts: React.FC<PodcastsType> = ({ TitleText }) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const total = 10;
     const nameSlider = 'podcasts';
@@ -18,9 +21,15 @@ export const Podcasts = () => {
     const { onSlideChangeHandler } = useHandleOnSlideChange()
     const VideoIframe = useRef<HTMLIFrameElement>(null!)
     const Videobox = useRef<HTMLDivElement | null>(null)
+
     return (
         <section className={`${nameSlider} px-8`}>
-            <Title title={`${nameSlider}`} href='./podcasts' textLink='see all' />
+            {
+                TitleText == undefined ?
+                    <Title title={`${nameSlider}`} href='./podcasts' textLink='see all' />
+                    :
+                    <Title title={`${TitleText}`} href='' textLink='' />
+            }
             <PodcastsVideo
                 Videobox={Videobox}
                 VideoIframe={VideoIframe}
