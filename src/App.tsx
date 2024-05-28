@@ -20,6 +20,7 @@ import { PricingPlans } from "./Pages/PricingPlans/PricingPlans.tsx";
 import { Cart } from "./Pages/Cart/Cart.tsx";
 import { Artist } from "./Pages/Artist/Artist.tsx";
 import { Event } from "./Pages/Event/Event.tsx";
+import { Privacy } from "./Pages/Privacy/Privacy.tsx";
 export interface divRefType { DivMenuRef: RefObject<HTMLDivElement> | null }
 function App() {
   const DivMenuRef = useRef<HTMLDivElement | null>(null)
@@ -59,6 +60,7 @@ function App() {
             <Route path="cart" element={<Cart />} />
             <Route path="artist" element={<Artist />} />
             <Route path="event" element={<Event />} />
+            <Route path="privacy" element={<Privacy />} />
           </Routes>
         </BrowserRouter>
 
