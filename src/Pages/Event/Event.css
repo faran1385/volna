@@ -1,0 +1,14 @@
+.event-loction__text{
+    font-size: 14px;
+    color: var(--gray-color);
+    will-change: color;
+    transition: color 400ms ease-in-out;
+}
+.event-loction__text--link:hover{
+    color: var(--green-color);
+}
+.event-loction__icon{
+    fill: var(--color);
+    width: 24px;
+    aspect-ratio: 1/1;
+}
