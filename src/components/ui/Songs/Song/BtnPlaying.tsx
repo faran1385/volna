@@ -11,9 +11,9 @@ interface BtnPlayingType {
     href: string
 }
 export const BtnPlaying: React.FC<BtnPlayingType> = ({ img, name, href, musicaian }) => {
+    // const ContextPlaying = useContext(ContextPaly)
     const dispatch = useDispatch()
     const PlayerItems = useSelector((state: AppState) => state.player)
-    // const ContextPlaying = useContext(ContextPaly)
     const hadlerPlay = () => {
         dispatch(
             setPlaying({

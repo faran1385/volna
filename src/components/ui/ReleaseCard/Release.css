@@ -1,0 +1,29 @@
+.release-card{
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+}
+.release-card__header{
+    width: 230px;
+}
+.release-card__header__img{
+    border-radius: 12px;
+}
+.release-card__header__text{
+    font-size: 14px;
+}
+.release-card__header__icon{
+    width: 20px;
+    aspect-ratio: 1/1;
+    fill: var(--green-color);
+}
+@media (width <= 650px) {
+    .release-card{
+        border: none;
+        border-radius: 0;
+        padding: 0;
+    }
+    .release-card__header{
+        width: 100%;
+    }
+}

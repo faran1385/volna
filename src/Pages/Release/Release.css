@@ -1,0 +1,6 @@
+.release__title{
+    font-size: 24px;
+}
+.release-border{
+    border-bottom: 1px solid var(--border-color);
+}
