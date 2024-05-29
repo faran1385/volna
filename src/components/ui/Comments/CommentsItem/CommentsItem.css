@@ -47,6 +47,10 @@ opacity: 1;
 .comments_item__footer__btn:hover .comments_item__footer__like-btn__icon{
     fill: var(--green-color);
 }
+.comments_item__body__replay{
+    background-color: var(--border-color);
+    border-radius: 12px;
+}
 @media (width <= 650px) {
     .comments_item__body{
         font-size: 12px;

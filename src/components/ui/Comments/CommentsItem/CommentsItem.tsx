@@ -7,9 +7,9 @@ export interface CommentsItemType {
     like: number,
     dislike: number,
     srcImg: string,
-    replay?:boolean
+    replay: string | number,
 }
-export const CommentsItem: React.FC<CommentsItemType> = ({ date, dislike, like, name, srcImg, text,replay }) => {
+export const CommentsItem: React.FC<CommentsItemType> = ({ date, dislike, like, name, srcImg, text, replay }) => {
     return (
         <div className={`comments_item card--border p-3 sm:py-5 sm:px-5  my-4 ${replay ? 'ms-7 md:ms-14' : null}`}>
             <div className='comments_item__header comments_item--border flex items-center'>
@@ -19,9 +19,19 @@ export const CommentsItem: React.FC<CommentsItemType> = ({ date, dislike, like, 
                     <span className='comments_item__header__date text-gary'>{date}</span>
                 </div>
             </div>
-            <p className='comments_item__body comments_item--border text-gary'>
-                {text}
-            </p>
+            <div className='comments_item__body comments_item--border'>
+                {
+                    replay ?
+                        <p className='comments_item__body__replay p-4 mb-4'>
+                            {replay.text}
+                        </p>
+                        :
+                        null
+                }
+                <p className=' text-gary'>
+                    {text}
+                </p>
+            </div>
             <div className='comments_item__footer flex sm:flex-row flex-col justify-between gap-y-3'>
                 <div className='flex'>
                     <button className='comments_item__footer__like-btn flex gap-2'>

@@ -23,6 +23,7 @@ import { Event } from "./Pages/Event/Event.tsx";
 import { Privacy } from "./Pages/Privacy/Privacy.tsx";
 import { ForgetPassword } from "./Pages/ForgetPassword/ForgetPassword.tsx";
 import { Relaese } from "./Pages/Release/Relaese.tsx";
+import { Article } from "./Pages/Article/Article.tsx";
 export interface divRefType { DivMenuRef: RefObject<HTMLDivElement> | null }
 function App() {
   const DivMenuRef = useRef<HTMLDivElement | null>(null)
@@ -65,6 +66,7 @@ function App() {
             <Route path="privacy" element={<Privacy />} />
             <Route path="forgetpassword" element={<ForgetPassword />} />
             <Route path="release" element={<Relaese />} />
+            <Route path="article" element={<Article />} />
           </Routes>
         </BrowserRouter>
 

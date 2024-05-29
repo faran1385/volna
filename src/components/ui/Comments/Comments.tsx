@@ -19,17 +19,16 @@ export const Comments: React.FC<CommentsType> = ({ items,name }) => {
             <ul>
                 {
                     items.map((e,index) => {
-                        console.log(e.replay)
                         return (
                             <li key={`comment_${name}_${index+1}`}>
                                 <CommentsItem
-                                    text="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text."
-                                    date='30.08.2021, 17:53'
-                                    name='John Doe'
-                                    dislike={7}
-                                    like={12}
-                                    srcImg='https://volna.volkovdesign.com/img/avatar.svg'
-                                    replay={e.replay === undefined || e.replay == false ? false : e.replay}
+                                    text={e.text}
+                                    date={e.date}
+                                    name={e.name}
+                                    dislike={e.dislike}
+                                    like={e.like}
+                                    srcImg={e.srcImg}
+                                    replay={items[e.replay]}
                                 />
                             </li>
                         )

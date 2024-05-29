@@ -90,6 +90,7 @@ export const Relaese: React.FC = () => {
                             srcImg:"https://volna.volkovdesign.com/img/avatar.svg",
                             dislike:7,
                             like:12,
+                            replay:-1
                         },
                         {
                             text:"There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.",
@@ -98,7 +99,7 @@ export const Relaese: React.FC = () => {
                             srcImg:"https://volna.volkovdesign.com/img/avatar.svg",
                             dislike:7,
                             like:12,
-                            replay:true
+                            replay:0
                         },
                         {
                             text:"There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.",
@@ -107,6 +108,7 @@ export const Relaese: React.FC = () => {
                             srcImg:"https://volna.volkovdesign.com/img/avatar.svg",
                             dislike:7,
                             like:12,
+                            replay:-1
                         },
                     ]} />
                 </div>
