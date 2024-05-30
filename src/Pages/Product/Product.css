@@ -1,0 +1,15 @@
+
+.product__gallery{
+    width: 230px;
+}
+.product__gallery__img{
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 12px;
+}
+
+@media (width <= 768px) {
+    .product__gallery{
+        width: 100%;
+    }
+}

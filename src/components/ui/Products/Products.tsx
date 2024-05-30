@@ -4,8 +4,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { useHandleOnSlideChange } from '../../logic/NavigationButton/useHandleOnSlideChange.ts';
 import { NavigationButtons } from '../NavigationButton/Navigations.tsx';
 import { ProductItems } from './ProductItems/ProductItems.tsx';
-
-export const Products = () => {
+interface ProductsType {
+    titleText?:string
+}
+export const Products : React.FC<ProductsType> = ({titleText}) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const total = 8;
     const nameSlider = 'products';
@@ -14,7 +16,7 @@ export const Products = () => {
     const { onSlideChangeHandler } = useHandleOnSlideChange()
     return (
         <section className='products px-8 '>
-            <Title href='./store' textLink='see all' title='Products' />
+            <Title href='./store' textLink='see all' title={titleText ? titleText : 'Products'} />
             <Swiper
                 speed={1000}
                 slidesPerView={2}

@@ -1,17 +1,19 @@
-import { RefObject, forwardRef } from 'react'
+import React, { RefObject, forwardRef } from 'react'
 import './HeaderLeft.css'
 import { SearchInput } from './../Search/SearchInput'
-export const HeaderLeft = ({ BoxSearch }: {BoxSearch : RefObject<HTMLDivElement> | null}) => {
+import { NavRefType } from '../../../../App'
+interface HesderLeftType {BoxSearch : RefObject<HTMLDivElement> | null}
+export const HeaderLeft : React.FC<HesderLeftType & NavRefType> = ({ BoxSearch , DivNavLink }) => {
     const DownSearch = () => {
         BoxSearch?.current?.classList.add("-top-36")
         BoxSearch?.current?.classList.remove("top-0")
     }
     return (
         <div className='Header-nav__left w-auto Header-nav__left--action   absolute  flex items-centerw'>
-            <nav className='xl:flex hidden Header-nav__links flex items-center me-16'>
-                <a href="#" className='capitalize me-7'>profile</a>
-                <a href="./about" className='capitalize me-7'>about</a>
-                <a href="./contacts" className='capitalize'>contacts</a>
+            <nav ref={DivNavLink} className='xl:flex hidden Header-nav__links flex items-center me-16'>
+                <a id='header_nav-/profile' href="#" className='capitalize me-7' >profile</a>
+                <a id='header_nav-/about' href="./about" className='capitalize me-7' >about</a>
+                <a id='header_nav-/contacts' href="./contacts" className='capitalize' >contacts</a>
             </nav>
             <div ref={BoxSearch} className={`xl:w-auto xl:static Header-nav__left__inputbox--resize    transition-all duration-500 flex justify-between items-center xl:gap-2 fixed z-40 -top-36 `}>
                 <SearchInput placeholder='Artist, track or podcast' />

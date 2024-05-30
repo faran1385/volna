@@ -18,6 +18,11 @@
 #root{
     position: sticky;
 }
+*::selection{
+    background-color: white;
+    color: var(--background);
+    fill: var(--background);
+}
 body {
     background-color: var(--background);
     color: var(--color);

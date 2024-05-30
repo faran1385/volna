@@ -24,9 +24,12 @@ import { Privacy } from "./Pages/Privacy/Privacy.tsx";
 import { ForgetPassword } from "./Pages/ForgetPassword/ForgetPassword.tsx";
 import { Relaese } from "./Pages/Release/Relaese.tsx";
 import { Article } from "./Pages/Article/Article.tsx";
+import { Product } from "./Pages/Product/Product.tsx";
 export interface divRefType { DivMenuRef: RefObject<HTMLDivElement> | null }
+export interface NavRefType { DivNavLink: RefObject<HTMLDivElement> | null }
 function App() {
   const DivMenuRef = useRef<HTMLDivElement | null>(null)
+  const DivNavLink = useRef<HTMLDivElement | null>(null)
   useEffect(() => {
     // console.log(location.pathname)
     if (DivMenuRef && DivMenuRef.current) {
@@ -39,10 +42,19 @@ function App() {
         }
       })
     }
+    if (DivNavLink && DivNavLink.current) {
+      DivNavLink.current.querySelectorAll("a").forEach(e => {
+        e.classList.remove("Header-nav__links--active")
+        if (e.id === `header_nav-${location.pathname}`) {
+          console.log(e)
+          e.classList.add("Header-nav__links--active")
+        }
+      })
+    }
   }, []);
   return (
     <>
-      <Header DivMenuRef={DivMenuRef} />
+      <Header DivMenuRef={DivMenuRef} DivNavLink={DivNavLink}/>
       <Sidebar DivMenuRef={DivMenuRef} />
 
       <Provider store={store}>
@@ -67,6 +79,7 @@ function App() {
             <Route path="forgetpassword" element={<ForgetPassword />} />
             <Route path="release" element={<Relaese />} />
             <Route path="article" element={<Article />} />
+            <Route path="product" element={<Product />} />
           </Routes>
         </BrowserRouter>
 
