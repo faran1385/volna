@@ -1,0 +1,54 @@
+.form__checked__box{
+    width: 22px;
+    aspect-ratio: 1/1;
+    background-color: var(--border-color);
+    border-radius: 6px;
+    
+}
+.form__checked__box__tik{
+    fill: var(--green-color);
+    width: 14px;
+    aspect-ratio: 1/1;
+    transition: scale 300ms ease-in-out;
+}
+.form__card__check input:checked ~ .form__checked__box>.form__checked__box__tik{
+    scale: 0;
+}
+
+.sign-or__items{
+}
+.sign-or__items__link{
+    height: 46px;
+    background-color: aqua;
+    border-radius: 12px;
+    will-change: background-color;
+    transition: background-color 400ms ease-in-out;
+}
+.sign-or__items__link:hover{
+    background-color: var(--gray-color);
+}
+.sign-or__items__link__icon{
+    will-change: fill;
+    transition: fill 400ms ease-in-out;
+    height: 18px;
+    fill: var(--color);
+}
+.sign-or__items__link--fb{
+    background-color: #3b5998;
+}
+.sign-or__items__link--tw{
+    background-color: #55acee;
+}
+.sign-or__items__link--gl{
+    background-color: #df4a32;
+}
+.sign-or__items__link--fb:hover .sign-or__items__link__icon{
+    fill: #3b5998;
+}
+.sign-or__items__link--tw:hover .sign-or__items__link__icon{
+    fill: #55acee;
+}
+.sign-or__items__link--gl:hover .sign-or__items__link__icon{
+    fill: #df4a32;
+}
+

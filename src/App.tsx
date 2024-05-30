@@ -25,6 +25,7 @@ import { ForgetPassword } from "./Pages/ForgetPassword/ForgetPassword.tsx";
 import { Relaese } from "./Pages/Release/Relaese.tsx";
 import { Article } from "./Pages/Article/Article.tsx";
 import { Product } from "./Pages/Product/Product.tsx";
+import { SignUp } from "./Pages/SignUp/SignUp.tsx";
 export interface divRefType { DivMenuRef: RefObject<HTMLDivElement> | null }
 export interface NavRefType { DivNavLink: RefObject<HTMLDivElement> | null }
 function App() {
@@ -80,6 +81,7 @@ function App() {
             <Route path="release" element={<Relaese />} />
             <Route path="article" element={<Article />} />
             <Route path="product" element={<Product />} />
+            <Route path="sign-up" element={<SignUp />} />
           </Routes>
         </BrowserRouter>
 
