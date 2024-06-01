@@ -1,0 +1,17 @@
+.filter{
+    border-block: 1px solid var(--border-color);
+    background-color: var(--background);
+    z-index: 99;
+    height: auto;
+}
+.filter__search.filter__search--width{
+    width: 250px !important;
+}
+.filter__search .Header-nav__searech{
+    width: 100% !important;
+}
+@media (1024px <= width) {
+    .filter{
+        height: 72px !important;
+    }
+}

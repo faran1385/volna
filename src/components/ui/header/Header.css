@@ -1,0 +1,54 @@
+.Header-nav{
+    color: #fff;
+    height: 72px;
+    border-bottom: .1px solid var(--border-color);
+    background-color: var(--background);
+    z-index: 40 !important;
+}
+
+.Header-nav__box--xl{
+    width: 100vw ;
+}
+
+
+@media (800px <= width <= 1280px ){
+    .Header-nav__left__inputbox--resize{
+        /* width: 90% !important; */
+        left: 32px;
+    }
+    .Header-nav__searech{
+        width: 86vw !important;
+    }
+}
+@media (650px <= width <= 800px ){
+    .Header-nav__left__inputbox--resize{
+        /* width: 90% !important; */
+        left: 10px;
+    }
+    .Header-nav__searech{
+        width: 86vw !important;
+    }
+}
+
+@media (0px <= width <= 650px ){
+    .Header-nav__searech input::placeholder{
+        font-size: calc(1vw + 9px)  !important;
+    }
+    .sidebar__header{
+        padding: 20px 10px !important ;
+    }
+    .sidebar__header img{
+        width: calc(1vw + 70px) !important;
+        height: auto !important;
+    }
+    .Header-nav__controler__links {
+        border: none !important;
+        padding-right: 10px !important;
+    }
+    .Header-nav__left__inputbox--resize{
+        left: 10px;
+    }
+    .Header-nav__searech{
+        width: 76vw !important;
+    }
+}

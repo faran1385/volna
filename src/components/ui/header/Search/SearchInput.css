@@ -1,0 +1,26 @@
+
+.Header-nav__searech{
+    width: 320px;
+    background-color: #222227;
+    border-radius: 12px;
+    will-change: width;
+    transition: width 100ms ease-in-out ;
+}
+.Header-nav__searech input{
+    background-color: transparent;
+    outline: none;
+}
+.Header-nav__searech input::placeholder{
+    color: var(--gray-color);
+    text-transform: capitalize;
+}
+.Header-nav__searech svg{
+    fill: var(--color);
+    will-change: fill;
+    transition: fill 400ms ease-in-out;
+    height: 20px !important;
+    width: 20px !important;
+}
+.Header-nav__searech button:hover svg{
+    fill: var(--green-color) !important;
+}

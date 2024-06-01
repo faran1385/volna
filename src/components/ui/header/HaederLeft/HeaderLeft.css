@@ -1,0 +1,28 @@
+.Header-nav__left{
+    position: absolute;
+    left: 316px !important;
+    background-color: var(--background);
+}
+.Header-nav__left__inputbox--resize{
+    min-height: 71px;
+    background-color: var(--background);
+    width: 96%;
+}
+
+.Header-nav__links a{
+    color: var(--gray-color);
+    padding: 5px 10px;
+    font-size: 16px;
+    font-weight: 400;
+}
+.Header-nav__links a:hover{
+    color: var(--green-color);
+    will-change: color;
+    transition: color 400ms ease-in-out;
+}
+
+.Header-nav__controler__links__icon{
+    height: 22px;
+    width: 22px;
+    fill: var(--gray-color) !important;
+}

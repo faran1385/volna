@@ -1,0 +1,14 @@
+.title-card__text{
+    font-size: 30px;
+}
+.title-card .main-link__icon{
+    margin-bottom: 0;
+}
+@media (0px <= width <= 650px){
+    .title-card__text{
+        font-size: calc(1vw + 13px) !important;
+    }
+    .title-card .main-link__text{
+        font-size: calc(1vw + 7px);
+    }
+}

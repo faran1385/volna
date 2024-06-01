@@ -1,0 +1,61 @@
+.tiket__card{
+    scale: .7;
+    width: 380px !important;
+    padding: 25px 25px;
+    background-color: var(--background);
+    border-radius: 12px;
+}
+.tiket__card--active{
+    scale: 1;
+}
+.tiket__card__header__close__icon {
+    fill: var(--gray-color) !important;
+    will-change: fill;
+    transition: fill 400ms ease-in-out;
+}
+.tiket__card__header__close:hover .tiket__card__header__close__icon {
+    fill: var(--green-color) !important;
+}
+
+.tiket__card__body__balance{
+    color: var(--gray-color) !important;
+    font-size: 14px;
+}
+.tiket__card__body__balance b{
+    color: var(--color);
+    font-size: 23px;
+    font-weight: 500;
+}
+.tiket-type{
+    background-color: var(--border-color);
+    border-radius: 12px;
+}
+.tiket-type__btn{
+    border: 1px solid transparent;
+    transition: border 400ms ease-in-out;
+    border-radius: 12px;
+}
+.tiket-type .tiket-type__select:focus .tiket-type__btn {
+    border-color: var(--green-color);
+}
+.tiket-type__select{
+    background-color: var(--border-color);
+    color: var(--color);
+    cursor: pointer;
+}
+.tiket__card__body__more{
+    font-size: 13px;
+}
+.tiket__card__body__type__labal{
+    color: var(--gray-color) !important;
+}
+.tiket__card__footer__submit{
+    background-color: var(--green-color);
+    border-radius: 12px;
+}
+
+@media ( width <= 650px) {
+    .tiket__card{
+        width: 80vw !important;
+    }
+}

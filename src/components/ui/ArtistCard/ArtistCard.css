@@ -1,0 +1,11 @@
+.artist-card__img{
+    width: 200px;
+    aspect-ratio: 1/1;
+    border-radius: 12px;
+}
+.artist-card__texts__title{
+    font-size: 36px;
+}
+.artist-card__texts__name{
+    font-size: 14px;
+}

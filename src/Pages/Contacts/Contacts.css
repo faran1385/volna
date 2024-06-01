@@ -1,0 +1,22 @@
+.contacts__body__into__header{
+    font-size: 30px;
+}
+.contacts__body__into__text{
+    color: var(--gray-color);
+}
+.contacts__body__into__links span,.contacts__body__into__links address{
+    color: var(--color);
+    will-change: color;
+    transition: color 400ms ease-in-out;
+}
+.contacts__body__into__links:hover span,.contacts__body__into__links:hover address{
+    color: var(--green-color);
+}
+.contacts__body__into__links address{
+    font-style: normal;
+}
+@media (width <= 650px) {
+    .contacts__body__into__links , .contacts__body__into__text{
+        font-size: calc(1vw + 9px);
+    }
+}

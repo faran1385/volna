@@ -1,0 +1,117 @@
+.swiper-slide{
+    height: unset;    
+}
+.item__img {
+    object-fit: cover;
+    z-index: -1;
+}
+
+.item::before {
+    content: "";
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+    z-index: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px
+}
+
+.item__title {
+    font-size: 2.5rem;
+}
+
+.item__subtitle {
+    color: var(--gray-color);
+    line-height: 26px;
+}
+
+.item__button {
+    font-size: 14px;
+    padding: 0 25px;
+    min-width: 160px;
+    height: 50px;
+    will-change: auto;
+    transition: all ease .5s;
+}
+
+.item__button--toGreen:hover {
+    background: var(--green-color);
+    fill: white;
+}
+
+.item__button--toBlack:hover {
+    background: var(--black-color);
+    fill: var(--green-color);
+    color: var(--green-color);
+}
+
+.item__button--text:hover {
+    color: var(--green-color);
+    fill: var(--green-color);
+}
+
+.item__button--black {
+    background: var(--black-color);
+    fill: var(--green-color);
+}
+
+.item__button--green {
+    background: var(--green-color);
+    fill: var(--black-color);
+}
+
+.slider {
+    height: 28.75rem;
+}
+
+.item__content-container {
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width:768px) {
+    .item__content-container {
+        padding: 60px 20px;
+    }
+
+    .item__title {
+        font-size: calc(1rem + 1.5vw);
+    }
+
+    .item__subtitle {
+        font-size: calc(.6rem + 1vw);
+    }
+
+    .item__button {
+        min-width: 90px;
+        font-size: 10px;
+    }
+
+    .slider {
+        height: auto !important;
+    }
+}
+
+@media (min-width:1028px) {
+    .item__content-container {
+        padding: 60px;
+        padding-right: 33.3%;
+    }
+}
+
+@media (max-width:1028px) and (min-width:768px) {
+    .item__content-container {
+        padding: 30px;
+        padding-right: 25%;
+    }
+
+    .item__title {
+        font-size: 36px;
+    }
+}
+
+.item__button__icon {
+    width: 28px;
+    height: 28px;
+    fill: inherit;
+}

@@ -1,0 +1,14 @@
+
+.no-page__card{
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    width: clamp(250px, 50% , 100vw) !important;
+}
+.no-page__card__title{
+    font-size: calc(1vw + 60px) !important;
+
+}
+.no-page__card__text{
+    font-size: 14px;
+    color: var(--gray-color);
+}

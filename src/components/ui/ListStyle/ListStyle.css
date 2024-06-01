@@ -1,0 +1,17 @@
+.list-style__ul__li{
+    position: relative;
+    padding-block: 5px;
+    padding-inline-start: 20px;
+    color: var(--gray-color);
+}
+.list-style__ul__li::before{
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    content: "";
+    background-color: var(--green-color);
+    border-radius: 50%;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}

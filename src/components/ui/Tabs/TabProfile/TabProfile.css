@@ -1,0 +1,45 @@
+.tabs__profile__status {
+    border: 1px solid var(--border-color);
+}
+
+.tabs__profile__status__title {
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.tabs__profile__status__modal-trigger {
+    font-size: 11px;
+    border-bottom: 2px dashed var(--green-color);
+    will-change: color;
+    font-weight: 200;
+    transition: color ease-in .3s;
+}
+
+.tabs__profile__status__modal-trigger:hover {
+    color: var(--green-color);
+}
+
+.tabs__profile__status__price {
+    font-size: 20px;
+    line-height: 1;
+    color: var(--gray-color);
+    font-weight: 300;
+}
+
+.tabs__profile__status__price__time {
+    color: #c0c0c088;
+    font-size: 14px;
+}
+
+.tabs__profile__status__listened-minutes {
+    color: var(--gray-color);
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.tabs__profile__status__button {
+    color: var(--green-color);
+}
+.tabs__profile__status__input {
+
+}

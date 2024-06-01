@@ -1,0 +1,24 @@
+.list-privacy ol{
+    padding-top: 10px;
+    padding-left: 20px;
+    counter-reset: li;
+    list-style: none;
+}
+.list-privacy li{
+    padding-top: 10px;
+    color: var(--gray-color);
+}
+.list-privacy__title{
+    margin-top: 10px;
+    color: var(--color) !important;
+}
+
+.list-privacy li::before{
+    padding-right: 10px;
+    color: var(--gray-color);
+    counter-increment: li;
+    content: counters(li,".") ".";
+}
+.list-privacy>ol{
+    padding: 0;
+}

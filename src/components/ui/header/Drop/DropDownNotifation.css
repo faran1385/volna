@@ -1,0 +1,23 @@
+
+.Header-nav__controler__links--dropdown__body__time{
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--gray-color);
+}
+.Header-nav__controler__links--dropdown__body__icon{
+    margin-right: 6px;
+    width: 18px;
+    height: auto;
+}
+.Header-nav__controler__links--dropdown__body__text{
+    color: var(--color);
+    font-size: 14px ;
+}
+.Header-nav__controler__links--dropdown__body__link{
+    text-decoration: underline;
+    padding: 2px 0;
+    
+}
+.Header-nav__controler__links--dropdown__body__link:hover{
+    text-decoration:none;
+}

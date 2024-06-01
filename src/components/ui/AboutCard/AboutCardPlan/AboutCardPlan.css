@@ -1,0 +1,72 @@
+.about-card-plan{
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+}
+.about-card-plan__header{
+    border-bottom: 1px solid var(--border-color);
+}
+.about-card-plan__header__title{
+    font-size: 18px;
+}
+.about-card-plan__header__title--red{
+    color: #eb5757;
+}
+.about-card-plan__header__title--purple{
+    color: #8051d4;
+}
+.about-card-plan__header__title--green{
+    color: var(--green-color);
+}
+.about-card-plan__header__price{
+    font-size: 32px;
+}
+.about-card-plan__header__month{
+    font-size: 16px !important;
+}
+.about-card-plan__body__items--disablad{
+    color: var(--gray-color);
+}
+.about-card-plan__body__items__icon{
+    width: 20px;
+    aspect-ratio: 1/1;
+}
+.about-card-plan__body__items__icon--green{
+    fill: var(--green-color);
+}
+.about-card-plan__body__items__icon--red{
+    fill: #eb5757;
+}
+.about-card-plan__body__items__icon--purple{
+    fill: #8051d4;
+}
+.about-card-plan__body__items__icon--disablad{
+    fill: var(--gray-color);
+}
+
+.about-card-plan__footer{
+    height: 50px;
+    border-radius: 12px;
+    background-color: var(--border-color);
+    transition: all 400ms ease-in-out;
+}
+.about-card-plan__footer:hover{
+    color: var(--color);
+}
+.about-card-plan__footer--green{
+    color: var(--green-color);
+}
+.about-card-plan__footer--green:hover{
+    background-color: var(--green-color);
+}
+.about-card-plan__footer--red{
+    color: #eb5757;
+}
+.about-card-plan__footer--red:hover{
+    background-color: #eb5757;
+}
+.about-card-plan__footer--purple{
+    color: #8051d4;
+}
+.about-card-plan__footer--purple:hover{
+    background-color: #8051d4;
+}

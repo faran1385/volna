@@ -1,0 +1,84 @@
+.event__date {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.event {
+    height: 350px;
+}
+
+
+@media (max-width:768px) {
+    .event {
+        height: 320px !important;
+    }
+}
+
+
+.event__time {
+    color: var(--gray-color);
+    font-size: 14px;
+}
+
+.event__image{
+    object-fit: cover;
+
+}
+
+.event::before {
+    content: "";
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+    position: absolute;
+    inset: 0;
+    will-change: auto;
+    transition: all ease-in .3s;
+    border-radius: .75rem;
+}
+
+.event:hover:before {
+    opacity: .8;
+}
+
+.event__location {
+    color: var(--gray-color);
+}
+
+.event__button {
+    min-width: 130px;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.event__button--available{
+    background-color: var(--black-color);
+    will-change: background;
+    transition: background ease-in .3s;
+    fill: var(--green-color);
+}
+
+.event__button--unavailable{
+    background-color: var(--green-color);
+}
+
+.event__button--available:hover {
+    fill: white;
+    background-color: var(--green-color);
+}
+
+.event__button__svg {
+    fill: inherit;
+    width: 18px;
+    will-change: fill;
+    transition: fill ease-in .3s;
+}
+
+.event__title {
+    will-change: color;
+    transition: color ease-in .3s;
+    text-transform: capitalize;
+}
+
+.event__title:hover {
+    color: var(--green-color);
+}
