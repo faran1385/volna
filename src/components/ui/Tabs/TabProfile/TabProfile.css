@@ -1,3 +1,17 @@
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #222227 !important;
+    border-radius: 2rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--green-color);
+    border-radius: 9px;
+}
+
 .tabs__profile__status {
     border: 1px solid var(--border-color);
 }
@@ -40,6 +54,43 @@
 .tabs__profile__status__button {
     color: var(--green-color);
 }
-.tabs__profile__status__input {
 
+.tabs__profile__container {
+    border: 1px solid var(--border-color);
+}
+
+.tabs__profile__container__header {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tabs__profile__container__header__title {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.tabs__profile__container__header__badge {
+    background: #25a56a;
+    font-size: 10px;
+    border-radius: .2rem;
+}
+
+.tabs__profile__container__header__history {
+    fill: var(--gray-color);
+    will-change: fill;
+    transition: fill ease-in .3s;
+}
+
+.tabs__profile__container__header__history:hover {
+    fill: var(--green-color);
+}
+
+.tabs__profile__container__header__view-all {
+    font-size: 13px;
+    color: var(--gray-color);
+    will-change: color;
+    transition: color ease-in .3s;
+}
+
+.tabs__profile__container__header__view-all:hover {
+    color: var(--green-color);
 }

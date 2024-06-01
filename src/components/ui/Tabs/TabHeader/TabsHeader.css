@@ -3,6 +3,20 @@
     height: 4rem;
 }
 
+.tabs__header__list__icon {
+    fill: var(--gray-color);
+    will-change: fill;
+    transition: fill ease-in .3s;
+}
+
+.tabs__header__list__icon:hover {
+    fill: var(--green-color);
+}
+
+.tabs__header__list__icon--active{
+    fill: var(--green-color);
+}
+
 .tabs__header__name {
     font-weight: 300;
     font-size: 15px;
@@ -21,7 +35,7 @@
     color: var(--gray-color);
 }
 
-.tabs__header__list__link:hover{
+.tabs__header__list__link:hover {
     color: white;
 }
 
