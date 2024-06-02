@@ -1,21 +1,33 @@
 import "./Notification.css"
 import React from "react";
+import {notificationType, subtitleType, textType} from "../NotificationModal/NotificationModal.tsx";
 
 interface NotificationProps {
     title: string,
     link: string,
     type: "success" | "failed" | "info" | "gift",
     time: number,
-    href: string,
-    hasBorder: boolean
+    hasBorder: boolean,
+    openModal: (modal: string, parent: string, backdrop: string) => void,
+    texts: textType[],
+    subtitles: subtitleType[],
+    setModal: React.Dispatch<React.SetStateAction<notificationType>>
 }
 
 export const Notification: React.FC<NotificationProps> = (T) => {
 
-    const {href, hasBorder, time, title, type, link} = T
+    const {hasBorder, setModal, subtitles, texts, openModal, time, title, type, link} = T
 
     const passedTime = `${Math.floor(time / 24) !== 0 ? Math.floor(time / 24) : ""} ${Math.floor(time / 24) !== 0 ? "Day" : ""} ${Math.floor(time / 24) === 0 || Math.floor(time % 24) === 0 ? "" : "and "} ${time % 24 !== 0 ? Math.floor(time % 24) : ""} ${time % 24 !== 0 ? "Hours" : ""} ago`
-
+    const linkCLickHandler = () => {
+        setModal({
+            title: link.concat(` ${title}`),
+            type,
+            subtitles,
+            texts,
+        })
+        openModal('.notification-modal', '.notification-modal-parent', '.notification-modal__backdrop')
+    }
     return <>
         <div className={"w-full"}>
             <div className={"py-2"} style={{borderBottom: hasBorder ? '1px solid var(--border-color)' : ""}}>
@@ -47,7 +59,7 @@ export const Notification: React.FC<NotificationProps> = (T) => {
                         </svg>
                     ) : ""}
                     <p className={"notification__text"}>
-                        <a className={"notification__link"} href={href}>{link}</a>
+                        <button className={"notification__link"} onClick={linkCLickHandler}>{link}</button>
                         {title}
                     </p>
                 </div>
