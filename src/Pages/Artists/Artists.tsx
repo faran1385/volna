@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import './../ResponsivePages.css'
 import { HeadPages } from '../../components/ui/HeadPages/HeadPages'
 import { Filter } from '../../components/ui/Filter/Filter'

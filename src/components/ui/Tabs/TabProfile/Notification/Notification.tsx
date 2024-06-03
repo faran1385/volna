@@ -1,33 +1,39 @@
 import "./Notification.css"
 import React from "react";
-import {notificationType, subtitleType, textType} from "../NotificationModal/NotificationModal.tsx";
+import {subtitleType, textType} from "../../NotificationModal/NotificationModal.tsx";
+import {useAppDispatch} from "../../../../../app/store.ts";
+import {SET_NOTIFICATION} from "../../../../../app/Profile/NotificationModal/NotificationModal.ts";
+import {useModalActions} from "../../../../logic/useModalActions/useModalActions.ts";
 
 interface NotificationProps {
     title: string,
     link: string,
-    type: "success" | "failed" | "info" | "gift",
+    type: "success" | "failed" | "info" | "gift" | "rank",
     time: number,
     hasBorder: boolean,
-    openModal: (modal: string, parent: string, backdrop: string) => void,
     texts: textType[],
     subtitles: subtitleType[],
-    setModal: React.Dispatch<React.SetStateAction<notificationType>>
 }
 
 export const Notification: React.FC<NotificationProps> = (T) => {
 
-    const {hasBorder, setModal, subtitles, texts, openModal, time, title, type, link} = T
+    const dispatch = useAppDispatch()
+
+    const {hasBorder, subtitles, texts, time, title, type, link} = T
+
+    const {openModal} = useModalActions()
 
     const passedTime = `${Math.floor(time / 24) !== 0 ? Math.floor(time / 24) : ""} ${Math.floor(time / 24) !== 0 ? "Day" : ""} ${Math.floor(time / 24) === 0 || Math.floor(time % 24) === 0 ? "" : "and "} ${time % 24 !== 0 ? Math.floor(time % 24) : ""} ${time % 24 !== 0 ? "Hours" : ""} ago`
     const linkCLickHandler = () => {
-        setModal({
+        dispatch(SET_NOTIFICATION({
             title: link.concat(` ${title}`),
             type,
             subtitles,
             texts,
-        })
+        }))
         openModal('.notification-modal', '.notification-modal-parent', '.notification-modal__backdrop')
     }
+
     return <>
         <div className={"w-full"}>
             <div className={"py-2"} style={{borderBottom: hasBorder ? '1px solid var(--border-color)' : ""}}>
@@ -57,7 +63,7 @@ export const Notification: React.FC<NotificationProps> = (T) => {
                                 d="M18,7h-.35A3.45,3.45,0,0,0,18,5.5a3.49,3.49,0,0,0-6-2.44A3.49,3.49,0,0,0,6,5.5,3.45,3.45,0,0,0,6.35,7H6a3,3,0,0,0-3,3v2a1,1,0,0,0,1,1H5v6a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V13h1a1,1,0,0,0,1-1V10A3,3,0,0,0,18,7ZM11,20H8a1,1,0,0,1-1-1V13h4Zm0-9H5V10A1,1,0,0,1,6,9h5Zm0-4H9.5A1.5,1.5,0,1,1,11,5.5Zm2-1.5A1.5,1.5,0,1,1,14.5,7H13ZM17,19a1,1,0,0,1-1,1H13V13h4Zm2-8H13V9h5a1,1,0,0,1,1,1Z">
                             </path>
                         </svg>
-                    ) : ""}
+                    ) : ''}
                     <p className={"notification__text"}>
                         <button className={"notification__link"} onClick={linkCLickHandler}>{link}</button>
                         {title}

@@ -2,19 +2,16 @@ import "./balanceModal.css"
 import {createPortal} from "react-dom";
 import React from "react";
 import "../Modal/Modal.css"
+import {useModalActions} from "../../../../logic/useModalActions/useModalActions.ts";
 
-interface BalanceModalProps {
-    closeModal: (modal: string, parent: string, backdrop: string) => void,
-    modalBlur: (e: React.MouseEvent<HTMLDivElement, MouseEvent>, modal: string, parent: string, backdrop: string) => void,
-}
 
-export const BalanceModal: React.FC<BalanceModalProps> = (T) => {
-    const {closeModal, modalBlur} = T
+export const BalanceModal: React.FC = () => {
+    const {closeModal, modalBlur} = useModalActions()
 
 
     return <>
         {createPortal(
-            <>
+            <div>
                 <div className={'tab-modal__backdrop balance-modal__backdrop'}></div>
                 <div aria-hidden="true"
                      onClick={(e) => modalBlur(e, '.balance-modal', '.balance-modal-parent', '.balance-modal__backdrop')}
@@ -91,7 +88,7 @@ export const BalanceModal: React.FC<BalanceModalProps> = (T) => {
                         </div>
                     </div>
                 </div>
-            </>,
+            </div>,
             document.body
         )}
 

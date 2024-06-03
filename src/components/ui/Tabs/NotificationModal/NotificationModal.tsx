@@ -1,11 +1,10 @@
 import React from "react";
 import "./NotificationModal.css"
 import {createPortal} from "react-dom";
-import "../Modal/Modal.css"
+import "../TabProfile/Modal/Modal.css"
+import {useModalActions} from "../../../logic/useModalActions/useModalActions.ts";
 
 interface NotificationModalProps {
-    closeModal: (modal: string, parent: string, backdrop: string) => void,
-    modalBlur: (e: React.MouseEvent<HTMLDivElement, MouseEvent>, modal: string, parent: string, backdrop: string) => void,
     notification: notificationType
 }
 
@@ -13,7 +12,7 @@ export type notificationType = {
     title: string,
     subtitles: subtitleType[],
     texts: textType[],
-    type: "success" | "failed" | "info" | "gift"
+    type: "success" | "failed" | "info" | "gift" | 'rank'
 }
 
 export type textType = {
@@ -29,11 +28,12 @@ export type subtitleType = {
 }
 
 export const NotificationModal: React.FC<NotificationModalProps> = (T) => {
-    const {closeModal, notification, modalBlur} = T
+    const {closeModal, modalBlur} = useModalActions()
+    const {notification} = T
     const {subtitles, texts, type, title} = notification
     return <>
         {createPortal(
-            <>
+            <div>
                 <div className={'notification-modal__backdrop tab-modal__backdrop'}></div>
                 <div aria-hidden="true"
                      onClick={(e) => modalBlur(e, '.notification-modal', '.notification-modal-parent', '.notification-modal__backdrop')}
@@ -107,14 +107,21 @@ export const NotificationModal: React.FC<NotificationModalProps> = (T) => {
                                                     d="M18,7h-.35A3.45,3.45,0,0,0,18,5.5a3.49,3.49,0,0,0-6-2.44A3.49,3.49,0,0,0,6,5.5,3.45,3.45,0,0,0,6.35,7H6a3,3,0,0,0-3,3v2a1,1,0,0,0,1,1H5v6a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V13h1a1,1,0,0,0,1-1V10A3,3,0,0,0,18,7ZM11,20H8a1,1,0,0,1-1-1V13h4Zm0-9H5V10A1,1,0,0,1,6,9h5Zm0-4H9.5A1.5,1.5,0,1,1,11,5.5Zm2-1.5A1.5,1.5,0,1,1,14.5,7H13ZM17,19a1,1,0,0,1-1,1H13V13h4Zm2-8H13V9h5a1,1,0,0,1,1,1Z">
                                                 </path>
                                             </svg>
-                                        ) : ""}
+                                        ) : (
+                                            <svg className={"opacity-35"} width={'90%'} xmlns="http://www.w3.org/2000/svg"
+                                                 fill={"var(--gray-color)"}
+                                                 viewBox="0 0 24 24">
+                                                <path
+                                                    d="M13,16H7a1,1,0,0,0,0,2h6a1,1,0,0,0,0-2ZM9,10h2a1,1,0,0,0,0-2H9a1,1,0,0,0,0,2Zm12,2H18V3a1,1,0,0,0-.5-.87,1,1,0,0,0-1,0l-3,1.72-3-1.72a1,1,0,0,0-1,0l-3,1.72-3-1.72a1,1,0,0,0-1,0A1,1,0,0,0,2,3V19a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V13A1,1,0,0,0,21,12ZM5,20a1,1,0,0,1-1-1V4.73L6,5.87a1.08,1.08,0,0,0,1,0l3-1.72,3,1.72a1.08,1.08,0,0,0,1,0l2-1.14V19a3,3,0,0,0,.18,1Zm15-1a1,1,0,0,1-2,0V14h2Zm-7-7H7a1,1,0,0,0,0,2h6a1,1,0,0,0,0-2Z"></path>
+                                            </svg>
+                                        )}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </>,
+            </div>,
             document.body
         )}
     </>

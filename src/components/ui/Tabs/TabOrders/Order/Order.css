@@ -1,0 +1,55 @@
+.order__number {
+    font-weight: 350;
+    border-bottom: 2px dashed var(--green-color);
+    font-size: 14px;
+    will-change: color;
+    transition: color ease-in .3s;
+}
+
+.order__number:hover {
+    color: var(--green-color);
+}
+
+.order__name {
+    will-change: color;
+    transition: color ease-in .3s;
+    font-weight: 350;
+    text-transform: capitalize;
+}
+
+.order__name:hover {
+    color: var(--green-color);
+}
+
+.order__date {
+    font-size: 14px;
+    color: var(--gray-color);
+}
+
+.order__quantity {
+    color: var(--gray-color);
+}
+
+.order__price {
+    color: var(--gray-color);
+    font-weight: bold;
+}
+
+.order__status__text {
+    font-weight: 300;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+.order__status--in-way {
+    color: var(--gray-color);
+    fill: var(--gray-color);
+}
+.order__status--canceled {
+    color: #eb5757;
+    fill: #eb5757;
+}
+.order__status--delivered {
+    color: var(--green-color);
+    fill: var(--green-color);
+}

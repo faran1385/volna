@@ -1,115 +1,19 @@
 import "./TabProfile.css"
-import React, {useRef, useState} from "react";
 import {Notification} from "./Notification/Notification.tsx";
 import {Song} from "../../Songs/Song/Song.tsx";
 import {BalanceModal} from "./BalanceModal/BalanceModal.tsx";
-import {gsap} from "gsap";
-import {NotificationModal, notificationType} from "./NotificationModal/NotificationModal.tsx";
+import {NotificationModal} from "../NotificationModal/NotificationModal.tsx";
+import {useModalActions} from "../../../logic/useModalActions/useModalActions.ts";
+import {useInputHandler} from "../../../logic/useInputHandler/useInputHandler.ts";
+import {useAppSelector} from "../../../../app/store.ts";
 
 export const TabProfile = () => {
-    const [notificationModal, setNotificationModal] = useState<notificationType>({
-        texts: [],
-        subtitles: [],
-        title: "",
-        type: 'info'
-    })
-    const maskedValue = useRef('__-__-__-__')
-    const inputHandler = (e: React.FormEvent<HTMLInputElement>) => {
-        // initializing
-        const input = e.target as HTMLInputElement;
-        const digits = input.value.replace(/\D/g, '');
-        let caretPos = input.selectionStart as number;
 
-        if (digits.length <= 8 && !isNaN(+((e.nativeEvent as any).data))) {
+    const {notification} = useAppSelector(state => state.notification)
 
-            //checking if adding or removing on - char to set caret position correctly
-            let isOnDash = false;
+    const {inputHandler} = useInputHandler()
 
-            //converting to array
-            const maskedArray = maskedValue.current.split('')
-            if ((e.nativeEvent as any).inputType === "insertText") {
-                //replacing _ with data
-                if (maskedArray[(input.selectionStart as number) - 1] === "-") {
-                    isOnDash = true
-                    maskedArray[(input.selectionStart as number)] = (e.nativeEvent as any).data
-                } else {
-                    maskedArray[(input.selectionStart as number) - 1] = (e.nativeEvent as any).data
-                }
-            } else if ((e.nativeEvent as any).inputType === "deleteContentBackward") {
-                //replacing data with _
-                if (maskedArray[(input.selectionStart as number)] === "-") {
-                    maskedArray[(input.selectionStart as number) - 1] = '_'
-                    isOnDash = true
-                } else {
-                    maskedArray[(input.selectionStart as number)] = '_'
-                }
-            }
-            // positioning based on inputType and isOnDash
-            if ((e.nativeEvent as any).inputType === "insertText" && isOnDash) {
-                caretPos += 1;
-            } else if ((e.nativeEvent as any).inputType === "deleteContentBackward" && isOnDash) {
-                caretPos -= 1;
-            }
-
-            //set values
-            input.value = maskedArray.join('');
-            maskedValue.current = maskedArray.join('');
-        } else {
-            caretPos -= 1;
-            input.value = maskedValue.current;
-        }
-
-        input.setSelectionRange(caretPos, caretPos)
-    }
-
-    // opens modal
-    const openModal = (modal: string, parent: string, backdrop: string) => {
-        gsap.timeline().to(backdrop, {
-            opacity: 1,
-            duration: .7,
-            zIndex: 41
-        }).to(parent, {
-            opacity: 1,
-            duration: .7,
-            zIndex: 50
-        }, '<').to(modal, {
-            scale: 1,
-            duration: .7,
-            onComplete: () => {
-                gsap.set(document.body, {
-                    overflowY: "hidden"
-                })
-            }
-        }, '<')
-    }
-
-    //closes modal
-    const closeModal = (modal: string, parent: string, backdrop: string) => {
-        gsap.timeline().to(backdrop, {
-            opacity: 0,
-            duration: .7,
-            zIndex: -1
-        }).to(parent, {
-            opacity: 0,
-            duration: .7,
-            zIndex: -1
-        }, '<').to(modal, {
-            scale: .8,
-            duration: .7,
-            onComplete: () => {
-                gsap.set(document.body, {
-                    overflowY: "auto"
-                })
-            }
-        }, '<')
-    }
-
-    const modalBlur = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, modal: string, parent: string, backdrop: string) => {
-        const modalParent = document.querySelector(parent) as HTMLDivElement
-        if (e.target === modalParent) {
-            closeModal(modal, parent, backdrop)
-        }
-    }
+    const {openModal} = useModalActions()
 
     return <>
         <div className={"mt-8"}>
@@ -218,37 +122,37 @@ export const TabProfile = () => {
                                 }, {
                                     key: "Payment method:",
                                     value: 'Paypal'
-                                }]} setModal={setNotificationModal} hasBorder
+                                }]} hasBorder
                                 link={"Payment #51"} time={4} type={"success"}
-                                title={" was successful!"} openModal={openModal}/>
+                                title={" was successful!"}/>
                             <Notification
                                 texts={[{text: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."}]}
-                                subtitles={[]} setModal={setNotificationModal} hasBorder
+                                subtitles={[]} hasBorder
                                 link={"Payment #51"} time={4} type={"failed"}
-                                title={" was successful!"} openModal={openModal}/>
+                                title={" was successful!"}/>
                             <Notification
                                 texts={[{text: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."}]}
-                                subtitles={[]} setModal={setNotificationModal} hasBorder
+                                subtitles={[]} hasBorder
                                 link={"Payment #51"} time={4} type={"info"}
-                                title={" was successful!"} openModal={openModal}/>
+                                title={" was successful!"}/>
                             <Notification
                                 texts={[{text: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."}]}
-                                subtitles={[]} setModal={setNotificationModal} hasBorder
+                                subtitles={[]} hasBorder
                                 link={"You have received a gift!"} time={4} type={"gift"}
-                                title={""} openModal={openModal}/>
+                                title={""}/>
                             <Notification
                                 texts={[{text: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."}]}
-                                subtitles={[]} setModal={setNotificationModal} hasBorder
+                                subtitles={[]} hasBorder
                                 link={"You have received a gift!"} time={4} type={"gift"}
-                                title={""} openModal={openModal}/>
+                                title={""}/>
                             <Notification
                                 texts={[
                                     {text: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."},
                                     {text: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."}
                                 ]}
-                                subtitles={[]} setModal={setNotificationModal} hasBorder
+                                subtitles={[]} hasBorder
                                 link={"You have received a gift!"} time={4} type={"gift"}
-                                title={""} openModal={openModal}/>
+                                title={""}/>
                         </div>
                     </div>
                 </div>
@@ -301,7 +205,7 @@ export const TabProfile = () => {
                 </div>
             </div>
         </div>
-        <BalanceModal modalBlur={modalBlur} closeModal={closeModal}/>
-        <NotificationModal modalBlur={modalBlur} notification={notificationModal} closeModal={closeModal}/>
+        <BalanceModal/>
+        <NotificationModal notification={notification}/>
     </>
 }

@@ -1,0 +1,25 @@
+.order__title--number {
+    font-size: 14px;
+    color: var(--gray-color);
+
+}
+
+.order__title {
+    color: var(--gray-color);
+    font-weight: 350;
+    font-size: 14px;
+    will-change: fill, color;
+    transition: fill, color .3s ease-in;
+    fill: var(--gray-color);
+    width: fit-content;
+}
+
+.order__title--active {
+    fill: var(--green-color);
+    color: white;
+}
+
+.order__title:hover {
+    fill: var(--green-color);
+    color: white;
+}
