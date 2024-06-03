@@ -1,17 +1,3 @@
-::-webkit-scrollbar {
-    width: 6px;
-}
-
-::-webkit-scrollbar-track {
-    background: #222227 !important;
-    border-radius: 2rem;
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--green-color);
-    border-radius: 9px;
-}
-
 .tabs__profile__status {
     border: 1px solid var(--border-color);
 }

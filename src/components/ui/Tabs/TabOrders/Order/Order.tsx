@@ -42,7 +42,7 @@ export const Order: React.FC<OrderProps> = (T) => {
             gridTemplateColumns: 'repeat(15, minmax(0, 1fr))',
             borderBottom: hasBorder ? "1px solid var(--border-color)" : ''
         }}
-        className={"grid py-4 items-center"}>
+        className={"grid py-4 items-center w-full min-w-[60rem]"}>
         <div className={"col-start-1 col-end-2 flex items-center"}>
             <button onClick={rankClickHandler} className={"order__number"}>{rank}</button>
         </div>

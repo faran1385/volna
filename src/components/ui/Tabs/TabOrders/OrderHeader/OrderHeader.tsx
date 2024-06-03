@@ -3,7 +3,7 @@ import "./OrderHeader.css"
 export const OrderHeader = () => {
     return <div
         style={{gridTemplateColumns: 'repeat(15, minmax(0, 1fr))', borderBottom: "1px solid var(--border-color)"}}
-        className={"grid py-5 items-center"}>
+        className={"grid py-5  w-full min-w-[60rem] items-center"}>
         <div className={"col-start-1 col-end-2 flex items-center"}>
             <span className={"order__title--number"}>№</span>
         </div>

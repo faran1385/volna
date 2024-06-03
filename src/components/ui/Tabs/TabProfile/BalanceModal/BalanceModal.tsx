@@ -45,7 +45,7 @@ export const BalanceModal: React.FC = () => {
                                 <span className={"tab-modal__balance-text"}>Choose amount:</span>
                                 <div className={"w-full relative mt-2"}>
                                     <select
-                                        className={"flex w-full px-4 rounded-lg balance-modal__dropdown items-center justify-between"}>
+                                        className={"flex w-full px-4 rounded-lg input dropdown items-center justify-between"}>
                                         <option>49$</option>
                                         <option>99$</option>
                                         <option>169$</option>

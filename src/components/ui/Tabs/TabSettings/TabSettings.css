@@ -1,0 +1,18 @@
+.settings__form__button {
+    height: 50px;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 350;
+    min-width: 180px;
+    will-change: background-color;
+    background-color: var(--green-color);
+    transition: background-color ease-in .4s;
+}
+
+.settings__form__button:hover {
+    background-color: var(--black-color);
+}
+
+.settings__form {
+    border: 1px solid var(--border-color);
+}

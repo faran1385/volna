@@ -1,0 +1,44 @@
+::-webkit-scrollbar {
+    width: 6px;
+    height: 4px;
+}
+
+
+::-webkit-scrollbar-track {
+    background: #222227 !important;
+    border-radius: 2rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--green-color);
+    border-radius: 9px;
+}
+
+.dropdown {
+    background: url("https://volna.volkovdesign.com/img/arrow2.svg") no-repeat center right 20px;
+    background-size: 18px auto;
+}
+
+.input {
+    will-change: border;
+    border: 1px solid transparent;
+    outline: none;
+    transition: ease-in .2s border;
+    height: 44px;
+    background-color: #222227;
+}
+
+.dropdown {
+    -moz-appearance: none; /* Firefox */
+    -webkit-appearance: none; /* Safari and Chrome */
+    appearance: none;
+}
+
+.input__label {
+    font-size: 14px;
+    color: var(--gray-color);
+}
+
+.input:focus {
+    border-color: var(--green-color);
+}

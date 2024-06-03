@@ -1,119 +1,119 @@
-import { useRef, useState } from 'react'
+import {useRef, useState} from 'react'
 import './../ResponsivePages.css'
-import { HeadPages } from '../../components/ui/HeadPages/HeadPages'
-import { Filter } from '../../components/ui/Filter/Filter'
-import { ArtistsItems } from '../../components/ui/Artists/ArtistsItems/ArtistsItems'
-import { Title } from '../../components/ui/Title/Title.tsx'
-import { useHandleOnSlideChange } from '../../components/logic/NavigationButton/useHandleOnSlideChange'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Event } from '../../components/ui/Events/Event/Event'
-import { NavigationButtons } from '../../components/ui/NavigationButton/Navigations'
-import { BtnGreen } from '../../components/ui/BtnGreen/BtnGreen.tsx'
+import {HeadPages} from '../../components/ui/HeadPages/HeadPages'
+import {Filter} from '../../components/ui/Filter/Filter'
+import {ArtistsItems} from '../../components/ui/Artists/ArtistsItems/ArtistsItems'
+import {Title} from '../../components/ui/Title/Title.tsx'
+import {useHandleOnSlideChange} from '../../components/logic/NavigationButton/useHandleOnSlideChange'
+import {Swiper, SwiperSlide} from 'swiper/react'
+import {Event} from '../../components/ui/Events/Event/Event'
+import {NavigationButtons} from '../../components/ui/NavigationButton/Navigations'
+import {BtnGreen} from '../../components/ui/BtnGreen/BtnGreen.tsx'
 // LOCASH
 
 // NLE Choppa
-
+const SomeArtits = [
+    {
+        name: "BENEE Featuring",
+        href: "#",
+        img: "1"
+    },
+    {
+        name: "Jason Aldean",
+        href: "#",
+        img: "2"
+    },
+    {
+        name: "John Doe",
+        href: "#",
+        img: "3"
+    },
+    {
+        name: "Megan Thee",
+        href: "#",
+        img: "4"
+    },
+    {
+        name: "Stefflon Don",
+        href: "#",
+        img: "5"
+    },
+    {
+        name: "Juice WRLD",
+        href: "#",
+        img: "6"
+    },
+    {
+        name: "LOCASH",
+        href: "#",
+        img: "7"
+    },
+    {
+        name: "NLE Choppa",
+        href: "#",
+        img: "8"
+    },
+    {
+        name: "BENEE Featuring",
+        href: "#",
+        img: "1"
+    },
+    {
+        name: "Jason Aldean",
+        href: "#",
+        img: "2"
+    },
+    {
+        name: "John Doe",
+        href: "#",
+        img: "3"
+    },
+    {
+        name: "Megan Thee",
+        href: "#",
+        img: "4"
+    },
+    {
+        name: "Stefflon Don",
+        href: "#",
+        img: "5"
+    },
+    {
+        name: "Juice WRLD",
+        href: "#",
+        img: "6"
+    },
+    {
+        name: "LOCASH",
+        href: "#",
+        img: "7"
+    },
+    {
+        name: "NLE Choppa",
+        href: "#",
+        img: "8"
+    },
+    {
+        name: "BENEE Featuring",
+        href: "#",
+        img: "1"
+    },
+    {
+        name: "Jason Aldean",
+        href: "#",
+        img: "2"
+    },
+]
 export const Artists = () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const swiperRef = useRef<any>(null)
     const [slidesPerView, setSlides] = useState(window.innerWidth < 768 ? 6 : window.innerWidth >= 768 && window.innerWidth < 1024 ? 3 : 2)
-    const { onSlideChangeHandler } = useHandleOnSlideChange()
+    const {onSlideChangeHandler} = useHandleOnSlideChange()
     const TiketRef = useRef<HTMLDivElement>(null!)
-    const [SomeArtits, setSomeArtits] = useState([
-        {
-            name: "BENEE Featuring",
-            href: "#",
-            img: "1"
-        },
-        {
-            name: "Jason Aldean",
-            href: "#",
-            img: "2"
-        },
-        {
-            name: "John Doe",
-            href: "#",
-            img: "3"
-        },
-        {
-            name: "Megan Thee",
-            href: "#",
-            img: "4"
-        },
-        {
-            name: "Stefflon Don",
-            href: "#",
-            img: "5"
-        },
-        {
-            name: "Juice WRLD",
-            href: "#",
-            img: "6"
-        },
-        {
-            name: "LOCASH",
-            href: "#",
-            img: "7"
-        },
-        {
-            name: "NLE Choppa",
-            href: "#",
-            img: "8"
-        },
-        {
-            name: "BENEE Featuring",
-            href: "#",
-            img: "1"
-        },
-        {
-            name: "Jason Aldean",
-            href: "#",
-            img: "2"
-        },
-        {
-            name: "John Doe",
-            href: "#",
-            img: "3"
-        },
-        {
-            name: "Megan Thee",
-            href: "#",
-            img: "4"
-        },
-        {
-            name: "Stefflon Don",
-            href: "#",
-            img: "5"
-        },
-        {
-            name: "Juice WRLD",
-            href: "#",
-            img: "6"
-        },
-        {
-            name: "LOCASH",
-            href: "#",
-            img: "7"
-        },
-        {
-            name: "NLE Choppa",
-            href: "#",
-            img: "8"
-        },
-        {
-            name: "BENEE Featuring",
-            href: "#",
-            img: "1"
-        },
-        {
-            name: "Jason Aldean",
-            href: "#",
-            img: "2"
-        },
-    ])
+
     return (
         <main className='pages pages--mobile xl:sticky'>
-            <HeadPages title='artists' Items={[{ text: "home", href: "/" }, { text: "artists", href: "" }]} />
+            <HeadPages title='artists' Items={[{text: "home", href: "/"}, {text: "artists", href: ""}]}/>
             <div className='xl:sticky '>
                 <Filter
                     placeholder={"search..."}
@@ -122,37 +122,37 @@ export const Artists = () => {
                             {
                                 boxId: "artists_list__drop", items:
                                     [
-                                        { text: "All artists", hasActive: true },
-                                        { text: "Legacy artists" },
-                                        { text: "Active artists" }
+                                        {text: "All artists", hasActive: true},
+                                        {text: "Legacy artists"},
+                                        {text: "Active artists"}
                                     ]
                             },
                             {
                                 boxId: "genres_list__drop", items:
                                     [
-                                        { text: "All genres", hasActive: true },
-                                        { text: "Alternative" },
-                                        { text: "Blues" },
-                                        { text: "Classical" },
-                                        { text: "Country" },
-                                        { text: "Electronic" },
-                                        { text: "Hip-Hop/Rap" },
-                                        { text: "Indie" },
-                                        { text: "Jazz" },
-                                        { text: "Latino" },
-                                        { text: "R&B/Soul" },
-                                        { text: "Rock" },
+                                        {text: "All genres", hasActive: true},
+                                        {text: "Alternative"},
+                                        {text: "Blues"},
+                                        {text: "Classical"},
+                                        {text: "Country"},
+                                        {text: "Electronic"},
+                                        {text: "Hip-Hop/Rap"},
+                                        {text: "Indie"},
+                                        {text: "Jazz"},
+                                        {text: "Latino"},
+                                        {text: "R&B/Soul"},
+                                        {text: "Rock"},
                                     ]
                             }
                         ]
                     }
                     RadioItems={{
-                        items : [
+                        items: [
                             "Featured",
                             "popular",
                             "newest",
                         ],
-                        boxId:"checked_list__radio"
+                        boxId: "checked_list__radio"
                     }}
                 />
 
@@ -161,7 +161,9 @@ export const Artists = () => {
                         SomeArtits.map((e, index) => {
                             return (
                                 <li key={`releases_${index}`}>
-                                    <ArtistsItems href={e.href} srcImg={`https://volna.volkovdesign.com/img/artists/artist${e.img}.jpg`} nameArtists={e.name} />
+                                    <ArtistsItems href={e.href}
+                                                  srcImg={`https://volna.volkovdesign.com/img/artists/artist${e.img}.jpg`}
+                                                  nameArtists={e.name}/>
                                 </li>
                             )
                         })
@@ -172,7 +174,7 @@ export const Artists = () => {
                 </BtnGreen>
             </div>
             <div className='px-8'>
-                <Title title='Upcoming Events' href='#' textLink='see all' />
+                <Title title='Upcoming Events' href='#' textLink='see all'/>
                 <div className="my-5">
                     <Swiper
                         speed={1000}
@@ -193,7 +195,10 @@ export const Artists = () => {
                             },
                         }}
                         className="event-slider"
-                        onTransitionStart={() => onSlideChangeHandler(".event-slider", ".button-event", { total: 6, count: slidesPerView })}
+                        onTransitionStart={() => onSlideChangeHandler(".event-slider", ".button-event", {
+                            total: 6,
+                            count: slidesPerView
+                        })}
                     >
                         <SwiperSlide>
                             <Event
@@ -263,7 +268,8 @@ export const Artists = () => {
                         </SwiperSlide>
                     </Swiper>
                     <div className="w-full flex items-center py-4 justify-center md:justify-end">
-                        <NavigationButtons aditionalClass="event" totalSlides={6} preViewCount={slidesPerView} swiperRef={swiperRef} />
+                        <NavigationButtons aditionalClass="event" totalSlides={6} preViewCount={slidesPerView}
+                                           swiperRef={swiperRef}/>
                     </div>
                 </div>
             </div>
