@@ -9,9 +9,11 @@ export const Tabs = () => {
 
     return <div className={"w-full px-8 relative"}>
         <TabHeader/>
-        <TabProfile/>
-        <TabOrders/>
-        <TabPlan/>
-        <TabSettings/>
+        <div className={"h-full relative overflow-hidden w-full min-h-[25rem]"}>
+            <TabProfile/>
+            <TabOrders/>
+            <TabPlan/>
+            <TabSettings/>
+        </div>
     </div>
 }

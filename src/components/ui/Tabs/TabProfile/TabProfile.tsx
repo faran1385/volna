@@ -16,7 +16,7 @@ export const TabProfile = () => {
     const {openModal} = useModalActions()
 
     return <>
-        <div className={"mt-8"}>
+        <div className={"mt-8 tab tab--active"}>
             <div className={"grid sm:grid-cols-2  lg:grid-cols-4 gap-6"}>
                 <div className={"p-4 tabs__profile__status rounded-xl"}>
                     <div className={"flex items-center"}>

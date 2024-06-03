@@ -1,4 +1,4 @@
-import React, { RefObject, useEffect, useRef, useState } from 'react'
+import React, { RefObject, useRef } from 'react'
 interface TiketType {
     TiketRef: RefObject<HTMLDivElement> | null
 }

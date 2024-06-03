@@ -19,6 +19,20 @@
     background-size: 18px auto;
 }
 
+.tab {
+    position: absolute;
+    top: 0;
+    will-change: auto;
+    transition: all ease-in .5s;
+    opacity: 0;
+    width: 100%;
+}
+
+.tab--active {
+    opacity: 1;
+    position: relative;
+}
+
 .input {
     will-change: border;
     border: 1px solid transparent;

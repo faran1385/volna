@@ -4,18 +4,6 @@ import "./Sidebar.css"
 import './../LinkMain/LinkMain.css'
 export const Sidebar : FC<divRefType> = ({DivMenuRef}) => {
     const Navigations = useRef<HTMLUListElement>(null)
-    const HandlerClick = (id : string)=>{
-        // if(Navigations && Navigations.current){
-        //     [...Navigations.current.children].forEach(e=>{
-        //         e.querySelector(".main-link__text")?.classList.remove("main-link__text--active")
-        //         e.querySelector(".main-link__icon")?.classList.remove("main-link__icon--active")
-        //         if(e.querySelector("a")?.id === `sidebar-items-${id}`){
-        //             e.querySelector(".main-link__text")?.classList.add("main-link__text--active")
-        //             e.querySelector(".main-link__icon")?.classList.add("main-link__icon--active")
-        //         }
-        //     })
-        // }
-    }
     return <>
         <aside ref={DivMenuRef} className={`sidebar transform-gpu xl:translate-x-0 -translate-x-full  `}>
             {/* sidebar header start*/}

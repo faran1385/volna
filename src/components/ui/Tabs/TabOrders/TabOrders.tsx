@@ -3,7 +3,7 @@ import {Order} from "./Order/Order.tsx";
 import {OrderHeader} from "./OrderHeader/OrderHeader.tsx";
 
 export const TabOrders = () => {
-    return <div className={"mt-8 px-8 rounded-xl overflow-x-auto"}
+    return <div className={"mt-8 tab px-8 rounded-xl overflow-x-auto"}
                 style={{border: "1px solid var(--border-color)"}}>
         <OrderHeader/>
         <Order

@@ -13,10 +13,6 @@
     fill: var(--green-color);
 }
 
-.tabs__header__list__icon--active{
-    fill: var(--green-color);
-}
-
 .tabs__header__name {
     font-weight: 300;
     font-size: 15px;
@@ -39,11 +35,17 @@
     color: white;
 }
 
-.tabs__header__list__link--activate {
+.tabs__header__list__item--active {
     color: white;
     border-bottom: solid var(--green-color) 2px;
     border-collapse: separate;
     border-spacing: 10rem;
+    fill: var(--green-color);
+    pointer-events: none !important;
+}
+
+svg.tabs__header__list__item--active {
+    border: none !important;
 }
 
 .tabs__header__signOut {

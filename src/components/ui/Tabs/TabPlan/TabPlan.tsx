@@ -73,7 +73,7 @@ const cards = [
 ]
 
 export const TabPlan = () => {
-    return <div className='grid grid-cols-1 lg:grid-cols-3 mt-8 gap-6'>
+    return <div className='grid grid-cols-1 tab lg:grid-cols-3 mt-8 gap-6'>
         {
             cards.map((card, i) => {
                 return <AboutCardPlan key={i} {...card}/>
