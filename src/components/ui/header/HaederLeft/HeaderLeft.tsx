@@ -11,7 +11,7 @@ export const HeaderLeft : React.FC<HesderLeftType & NavRefType> = ({ BoxSearch ,
     return (
         <div className='Header-nav__left w-auto Header-nav__left--action   absolute  flex items-centerw'>
             <nav ref={DivNavLink} className='xl:flex hidden Header-nav__links flex items-center me-16'>
-                <a id='header_nav-/profile' href="#" className='capitalize me-7' >profile</a>
+                <a id='header_nav-/profile' href="./profile" className='capitalize me-7' >profile</a>
                 <a id='header_nav-/about' href="./about" className='capitalize me-7' >about</a>
                 <a id='header_nav-/contacts' href="./contacts" className='capitalize' >contacts</a>
             </nav>

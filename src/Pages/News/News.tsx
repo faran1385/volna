@@ -5,18 +5,22 @@ import { BtnNews } from '../../components/ui/BtnNews/BtnNews'
 import { PodcastsVideo } from '../../components/ui/Podcasts/PodcastsItems/PodcastsVideo/PodcastsVideo'
 import { Report } from '../../components/ui/News/Report/Resport'
 import { BtnGreen } from '../../components/ui/BtnGreen/BtnGreen'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 export const News: React.FC = () => {
     const BtnsBox = useRef<HTMLUListElement>(null)
     const listUlRef = useRef<HTMLUListElement>(null)
     const VideoIframe = useRef<HTMLIFrameElement>(null!)
     const Videobox = useRef<HTMLDivElement | null>(null)
     const [Id, setId] = useState(1)
+    let timeLine = gsap.timeline();
+
     const [Typeing, setTypeing] = useState(
         [
-            { text: "all", hasActive: true },
-            { text: "music", hasActive: false },
-            { text: "review", hasActive: false },
-            { text: "Interviews", hasActive: false },
+            { id: 1, text: "all", hasActive: true },
+            { id: 2, text: "music", hasActive: false },
+            { id: 3, text: "review", hasActive: false },
+            { id: 4, text: "Interviews", hasActive: false },
         ]
     )
     const [Data, setData] = useState(
@@ -90,31 +94,34 @@ export const News: React.FC = () => {
         if (BtnsBox && BtnsBox.current) {
             BtnsBox.current.querySelectorAll("li").forEach((e) => {
                 e.querySelector(".main-link__icon")?.classList.remove("main-link__icon--active")
+                e.querySelector(".news__btn")?.classList.remove("news__btn--active")
                 e.querySelector(".main-link__text")?.classList.remove("main-link__text--active")
-                if(listUlRef && listUlRef.current){
-                    listUlRef.current.querySelectorAll('li').forEach((e)=>{
-                        e.classList.remove('opacity-1')
-                        e.classList.add('opacity-0')
-                    })
-                }
                 if (e.id === `btn_news_${id}`) {
+                    e.querySelector(".news__btn")?.classList.add("news__btn--active")
                     e.querySelector(".main-link__icon")?.classList.add("main-link__icon--active")
                     e.querySelector(".main-link__text")?.classList.add("main-link__text--active")
-                    let timer = setTimeout(()=>{
-                        setId(id)
-                    },700)
-                    return ()=>{
-                        clearInterval(timer)
+                    if (listUlRef && listUlRef.current) {
+                        timeLine.to(listUlRef.current, {
+                            opacity: 0,
+                            duration: 0.5,
+                            ease: "power2.out"
+                        })
                     }
+                    setTimeout(() => {
+                        setId(id)
+                    }, 1000)
                 }
             })
         }
     }
     useEffect(() => {
-        if(listUlRef && listUlRef.current){
-            listUlRef.current.querySelectorAll('li').forEach((e)=>{
-                e.classList.remove('opacity-0')
-                e.classList.add('opacity-1')
+        if (listUlRef && listUlRef.current) {
+
+            console.log(15)
+            timeLine.to(listUlRef.current, {
+                opacity: 1,
+                duration: 0.5,
+                ease: "none"
             })
         }
     }, [Id]);
@@ -130,18 +137,18 @@ export const News: React.FC = () => {
                     Typeing.map((e, index) => {
                         return (
                             <li key={`btn_news_${index + 1}`} id={`btn_news_${index + 1}`} >
-                                <BtnNews handler={HandlerTyping} id={index + 1} text={e.text} hasActive={e.hasActive} />
+                                <BtnNews handler={HandlerTyping} id={index + 1} text={e.text} IdHer={Id} hasActive={e.hasActive} />
                             </li>
                         )
                     })
                 }
             </ul>
-            <ul ref={listUlRef} className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-8 py-8'>
+            <ul ref={listUlRef} className='news-ul grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-8 py-8 opacity-0 transition-opacity duration-700'>
                 {
                     Data.map((e, index) => {
-                        if(e.id === Id){
+                        if (e.id === Id) {
                             return (
-                                <li key={`list_news_${index + 1}`} id={`list_news_${e.id}`} className='opacity-0 block transition-opacity duration-700'>
+                                <li key={`list_news_${index + 1}`} id={`list_news_${e.id}`} className='justify-center  block '>
                                     <Report title={e.title} VideoIframe={VideoIframe} Videobox={Videobox} href={e.href} category={e.category} timePassed={e.timePassed} comments={e.comments} img={e.img} />
                                 </li>
                             )
@@ -151,7 +158,7 @@ export const News: React.FC = () => {
             </ul>
             {
                 Id === 1 ?
-                    <BtnGreen>
+                    <BtnGreen classBox='my-6 flex justify-center'>
                         load more
                     </BtnGreen>
                     :

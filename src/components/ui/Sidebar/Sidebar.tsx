@@ -28,10 +28,10 @@ export const Sidebar : FC<divRefType> = ({DivMenuRef}) => {
                 <ul ref={Navigations}>
                     <li className="my-5">
                         <a href="/" className="flex w-fit main-link"  id="sidebar-items-/">
-                            <svg className="main-link__icon me-3 main-link__icon--active" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <svg className="main-link__icon me-3 " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <path d="M20,8h0L14,2.74a3,3,0,0,0-4,0L4,8a3,3,0,0,0-1,2.26V19a3,3,0,0,0,3,3H18a3,3,0,0,0,3-3V10.25A3,3,0,0,0,20,8ZM14,20H10V15a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1Zm5-1a1,1,0,0,1-1,1H16V15a3,3,0,0,0-3-3H11a3,3,0,0,0-3,3v5H6a1,1,0,0,1-1-1V10.25a1,1,0,0,1,.34-.75l6-5.25a1,1,0,0,1,1.32,0l6,5.25a1,1,0,0,1,.34.75Z"></path>
                             </svg>
-                            <span className="main-link__text--active main-link__text">Home</span>
+                            <span className=" main-link__text">Home</span>
                         </a>
                     </li>
                     <li className="my-5">

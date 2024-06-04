@@ -1,0 +1,6 @@
+.news__btn{
+    pointer-events: auto;
+}
+.news__btn--active{
+    pointer-events: none;
+}
