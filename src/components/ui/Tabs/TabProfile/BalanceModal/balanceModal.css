@@ -1,0 +1,48 @@
+.balance-modal__ratio__label {
+    font-weight: 300;
+    cursor: pointer;
+    color: var(--gray-color);
+}
+
+.balance-modal__ratio {
+    -moz-appearance: none; /* Firefox */
+    -webkit-appearance: none; /* Safari and Chrome */
+    appearance: none;
+    border-radius: 100%;
+    width: 1.2rem;
+    height: 1.2rem;
+    position: relative;
+    background: #222227;
+    will-change: auto;
+    transition: all ease-in .3s;
+    cursor: pointer;
+}
+
+.balance-modal__ratio:before {
+    content: '';
+    display: block;
+    width: .5rem;
+    height: .5rem;
+    position: absolute;
+    top: .31rem;
+    left: .35rem;
+    border-radius: 100%;
+    background: #16151a;
+}
+
+.balance-modal__ratio:checked {
+    background: var(--green-color);
+}
+
+.balance-modal__button {
+    font-size: 14px;
+    height: 50px;
+    will-change: background-color;
+    transition: background-color ease-in .3s;
+    background-color: var(--green-color);
+    text-transform: uppercase;
+}
+
+.balance-modal__button:hover {
+    background-color: var(--black-color);
+}

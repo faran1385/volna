@@ -1,0 +1,20 @@
+.notification__text {
+    text-overflow: ellipsis;
+    color: var(--gray-color);
+    word-break: break-all;
+}
+
+.notification__link {
+    color: white;
+    will-change: auto;
+    text-decoration: underline;
+}
+
+.notification__link:hover {
+    text-decoration: none;
+}
+
+.notification__time {
+    font-size: 13px;
+    color: var(--gray-color);
+}
