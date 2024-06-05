@@ -77,8 +77,28 @@
     color: var(--gray-color);
 }
 
-.song {
-    border-bottom: 1px solid var(--border-color);
+.song__add {
+    width: 32px;
+    height: 32px;
+    background: rgba(37, 165, 106, 0.15);
+    will-change: background;
+    transition: background ease-in .3s;
+}
+
+.song__add:hover {
+    background: rgba(37, 165, 106, 0.3);
+}
+
+.song__download {
+    width: 32px;
+    height: 32px;
+    background: rgba(128, 81, 212, 0.15);
+    will-change: background;
+    transition: background ease-in .3s;
+}
+
+.song__download:hover {
+    background: rgba(128, 81, 212, 0.3);
 }
 
 .song:hover .song__img {

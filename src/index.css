@@ -6,6 +6,38 @@
 * {
     --background: #16151a;
     --border-color: #222227;
+    --gray-color: rgb(192, 192, 192);
+    --black-color:#222227;
+    --green-color:#25a56a;
+    --color:#fff;
+    font-family: "Inter", sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+#root{
+    position: sticky;
+}
+body {
+    background-color: var(--background);
+    color: var(--color);
+    position: sticky;
+}
+
+
+.text-fade {
+    color: #c0c0c0;
+}
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+    --background: #16151a;
+    --border-color: #222227;
     --gray-color:#c0c0c0;
     --black-color:#222227;
     --green-color:#25a56a;

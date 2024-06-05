@@ -1,17 +1,15 @@
-import { duration } from "@mui/material";
 import "./Player.css"
 import Tooltip from '@mui/material/Tooltip';
 import { RefObject, useCallback, useEffect, useRef, useState } from "react";
-import { AppState } from "../../../app/store";
-import { useDispatch, useSelector } from "react-redux";
-import { setPlayer, setPlaying } from "../../../app/Player/Player";
+import {useAppDispatch, useAppSelector} from "../../../app/store";
+import { setPlaying } from "../../../app/Player/Player";
 interface ProcessInputType {
     audio: RefObject<HTMLAudioElement> | null,
     href: string | undefined
 }
 export const ProcessInput = ({ audio, href }: ProcessInputType) => {
-    const dispatch = useDispatch()
-    const PlayerItems = useSelector((state: AppState) => state.player)
+    const dispatch = useAppDispatch()
+    const PlayerItems = useAppSelector((state) => state.player)
     const [processTooltipText, setProcessTooltipText] = useState('00:00');
     const [timer, setTimer] = useState<{ sec: string | number, min: string | number }>({ sec: 0, min: 0 });
     const [direction, setDirection] = useState<{ sec: string | number, min: string | number }>({ sec: 0, min: 0 });

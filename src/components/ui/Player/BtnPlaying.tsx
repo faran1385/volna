@@ -1,18 +1,18 @@
-import { useDispatch , useSelector } from "react-redux"
-import { AppState } from "../../../app/store"
+import { useDispatch  } from "react-redux"
+import { useAppSelector } from "../../../app/store"
 import { setPlaying } from "../../../app/Player/Player"
 import { FC, RefObject } from "react"
 
-export const BtnPlaying: FC<{ audio: RefObject<HTMLAudioElement> }> = ({ audio }) => {
+export const BtnPlaying: FC<{ audio: RefObject<HTMLAudioElement> }> = () => {
     const dispatch = useDispatch()
-    const PlayerItems = useSelector((state: AppState) => state.player)
+    const PlayerItems = useAppSelector((state) => state.player)
 
-    const hadlerPlay = () => {
+    const playHandler = () => {
         dispatch(setPlaying({paused : !PlayerItems.paused}))
     }
 
     return (
-        <button onClick={hadlerPlay} className="mx-2">
+        <button onClick={playHandler} className="mx-2">
             {
                 PlayerItems.paused ?
                     <svg className="player__control" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
