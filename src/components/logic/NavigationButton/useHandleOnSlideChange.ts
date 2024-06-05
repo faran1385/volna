@@ -12,8 +12,7 @@ export const useHandleOnSlideChange = () => {
         
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const swiper = document.querySelector(sliderSelector) as any
-        console.log(sliderNavItems,buttonsSelector);
-        
+
         let activeIndex = (swiper.swiper.realIndex as number);
         
         if (preView) {

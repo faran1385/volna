@@ -11,7 +11,9 @@ interface SongProps {
     img: string,
     hasBorder: boolean
     href: string,
-    hasPlusAndDownload?: true
+    hasPlusAndDownload?: true,
+    isActive?: boolean
+    isPlaying?: boolean
 }
 
 type Rank = {
@@ -21,7 +23,7 @@ type Rank = {
 }
 
 export const Song: React.FC<SongProps> = (T) => {
-    const {rank, hasPlusAndDownload, name, singer, img, isLive, hasBorder, href} = T
+    const {rank, isPlaying, hasPlusAndDownload, isActive, name, singer, img, isLive, hasBorder, href} = T
 
     return <>
         <div className="w-full flex song pt-4 pb-3"
@@ -48,7 +50,8 @@ export const Song: React.FC<SongProps> = (T) => {
                 </>)}
             </div>
             <div className={`flex w-full ${rank && "ms-3"}`}>
-                <BtnPlaying img={img} name={name} musicaian={singer} href={href}/>
+                <BtnPlaying isPlaying={isPlaying} isActive={isActive} img={img} name={name} musicaian={singer}
+                            href={href}/>
                 <div className="ms-2 w-full flex justify-between">
                     <div className=" flex flex-col">
                         <a href="#" className="song__name">{name}</a>
@@ -65,7 +68,8 @@ export const Song: React.FC<SongProps> = (T) => {
                                         </path>
                                     </svg>
                                 </a>
-                                <a href={"#"} className={"song__download ms-4 rounded-lg flex items-center justify-center"}>
+                                <a href={"#"}
+                                   className={"song__download ms-4 rounded-lg flex items-center justify-center"}>
                                     <svg width={18} fill={'#8051d4'} xmlns="http://www.w3.org/2000/svg"
                                          viewBox="0 0 24 24">
                                         <path

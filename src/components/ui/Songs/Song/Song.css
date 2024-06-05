@@ -36,6 +36,10 @@
     transition: all ease-in .3s;
 }
 
+.song__img__icon--active {
+    fill: var(--green-color);
+}
+
 .song__img__icon:hover {
     fill: var(--green-color);
 }
@@ -103,6 +107,15 @@
 
 .song:hover .song__img {
     opacity: .35;
+}
+
+.song--active img {
+    opacity: .35;
+}
+
+.song--active svg {
+    opacity: 1;
+    fill: var(--green-color);
 }
 
 .song:hover .song__img__icon {

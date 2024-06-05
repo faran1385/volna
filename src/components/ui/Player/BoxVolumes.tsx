@@ -1,23 +1,24 @@
 import { Tooltip } from "@mui/material";
-import { FC, RefObject, useState } from "react";
+import React, { FC, RefObject, useState } from "react";
 
-export const BoxVolums: FC<{ audio: RefObject<HTMLAudioElement> }> = ({ audio }) => {
-    const [volums, setVolums] = useState(false)
+export const BoxVolumes: FC<{ audio: RefObject<HTMLAudioElement> }> = ({ audio }) => {
+    const [volumes, setVolumes] = useState(false)
     const oninputSlider = (e: React.FormEvent<HTMLInputElement>) => {
         (e.target as HTMLInputElement).style.background = `linear-gradient(90deg,#25a56a ${(e.target as HTMLInputElement).value}%,#999999 ${(e.target as HTMLInputElement).value}%)`;
         if (audio && audio.current) {
             audio.current.volume = Number((e.target as HTMLInputElement).value) / 100
             if(audio.current.volume === 0){
-                setVolums(true)
+                setVolumes(true)
             }else{
-                setVolums(false)
+                setVolumes(false)
             }
         }
     }
+
     return (
         <div className="flex items-center">
             <button className="me-2">
-                {volums ?
+                {volumes ?
                     <Tooltip title={"Unmute"} slotProps={{ popper: { modifiers: [{ name: "offset", options: { offset: [0, -4] } }] } }} arrow>
                         <svg className="player__control" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12.43,4.1a1,1,0,0,0-1,.12L6.65,8H3A1,1,0,0,0,2,9v6a1,1,0,0,0,1,1H6.65l4.73,3.78A1,1,0,0,0,12,20a.91.91,0,0,0,.43-.1A1,1,0,0,0,13,19V5A1,1,0,0,0,12.43,4.1ZM11,16.92l-3.38-2.7A1,1,0,0,0,7,14H4V10H7a1,1,0,0,0,.62-.22L11,7.08ZM19.91,12l1.8-1.79a1,1,0,0,0-1.42-1.42l-1.79,1.8-1.79-1.8a1,1,0,0,0-1.42,1.42L17.09,12l-1.8,1.79a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l1.79-1.8,1.79,1.8a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Z"></path>

@@ -22,7 +22,7 @@ import { Artist } from "./Pages/Artist/Artist.tsx";
 import { Event } from "./Pages/Event/Event.tsx";
 import { Privacy } from "./Pages/Privacy/Privacy.tsx";
 import { ForgetPassword } from "./Pages/ForgetPassword/ForgetPassword.tsx";
-import { Relaese } from "./Pages/Release/Relaese.tsx";
+import { Release } from "./Pages/Release/Release.tsx";
 import { Article } from "./Pages/Article/Article.tsx";
 import { Product } from "./Pages/Product/Product.tsx";
 import { SignUp } from "./Pages/SignUp/SignUp.tsx";
@@ -79,7 +79,7 @@ function App() {
                         <Route path="event" element={<Event />} />
                         <Route path="privacy" element={<Privacy />} />
                         <Route path="forgetpassword" element={<ForgetPassword />} />
-                        <Route path="release" element={<Relaese />} />
+                        <Route path="release" element={<Release />} />
                         <Route path="article" element={<Article />} />
                         <Route path="product" element={<Product />} />
                         <Route path="sign-up" element={<SignUp />} />

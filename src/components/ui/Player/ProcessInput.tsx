@@ -1,26 +1,28 @@
 import "./Player.css"
 import Tooltip from '@mui/material/Tooltip';
-import { RefObject, useCallback, useEffect, useRef, useState } from "react";
+import {RefObject, useCallback, useEffect, useRef, useState} from "react";
 import {useAppDispatch, useAppSelector} from "../../../app/store";
-import { setPlaying } from "../../../app/Player/Player";
+import {SET_PLAYING} from "../../../app/Player/Player.ts";
+
 interface ProcessInputType {
     audio: RefObject<HTMLAudioElement> | null,
     href: string | undefined
 }
-export const ProcessInput = ({ audio, href }: ProcessInputType) => {
+
+export const ProcessInput = ({audio, href}: ProcessInputType) => {
     const dispatch = useAppDispatch()
-    const PlayerItems = useAppSelector((state) => state.player)
+    const {isPlaying, currentIndex} = useAppSelector((state) => state.player)
     const [processTooltipText, setProcessTooltipText] = useState('00:00');
-    const [timer, setTimer] = useState<{ sec: string | number, min: string | number }>({ sec: 0, min: 0 });
-    const [direction, setDirection] = useState<{ sec: string | number, min: string | number }>({ sec: 0, min: 0 });
+    const [timer, setTimer] = useState<{ sec: string | number, min: string | number }>({sec: 0, min: 0});
+    const [direction, setDirection] = useState<{ sec: string | number, min: string | number }>({sec: 0, min: 0});
     const [isOpen, setOpen] = useState(false);
     const oninputSlider = (e: React.FormEvent<HTMLInputElement>) => {
         (e.target as HTMLInputElement).style.background = `linear-gradient(90deg,#25a56a ${(e.target as HTMLInputElement).value}%,#999999 ${(e.target as HTMLInputElement).value}%)`;
         if (
             audio && audio.current
         ) {
-            let changing = Number((e.target as HTMLInputElement).value) * audio.current?.duration / 100;
-            audio.current.currentTime = changing
+
+            audio.current.currentTime = Number((e.target as HTMLInputElement).value) * audio.current?.duration / 100;
         }
     }
 
@@ -47,7 +49,7 @@ export const ProcessInput = ({ audio, href }: ProcessInputType) => {
             const targetOffsetLeft = target.offsetLeft;
             const mouseCurrentPosition = event.clientX;
             const percentage = (mouseCurrentPosition - targetOffsetLeft) / targetWidth;
-            tooltipPositionRef.current = { x: event.clientX, y: event.clientY }
+            tooltipPositionRef.current = {x: event.clientX, y: event.clientY}
             if (tooltipPositionRef.current.x - (14 * (1 - percentage)) + 7 > targetWidth + targetOffsetLeft) {
                 tooltipPositionRef.current.x = targetWidth + targetOffsetLeft - 7
             } else if (tooltipPositionRef.current.x - (14 * (1 - percentage)) + 7 < targetOffsetLeft) {
@@ -86,11 +88,12 @@ export const ProcessInput = ({ audio, href }: ProcessInputType) => {
             const minutes = Math.floor(currentTime.current / 60);
             const seconds = (currentTime.current % 60).toFixed(0);
             setProcessTooltipText(() => `${minutes}:${Number.parseInt(seconds) < 10 ? '0' : ''}${seconds}`);
-            tooltipPositionRef.current = { x: mouseCurrentPosition, y: tooltipPositionRef.current.y };
+            tooltipPositionRef.current = {x: mouseCurrentPosition, y: tooltipPositionRef.current.y};
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (popperRef.current as any).update();
         }
     }, [])
+
     useEffect(() => {
         const handleEvent = (e: any) => {
             if (e.srcElement && !e.srcElement.classList.contains("player__process")) {
@@ -103,72 +106,67 @@ export const ProcessInput = ({ audio, href }: ProcessInputType) => {
             const minutes = Math.abs(Math.floor(audio.current.duration / 60));
             const seconds = Math.floor((audio.current.currentTime % 60) - (audio.current.duration % 60));
             const secToNumber = Math.abs(seconds) < 10 ? "0" + Math.abs(seconds) : Math.abs(seconds)
-            setTimer({ sec: secToNumber, min: minutes });
+            setTimer({sec: secToNumber, min: minutes});
         }
-        // dispatch(
-        //     setPlayer(
-        //         {
-        //             img:"https://volna.volkovdesign.com/img/covers/cover.svg",
-        //             href:"http://blast.volkovdesign.com/audio/12071151_epic-cinematic-trailer_by_audiopizza_preview.mp3",
-        //             name:"Epic Cinematic",
-        //             singer:"AudioPizza",
-        //         }
-        //     )
-        // )
+
         return () => {
             window.removeEventListener("pointerdown", handleEvent)
         }
     }, [])
+
     useEffect(() => {
         if (audio && audio.current) {
-            if (PlayerItems.paused) {
+            if (isPlaying) {
                 audio.current.play()
             } else {
                 audio.current.pause()
             }
         }
-    }, [PlayerItems.paused]);
+    }, [isPlaying, currentIndex]);
+
+    const loadAudioHandler = () => {
+        if (audio && audio.current) {
+            const minutes = Math.floor(audio.current.currentTime / 60) - Math.floor(audio.current.duration / 60);
+            const seconds = Math.floor((audio.current.currentTime % 60) - (audio.current.duration % 60));
+            // const secondsToNumber  = Number(Math.abs(seconds) < 10 ? "0" + Math.abs(seconds) : Math.abs(seconds))
+            setDirection({sec: Math.abs(seconds), min: Math.abs(minutes)})
+        }
+    }
+
+    const audioEndHandler = () => {
+        dispatch(SET_PLAYING(!isPlaying))
+
+        if (audio && audio.current) {
+            audio.current.currentTime = 0
+        }
+    }
+    const audioTimeUpdate = () => {
+        if (audio && audio.current && processInput && processInput.current) {
+            const minutes = Math.ceil(audio.current.currentTime / 60 - audio.current.duration / 60);
+            const seconds =
+                audio.current.duration % 60 - audio.current.currentTime % 60 >= 0 ?
+                    Math.floor((audio.current.currentTime % 60) - (audio.current.duration % 60) + 1)
+                    :
+                    Math.floor((audio.current.currentTime % 60) - audio.current.duration % 60 - 59);
+            // const secondsToNumber  Math.abs(seconds) : Math.abs(seconds)
+            setTimer({sec: Math.abs(seconds), min: Math.abs(minutes)})
+            setDirection({sec: 0, min: 0})
+            currentTime.current = audio.current.currentTime
+            processInput.current.value = currentTime.current / audio.current.duration * 100
+            processInput.current.style.background = `linear-gradient(90deg,#25a56a ${currentTime.current / audio.current.duration * 100}%,#999999 ${currentTime.current / audio.current.duration * 100}%)`;
+        }
+    }
+    // console.log("")
     return <>
-        <audio ref={audio} onLoadedData={() => {
-            if (audio && audio.current) {
-                const minutes = Math.floor(audio.current.currentTime / 60) - Math.floor(audio.current.duration / 60);
-                const seconds = Math.floor((audio.current.currentTime % 60) - (audio.current.duration % 60));
-                // const secondsToNumber  = Number(Math.abs(seconds) < 10 ? "0" + Math.abs(seconds) : Math.abs(seconds))
-                setDirection({ sec: Math.abs(seconds), min: Math.abs(minutes) })
-            }
-        }}
-            onEnded={() => {
-                dispatch(
-                    setPlaying({
-                        paused: !PlayerItems.paused
-                    })
-                )
-                if (audio && audio.current) {
-                    audio.current.currentTime = 0
-                }
-            }}
-            onTimeUpdate={() => {
-                if (audio && audio.current && processInput && processInput.current) {
-                    const minutes = Math.ceil(audio.current.currentTime / 60 - audio.current.duration / 60);
-                    const seconds =
-                        audio.current.duration % 60 - audio.current.currentTime % 60 >= 0 ?
-                            Math.floor((audio.current.currentTime % 60) - (audio.current.duration % 60) + 1)
-                            :
-                            Math.floor((audio.current.currentTime % 60) - audio.current.duration % 60 - 59);
-                    // const secondsToNumber  Math.abs(seconds) : Math.abs(seconds)
-                    setTimer({ sec: Math.abs(seconds), min: Math.abs(minutes) })
-                    setDirection({ sec: 0, min: 0 })
-                    currentTime.current = audio.current.currentTime
-                    processInput.current.value = currentTime.current / audio.current.duration * 100
-                    processInput.current.style.background = `linear-gradient(90deg,#25a56a ${currentTime.current / audio.current.duration * 100}%,#999999 ${currentTime.current / audio.current.duration * 100}%)`;
-                }
-            }} src={href}></audio>
+        <audio ref={audio} onLoadedData={loadAudioHandler}
+               onEnded={audioEndHandler}
+               onTimeUpdate={audioTimeUpdate} src={href}></audio>
         <Tooltip
             title={processTooltipText}
             placement="top"
             arrow
             open={isOpen}
-            style={{ zIndex: 100000000 }}
+            style={{zIndex: 100000000}}
             onClose={() => setOpen(false)}
             PopperProps={{
                 popperRef,
@@ -187,13 +185,15 @@ export const ProcessInput = ({ audio, href }: ProcessInputType) => {
             <input ref={processInput} onMouseUp={() => isMouseDown.current = false} onMouseMove={(e) => {
                 hasMouse.current = true;
                 handleMouseMove(e);
-            }} onPointerMove={() => setOpen(true)} className="player__process flex flex-grow" defaultValue={0} onInput={(e) => {
-                oninputSlider(e);
-                if ('ontouchstart' in window) {
-                    handleOnInput(e)
-                }
-            }} type="range" min="0" max="100" step="0.01" />
+            }} onPointerMove={() => setOpen(true)} className="player__process flex flex-grow" defaultValue={0}
+                   onInput={(e) => {
+                       oninputSlider(e);
+                       if ('ontouchstart' in window) {
+                           handleOnInput(e)
+                       }
+                   }} type="range" min="0" max="100" step="0.01"/>
         </Tooltip>
-        <span className="ms-3 text-fade text-sm">-{direction.sec === 0 ? `${timer.min < "10" ? "0" + timer.min : timer.min}:${timer.sec < "10" ? "0" + timer.sec : timer.sec}` : `${direction.min < "10" ? "0" + direction.min : timer.min}:${direction.sec < "10" ? "0" + direction.sec : direction.sec}`}</span>
+        <span
+            className="ms-3 text-fade text-sm">-{direction.sec === 0 ? `${timer.min < "10" ? "0" + timer.min : timer.min}:${timer.sec < "10" ? "0" + timer.sec : timer.sec}` : `${direction.min < "10" ? "0" + direction.min : timer.min}:${direction.sec < "10" ? "0" + direction.sec : direction.sec}`}</span>
     </>
 }

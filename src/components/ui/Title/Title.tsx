@@ -1,7 +1,7 @@
 import { TypeTitle } from './Title.ts'
 import './Title.css'
 export const Title = ({ title, textLink, href }: TypeTitle) => {
-    console.log(title)
+
     return (
         <div className='title-card flex justify-between items-end h-24'>
             <h1 className='title-card__text capitalize'>

@@ -9,7 +9,6 @@ interface AboutCardHeaderType {
 }
 import './AboutCardHeader.css'
 export const AboutCardHeader: React.FC<AboutCardHeaderType> = ({ index, title, text, icon, backgroundColor, Color }) => {
-    console.log(icon)
     return (
         <div className={`about-card-header${icon === undefined ? "--border p-5" : ''}  `}>
             <div className={`about-card-header__header flex items-center gap-x-4 mb-3 font-medium`}>
